@@ -1,0 +1,4 @@
+{
+  "name": "Rive Environment",
+  "postStartCommand": "mkdir -p ~/.config/rive/app.rive.cli && cp -r .devcontainer/rive-auth/* ~/.config/rive/ 2>/dev/null || true"
+}
