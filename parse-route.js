@@ -462,14 +462,11 @@ ${rmlVertices.join('\n')}
         } catch (e) {}
         console.log('Сборка завершена.');
 
-        console.log('Пуш проекта в Rive Editor...');
-        execSync('xvfb-run rive push --yes', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-
         console.log('Создание коммита в Git...');
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Add car NestedArtboard with FollowPathConstraint: ${projectFolder}"`, { stdio: 'inherit' });
+        execSync(`git commit -m "Generate RML without auto push: ${projectFolder}"`, { stdio: 'inherit' });
 
-        console.log('Готово! Всё собрано, запушено и закоммичено.');
+        console.log('Готово! Всё собрано, сохранено и закоммичено (без пуша).');
 
     } catch (err) {
         console.error('Ошибка:', err);
