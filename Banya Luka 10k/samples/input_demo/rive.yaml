@@ -1,9 +1,0 @@
-name: input_demo
-main: main
-artboard:
-  width: 800
-  height: 600
-  background: "#101418"
-logs:
-  file: build/rive.log
-  problems: build/problems.log
