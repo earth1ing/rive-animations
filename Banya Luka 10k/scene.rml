@@ -1,467 +1,205 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Rive kind="fragment" version="1">
-  <Artboard defaultStateMachineId="0:7" name="RouteArtboard" width="800" height="600" id="0:88">
-    <Shape name="RoutePath" id="0:89">
-      <PointsPath id="0:90">
-        <StraightVertex x="530" y="160" id="0:91" />
-        <StraightVertex x="538" y="150" id="0:92" />
-        <StraightVertex x="547" y="141" id="0:93" />
-        <StraightVertex x="556" y="133" id="0:94" />
-        <StraightVertex x="567" y="124" id="0:95" />
-        <StraightVertex x="578" y="115" id="0:96" />
-        <StraightVertex x="587" y="105" id="0:97" />
-        <StraightVertex x="597" y="95" id="0:98" />
-        <StraightVertex x="606" y="86" id="0:99" />
-        <StraightVertex x="616" y="77" id="0:100" />
-        <StraightVertex x="627" y="68" id="0:101" />
-        <StraightVertex x="638" y="58" id="0:102" />
-        <StraightVertex x="650" y="50" id="0:103" />
-        <StraightVertex x="668" y="50" id="0:104" />
-        <StraightVertex x="684" y="51" id="0:105" />
-        <StraightVertex x="700" y="52" id="0:106" />
-        <StraightVertex x="716" y="51" id="0:107" />
-        <StraightVertex x="733" y="51" id="0:108" />
-        <StraightVertex x="750" y="53" id="0:109" />
-        <StraightVertex x="745" y="64" id="0:110" />
-        <StraightVertex x="738" y="73" id="0:111" />
-        <StraightVertex x="729" y="82" id="0:112" />
-        <StraightVertex x="720" y="92" id="0:113" />
-        <StraightVertex x="711" y="101" id="0:114" />
-        <StraightVertex x="701" y="111" id="0:115" />
-        <StraightVertex x="691" y="120" id="0:116" />
-        <StraightVertex x="687" y="130" id="0:117" />
-        <StraightVertex x="689" y="138" id="0:118" />
-        <StraightVertex x="692" y="149" id="0:119" />
-        <StraightVertex x="689" y="161" id="0:120" />
-        <StraightVertex x="684" y="172" id="0:121" />
-        <StraightVertex x="682" y="184" id="0:122" />
-        <StraightVertex x="680" y="195" id="0:123" />
-        <StraightVertex x="678" y="207" id="0:124" />
-        <StraightVertex x="678" y="218" id="0:125" />
-        <StraightVertex x="677" y="229" id="0:126" />
-        <StraightVertex x="681" y="240" id="0:127" />
-        <StraightVertex x="684" y="250" id="0:128" />
-        <StraightVertex x="684" y="263" id="0:129" />
-        <StraightVertex x="686" y="273" id="0:130" />
-        <StraightVertex x="689" y="284" id="0:131" />
-        <StraightVertex x="693" y="295" id="0:132" />
-        <StraightVertex x="698" y="306" id="0:133" />
-        <StraightVertex x="703" y="317" id="0:134" />
-        <StraightVertex x="708" y="328" id="0:135" />
-        <StraightVertex x="712" y="338" id="0:136" />
-        <StraightVertex x="711" y="349" id="0:137" />
-        <StraightVertex x="698" y="355" id="0:138" />
-        <StraightVertex x="686" y="362" id="0:139" />
-        <StraightVertex x="673" y="371" id="0:140" />
-        <StraightVertex x="661" y="379" id="0:141" />
-        <StraightVertex x="649" y="387" id="0:142" />
-        <StraightVertex x="637" y="394" id="0:143" />
-        <StraightVertex x="623" y="400" id="0:144" />
-        <StraightVertex x="614" y="405" id="0:145" />
-        <StraightVertex x="601" y="408" id="0:146" />
-        <StraightVertex x="584" y="413" id="0:147" />
-        <StraightVertex x="569" y="417" id="0:148" />
-        <StraightVertex x="555" y="421" id="0:149" />
-        <StraightVertex x="541" y="425" id="0:150" />
-        <StraightVertex x="527" y="429" id="0:151" />
-        <StraightVertex x="513" y="433" id="0:152" />
-        <StraightVertex x="499" y="438" id="0:153" />
-        <StraightVertex x="486" y="443" id="0:154" />
-        <StraightVertex x="473" y="449" id="0:155" />
-        <StraightVertex x="459" y="442" id="0:156" />
-        <StraightVertex x="446" y="433" id="0:157" />
-        <StraightVertex x="435" y="424" id="0:158" />
-        <StraightVertex x="424" y="415" id="0:159" />
-        <StraightVertex x="411" y="422" id="0:160" />
-        <StraightVertex x="399" y="430" id="0:161" />
-        <StraightVertex x="388" y="438" id="0:162" />
-        <StraightVertex x="378" y="446" id="0:163" />
-        <StraightVertex x="366" y="454" id="0:164" />
-        <StraightVertex x="353" y="461" id="0:165" />
-        <StraightVertex x="342" y="459" id="0:166" />
-        <StraightVertex x="331" y="468" id="0:167" />
-        <StraightVertex x="316" y="476" id="0:168" />
-        <StraightVertex x="305" y="484" id="0:169" />
-        <StraightVertex x="293" y="493" id="0:170" />
-        <StraightVertex x="282" y="501" id="0:171" />
-        <StraightVertex x="272" y="507" id="0:172" />
-        <StraightVertex x="263" y="513" id="0:173" />
-        <StraightVertex x="251" y="521" id="0:174" />
-        <StraightVertex x="236" y="528" id="0:175" />
-        <StraightVertex x="221" y="532" id="0:176" />
-        <StraightVertex x="206" y="537" id="0:177" />
-        <StraightVertex x="192" y="541" id="0:178" />
-        <StraightVertex x="176" y="545" id="0:179" />
-        <StraightVertex x="160" y="547" id="0:180" />
-        <StraightVertex x="144" y="548" id="0:181" />
-        <StraightVertex x="128" y="548" id="0:182" />
-        <StraightVertex x="112" y="549" id="0:183" />
-        <StraightVertex x="95" y="550" id="0:184" />
-        <StraightVertex x="79" y="549" id="0:185" />
-        <StraightVertex x="65" y="547" id="0:186" />
-        <StraightVertex x="50" y="549" id="0:187" />
-        <StraightVertex x="69" y="549" id="0:188" />
-        <StraightVertex x="85" y="550" id="0:189" />
-        <StraightVertex x="102" y="550" id="0:190" />
-        <StraightVertex x="119" y="549" id="0:191" />
-        <StraightVertex x="135" y="549" id="0:192" />
-        <StraightVertex x="148" y="548" id="0:193" />
-        <StraightVertex x="163" y="547" id="0:194" />
-        <StraightVertex x="179" y="545" id="0:195" />
-        <StraightVertex x="194" y="542" id="0:196" />
-        <StraightVertex x="208" y="537" id="0:197" />
-        <StraightVertex x="223" y="533" id="0:198" />
-        <StraightVertex x="238" y="528" id="0:199" />
-        <StraightVertex x="246" y="524" id="0:200" />
-        <StraightVertex x="257" y="517" id="0:201" />
-        <StraightVertex x="269" y="510" id="0:202" />
-        <StraightVertex x="281" y="502" id="0:203" />
-        <StraightVertex x="293" y="494" id="0:204" />
-        <StraightVertex x="304" y="485" id="0:205" />
-        <StraightVertex x="316" y="477" id="0:206" />
-        <StraightVertex x="328" y="470" id="0:207" />
-        <StraightVertex x="339" y="462" id="0:208" />
-        <StraightVertex x="349" y="452" id="0:209" />
-        <StraightVertex x="357" y="443" id="0:210" />
-        <StraightVertex x="367" y="434" id="0:211" />
-        <StraightVertex x="375" y="424" id="0:212" />
-        <StraightVertex x="382" y="414" id="0:213" />
-        <StraightVertex x="391" y="404" id="0:214" />
-        <StraightVertex x="400" y="394" id="0:215" />
-        <StraightVertex x="396" y="385" id="0:216" />
-        <StraightVertex x="385" y="378" id="0:217" />
-        <StraightVertex x="371" y="372" id="0:218" />
-        <StraightVertex x="357" y="367" id="0:219" />
-        <StraightVertex x="344" y="361" id="0:220" />
-        <StraightVertex x="348" y="351" id="0:221" />
-        <StraightVertex x="357" y="343" id="0:222" />
-        <StraightVertex x="367" y="333" id="0:223" />
-        <StraightVertex x="377" y="322" id="0:224" />
-        <StraightVertex x="383" y="313" id="0:225" />
-        <StraightVertex x="391" y="302" id="0:226" />
-        <StraightVertex x="399" y="296" id="0:227" />
-        <StraightVertex x="409" y="286" id="0:228" />
-        <StraightVertex x="419" y="276" id="0:229" />
-        <StraightVertex x="430" y="266" id="0:230" />
-        <StraightVertex x="447" y="271" id="0:231" />
-        <StraightVertex x="465" y="276" id="0:232" />
-        <StraightVertex x="480" y="271" id="0:233" />
-        <StraightVertex x="496" y="276" id="0:234" />
-        <StraightVertex x="500" y="264" id="0:235" />
-      </PointsPath>
-      <Stroke thickness="9" id="0:3">
-        <SolidColor colorRed="255" colorGreen="255" colorBlue="255" name="WhiteCasing" id="0:236" />
-        <TrimPath start="0" end="0" name="TrimWhite" modeValue="1" id="0:4" />
-      </Stroke>
-      <Stroke thickness="3" id="0:5">
-        <SolidColor colorRed="0" colorGreen="168" colorBlue="214" name="BlueLine" id="0:237" />
-        <TrimPath start="0" end="0" name="TrimBlue" modeValue="1" id="0:6" />
-      </Stroke>
-    </Shape>
-
-    <Animation name="drive" id="0:238">
-      <KeyedObject objectId="0:4" id="0:239">
-        <KeyFrameDouble frame="0" value="0" id="0:240" />
-        <KeyFrameDouble frame="2" value="1" id="0:241" />
-        <KeyFrameDouble frame="4" value="1" id="0:242" />
-        <KeyFrameDouble frame="6" value="2" id="0:243" />
-        <KeyFrameDouble frame="8" value="3" id="0:244" />
-        <KeyFrameDouble frame="10" value="3" id="0:245" />
-        <KeyFrameDouble frame="13" value="4" id="0:246" />
-        <KeyFrameDouble frame="15" value="5" id="0:247" />
-        <KeyFrameDouble frame="17" value="6" id="0:248" />
-        <KeyFrameDouble frame="19" value="6" id="0:249" />
-        <KeyFrameDouble frame="21" value="7" id="0:250" />
-        <KeyFrameDouble frame="23" value="8" id="0:251" />
-        <KeyFrameDouble frame="25" value="8" id="0:252" />
-        <KeyFrameDouble frame="27" value="9" id="0:253" />
-        <KeyFrameDouble frame="29" value="10" id="0:254" />
-        <KeyFrameDouble frame="31" value="10" id="0:255" />
-        <KeyFrameDouble frame="33" value="11" id="0:256" />
-        <KeyFrameDouble frame="35" value="12" id="0:257" />
-        <KeyFrameDouble frame="38" value="13" id="0:258" />
-        <KeyFrameDouble frame="40" value="13" id="0:259" />
-        <KeyFrameDouble frame="42" value="14" id="0:260" />
-        <KeyFrameDouble frame="44" value="15" id="0:261" />
-        <KeyFrameDouble frame="46" value="15" id="0:262" />
-        <KeyFrameDouble frame="48" value="16" id="0:263" />
-        <KeyFrameDouble frame="50" value="17" id="0:264" />
-        <KeyFrameDouble frame="52" value="17" id="0:265" />
-        <KeyFrameDouble frame="54" value="18" id="0:266" />
-        <KeyFrameDouble frame="56" value="19" id="0:267" />
-        <KeyFrameDouble frame="58" value="19" id="0:268" />
-        <KeyFrameDouble frame="60" value="20" id="0:269" />
-        <KeyFrameDouble frame="63" value="21" id="0:270" />
-        <KeyFrameDouble frame="65" value="22" id="0:271" />
-        <KeyFrameDouble frame="67" value="22" id="0:272" />
-        <KeyFrameDouble frame="69" value="23" id="0:273" />
-        <KeyFrameDouble frame="71" value="24" id="0:274" />
-        <KeyFrameDouble frame="73" value="24" id="0:275" />
-        <KeyFrameDouble frame="75" value="25" id="0:276" />
-        <KeyFrameDouble frame="77" value="26" id="0:277" />
-        <KeyFrameDouble frame="79" value="26" id="0:278" />
-        <KeyFrameDouble frame="81" value="27" id="0:279" />
-        <KeyFrameDouble frame="83" value="28" id="0:280" />
-        <KeyFrameDouble frame="85" value="28" id="0:281" />
-        <KeyFrameDouble frame="88" value="29" id="0:282" />
-        <KeyFrameDouble frame="90" value="30" id="0:283" />
-        <KeyFrameDouble frame="92" value="31" id="0:284" />
-        <KeyFrameDouble frame="94" value="31" id="0:285" />
-        <KeyFrameDouble frame="96" value="32" id="0:286" />
-        <KeyFrameDouble frame="98" value="33" id="0:287" />
-        <KeyFrameDouble frame="100" value="33" id="0:288" />
-        <KeyFrameDouble frame="102" value="34" id="0:289" />
-        <KeyFrameDouble frame="104" value="35" id="0:290" />
-        <KeyFrameDouble frame="106" value="35" id="0:291" />
-        <KeyFrameDouble frame="108" value="36" id="0:292" />
-        <KeyFrameDouble frame="110" value="37" id="0:293" />
-        <KeyFrameDouble frame="113" value="38" id="0:294" />
-        <KeyFrameDouble frame="115" value="38" id="0:295" />
-        <KeyFrameDouble frame="117" value="39" id="0:296" />
-        <KeyFrameDouble frame="119" value="40" id="0:297" />
-        <KeyFrameDouble frame="121" value="40" id="0:298" />
-        <KeyFrameDouble frame="123" value="41" id="0:299" />
-        <KeyFrameDouble frame="125" value="42" id="0:300" />
-        <KeyFrameDouble frame="127" value="42" id="0:301" />
-        <KeyFrameDouble frame="129" value="43" id="0:302" />
-        <KeyFrameDouble frame="131" value="44" id="0:303" />
-        <KeyFrameDouble frame="133" value="44" id="0:304" />
-        <KeyFrameDouble frame="135" value="45" id="0:305" />
-        <KeyFrameDouble frame="138" value="46" id="0:306" />
-        <KeyFrameDouble frame="140" value="47" id="0:307" />
-        <KeyFrameDouble frame="142" value="47" id="0:308" />
-        <KeyFrameDouble frame="144" value="48" id="0:309" />
-        <KeyFrameDouble frame="146" value="49" id="0:310" />
-        <KeyFrameDouble frame="148" value="49" id="0:311" />
-        <KeyFrameDouble frame="150" value="50" id="0:312" />
-        <KeyFrameDouble frame="152" value="51" id="0:313" />
-        <KeyFrameDouble frame="154" value="51" id="0:314" />
-        <KeyFrameDouble frame="156" value="52" id="0:315" />
-        <KeyFrameDouble frame="158" value="53" id="0:316" />
-        <KeyFrameDouble frame="160" value="53" id="0:317" />
-        <KeyFrameDouble frame="163" value="54" id="0:318" />
-        <KeyFrameDouble frame="165" value="55" id="0:319" />
-        <KeyFrameDouble frame="167" value="56" id="0:320" />
-        <KeyFrameDouble frame="169" value="56" id="0:321" />
-        <KeyFrameDouble frame="171" value="57" id="0:322" />
-        <KeyFrameDouble frame="173" value="58" id="0:323" />
-        <KeyFrameDouble frame="175" value="58" id="0:324" />
-        <KeyFrameDouble frame="177" value="59" id="0:325" />
-        <KeyFrameDouble frame="179" value="60" id="0:326" />
-        <KeyFrameDouble frame="181" value="60" id="0:327" />
-        <KeyFrameDouble frame="183" value="61" id="0:328" />
-        <KeyFrameDouble frame="185" value="62" id="0:329" />
-        <KeyFrameDouble frame="188" value="63" id="0:330" />
-        <KeyFrameDouble frame="190" value="63" id="0:331" />
-        <KeyFrameDouble frame="192" value="64" id="0:332" />
-        <KeyFrameDouble frame="194" value="65" id="0:333" />
-        <KeyFrameDouble frame="196" value="65" id="0:334" />
-        <KeyFrameDouble frame="198" value="66" id="0:335" />
-        <KeyFrameDouble frame="200" value="67" id="0:336" />
-        <KeyFrameDouble frame="202" value="67" id="0:337" />
-        <KeyFrameDouble frame="204" value="68" id="0:338" />
-        <KeyFrameDouble frame="206" value="69" id="0:339" />
-        <KeyFrameDouble frame="208" value="69" id="0:340" />
-        <KeyFrameDouble frame="210" value="70" id="0:341" />
-        <KeyFrameDouble frame="213" value="71" id="0:342" />
-        <KeyFrameDouble frame="215" value="72" id="0:343" />
-        <KeyFrameDouble frame="217" value="72" id="0:344" />
-        <KeyFrameDouble frame="219" value="73" id="0:345" />
-        <KeyFrameDouble frame="221" value="74" id="0:346" />
-        <KeyFrameDouble frame="223" value="74" id="0:347" />
-        <KeyFrameDouble frame="225" value="75" id="0:348" />
-        <KeyFrameDouble frame="227" value="76" id="0:349" />
-        <KeyFrameDouble frame="229" value="76" id="0:350" />
-        <KeyFrameDouble frame="231" value="77" id="0:351" />
-        <KeyFrameDouble frame="233" value="78" id="0:352" />
-        <KeyFrameDouble frame="235" value="78" id="0:353" />
-        <KeyFrameDouble frame="238" value="79" id="0:354" />
-        <KeyFrameDouble frame="240" value="80" id="0:355" />
-        <KeyFrameDouble frame="242" value="81" id="0:356" />
-        <KeyFrameDouble frame="244" value="81" id="0:357" />
-        <KeyFrameDouble frame="246" value="82" id="0:358" />
-        <KeyFrameDouble frame="248" value="83" id="0:359" />
-        <KeyFrameDouble frame="250" value="83" id="0:360" />
-        <KeyFrameDouble frame="252" value="84" id="0:361" />
-        <KeyFrameDouble frame="254" value="85" id="0:362" />
-        <KeyFrameDouble frame="256" value="85" id="0:363" />
-        <KeyFrameDouble frame="258" value="86" id="0:364" />
-        <KeyFrameDouble frame="260" value="87" id="0:365" />
-        <KeyFrameDouble frame="263" value="88" id="0:366" />
-        <KeyFrameDouble frame="265" value="88" id="0:367" />
-        <KeyFrameDouble frame="267" value="89" id="0:368" />
-        <KeyFrameDouble frame="269" value="90" id="0:369" />
-        <KeyFrameDouble frame="271" value="90" id="0:370" />
-        <KeyFrameDouble frame="273" value="91" id="0:371" />
-        <KeyFrameDouble frame="275" value="92" id="0:372" />
-        <KeyFrameDouble frame="277" value="92" id="0:373" />
-        <KeyFrameDouble frame="279" value="93" id="0:374" />
-        <KeyFrameDouble frame="281" value="94" id="0:375" />
-        <KeyFrameDouble frame="283" value="94" id="0:376" />
-        <KeyFrameDouble frame="285" value="95" id="0:377" />
-        <KeyFrameDouble frame="288" value="96" id="0:378" />
-        <KeyFrameDouble frame="290" value="97" id="0:379" />
-        <KeyFrameDouble frame="292" value="97" id="0:380" />
-        <KeyFrameDouble frame="294" value="98" id="0:381" />
-        <KeyFrameDouble frame="296" value="99" id="0:382" />
-        <KeyFrameDouble frame="298" value="99" id="0:383" />
-        <KeyFrameDouble frame="300" value="100" id="0:384" />
-      </KeyedObject>
-      <KeyedObject objectId="0:6" id="0:385">
-        <KeyFrameDouble frame="0" value="0" id="0:386" />
-        <KeyFrameDouble frame="2" value="1" id="0:387" />
-        <KeyFrameDouble frame="4" value="1" id="0:388" />
-        <KeyFrameDouble frame="6" value="2" id="0:389" />
-        <KeyFrameDouble frame="8" value="3" id="0:390" />
-        <KeyFrameDouble frame="10" value="3" id="0:391" />
-        <KeyFrameDouble frame="13" value="4" id="0:392" />
-        <KeyFrameDouble frame="15" value="5" id="0:393" />
-        <KeyFrameDouble frame="17" value="6" id="0:394" />
-        <KeyFrameDouble frame="19" value="6" id="0:395" />
-        <KeyFrameDouble frame="21" value="7" id="0:396" />
-        <KeyFrameDouble frame="23" value="8" id="0:397" />
-        <KeyFrameDouble frame="25" value="8" id="0:398" />
-        <KeyFrameDouble frame="27" value="9" id="0:399" />
-        <KeyFrameDouble frame="29" value="10" id="0:400" />
-        <KeyFrameDouble frame="31" value="10" id="0:401" />
-        <KeyFrameDouble frame="33" value="11" id="0:402" />
-        <KeyFrameDouble frame="35" value="12" id="0:403" />
-        <KeyFrameDouble frame="38" value="13" id="0:404" />
-        <KeyFrameDouble frame="40" value="13" id="0:405" />
-        <KeyFrameDouble frame="42" value="14" id="0:406" />
-        <KeyFrameDouble frame="44" value="15" id="0:407" />
-        <KeyFrameDouble frame="46" value="15" id="0:408" />
-        <KeyFrameDouble frame="48" value="16" id="0:409" />
-        <KeyFrameDouble frame="50" value="17" id="0:410" />
-        <KeyFrameDouble frame="52" value="17" id="0:411" />
-        <KeyFrameDouble frame="54" value="18" id="0:412" />
-        <KeyFrameDouble frame="56" value="19" id="0:413" />
-        <KeyFrameDouble frame="58" value="19" id="0:414" />
-        <KeyFrameDouble frame="60" value="20" id="0:415" />
-        <KeyFrameDouble frame="63" value="21" id="0:416" />
-        <KeyFrameDouble frame="65" value="22" id="0:417" />
-        <KeyFrameDouble frame="67" value="22" id="0:418" />
-        <KeyFrameDouble frame="69" value="23" id="0:419" />
-        <KeyFrameDouble frame="71" value="24" id="0:420" />
-        <KeyFrameDouble frame="73" value="24" id="0:421" />
-        <KeyFrameDouble frame="75" value="25" id="0:422" />
-        <KeyFrameDouble frame="77" value="26" id="0:423" />
-        <KeyFrameDouble frame="79" value="26" id="0:424" />
-        <KeyFrameDouble frame="81" value="27" id="0:425" />
-        <KeyFrameDouble frame="83" value="28" id="0:426" />
-        <KeyFrameDouble frame="85" value="28" id="0:427" />
-        <KeyFrameDouble frame="88" value="29" id="0:428" />
-        <KeyFrameDouble frame="90" value="30" id="0:429" />
-        <KeyFrameDouble frame="92" value="31" id="0:430" />
-        <KeyFrameDouble frame="94" value="31" id="0:431" />
-        <KeyFrameDouble frame="96" value="32" id="0:432" />
-        <KeyFrameDouble frame="98" value="33" id="0:433" />
-        <KeyFrameDouble frame="100" value="33" id="0:434" />
-        <KeyFrameDouble frame="102" value="34" id="0:435" />
-        <KeyFrameDouble frame="104" value="35" id="0:436" />
-        <KeyFrameDouble frame="106" value="35" id="0:437" />
-        <KeyFrameDouble frame="108" value="36" id="0:438" />
-        <KeyFrameDouble frame="110" value="37" id="0:439" />
-        <KeyFrameDouble frame="113" value="38" id="0:440" />
-        <KeyFrameDouble frame="115" value="38" id="0:441" />
-        <KeyFrameDouble frame="117" value="39" id="0:442" />
-        <KeyFrameDouble frame="119" value="40" id="0:443" />
-        <KeyFrameDouble frame="121" value="40" id="0:444" />
-        <KeyFrameDouble frame="123" value="41" id="0:445" />
-        <KeyFrameDouble frame="125" value="42" id="0:446" />
-        <KeyFrameDouble frame="127" value="42" id="0:447" />
-        <KeyFrameDouble frame="129" value="43" id="0:448" />
-        <KeyFrameDouble frame="131" value="44" id="0:449" />
-        <KeyFrameDouble frame="133" value="44" id="0:450" />
-        <KeyFrameDouble frame="135" value="45" id="0:451" />
-        <KeyFrameDouble frame="138" value="46" id="0:452" />
-        <KeyFrameDouble frame="140" value="47" id="0:453" />
-        <KeyFrameDouble frame="142" value="47" id="0:454" />
-        <KeyFrameDouble frame="144" value="48" id="0:455" />
-        <KeyFrameDouble frame="146" value="49" id="0:456" />
-        <KeyFrameDouble frame="148" value="49" id="0:457" />
-        <KeyFrameDouble frame="150" value="50" id="0:458" />
-        <KeyFrameDouble frame="152" value="51" id="0:459" />
-        <KeyFrameDouble frame="154" value="51" id="0:460" />
-        <KeyFrameDouble frame="156" value="52" id="0:461" />
-        <KeyFrameDouble frame="158" value="53" id="0:462" />
-        <KeyFrameDouble frame="160" value="53" id="0:463" />
-        <KeyFrameDouble frame="163" value="54" id="0:464" />
-        <KeyFrameDouble frame="165" value="55" id="0:465" />
-        <KeyFrameDouble frame="167" value="56" id="0:466" />
-        <KeyFrameDouble frame="169" value="56" id="0:467" />
-        <KeyFrameDouble frame="171" value="57" id="0:468" />
-        <KeyFrameDouble frame="173" value="58" id="0:469" />
-        <KeyFrameDouble frame="175" value="58" id="0:470" />
-        <KeyFrameDouble frame="177" value="59" id="0:471" />
-        <KeyFrameDouble frame="179" value="60" id="0:472" />
-        <KeyFrameDouble frame="181" value="60" id="0:473" />
-        <KeyFrameDouble frame="183" value="61" id="0:474" />
-        <KeyFrameDouble frame="185" value="62" id="0:475" />
-        <KeyFrameDouble frame="188" value="63" id="0:476" />
-        <KeyFrameDouble frame="190" value="63" id="0:477" />
-        <KeyFrameDouble frame="192" value="64" id="0:478" />
-        <KeyFrameDouble frame="194" value="65" id="0:479" />
-        <KeyFrameDouble frame="196" value="65" id="0:480" />
-        <KeyFrameDouble frame="198" value="66" id="0:481" />
-        <KeyFrameDouble frame="200" value="67" id="0:482" />
-        <KeyFrameDouble frame="202" value="67" id="0:483" />
-        <KeyFrameDouble frame="204" value="68" id="0:484" />
-        <KeyFrameDouble frame="206" value="69" id="0:485" />
-        <KeyFrameDouble frame="208" value="69" id="0:486" />
-        <KeyFrameDouble frame="210" value="70" id="0:487" />
-        <KeyFrameDouble frame="213" value="71" id="0:488" />
-        <KeyFrameDouble frame="215" value="72" id="0:489" />
-        <KeyFrameDouble frame="217" value="72" id="0:490" />
-        <KeyFrameDouble frame="219" value="73" id="0:491" />
-        <KeyFrameDouble frame="221" value="74" id="0:492" />
-        <KeyFrameDouble frame="223" value="74" id="0:493" />
-        <KeyFrameDouble frame="225" value="75" id="0:494" />
-        <KeyFrameDouble frame="227" value="76" id="0:495" />
-        <KeyFrameDouble frame="229" value="76" id="0:496" />
-        <KeyFrameDouble frame="231" value="77" id="0:497" />
-        <KeyFrameDouble frame="233" value="78" id="0:498" />
-        <KeyFrameDouble frame="235" value="78" id="0:499" />
-        <KeyFrameDouble frame="238" value="79" id="0:500" />
-        <KeyFrameDouble frame="240" value="80" id="0:501" />
-        <KeyFrameDouble frame="242" value="81" id="0:502" />
-        <KeyFrameDouble frame="244" value="81" id="0:503" />
-        <KeyFrameDouble frame="246" value="82" id="0:504" />
-        <KeyFrameDouble frame="248" value="83" id="0:505" />
-        <KeyFrameDouble frame="250" value="83" id="0:506" />
-        <KeyFrameDouble frame="252" value="84" id="0:507" />
-        <KeyFrameDouble frame="254" value="85" id="0:508" />
-        <KeyFrameDouble frame="256" value="85" id="0:509" />
-        <KeyFrameDouble frame="258" value="86" id="0:510" />
-        <KeyFrameDouble frame="260" value="87" id="0:511" />
-        <KeyFrameDouble frame="263" value="88" id="0:512" />
-        <KeyFrameDouble frame="265" value="88" id="0:513" />
-        <KeyFrameDouble frame="267" value="89" id="0:514" />
-        <KeyFrameDouble frame="269" value="90" id="0:515" />
-        <KeyFrameDouble frame="271" value="90" id="0:516" />
-        <KeyFrameDouble frame="273" value="91" id="0:517" />
-        <KeyFrameDouble frame="275" value="92" id="0:518" />
-        <KeyFrameDouble frame="277" value="92" id="0:519" />
-        <KeyFrameDouble frame="279" value="93" id="0:520" />
-        <KeyFrameDouble frame="281" value="94" id="0:521" />
-        <KeyFrameDouble frame="283" value="94" id="0:522" />
-        <KeyFrameDouble frame="285" value="95" id="0:523" />
-        <KeyFrameDouble frame="288" value="96" id="0:524" />
-        <KeyFrameDouble frame="290" value="97" id="0:525" />
-        <KeyFrameDouble frame="292" value="97" id="0:526" />
-        <KeyFrameDouble frame="294" value="98" id="0:527" />
-        <KeyFrameDouble frame="296" value="99" id="0:528" />
-        <KeyFrameDouble frame="298" value="99" id="0:529" />
-        <KeyFrameDouble frame="300" value="100" id="0:530" />
-      </KeyedObject>
-    </Animation>
-
-    <StateMachine name="State Machine 1" id="0:7">
-      <StateMachineLayer name="Layer 1" id="0:8">
-        <AnyState x="200" y="-120" id="0:85"/>
-        <ExitState x="400" y="-120" id="0:86"/>
-        <EntryState id="0:87"/>
-      </StateMachineLayer>
-    </StateMachine>
-  </Artboard>
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" width="800" height="600" name="RouteArtboard" id="0:88">
+        <Shape name="RoutePath" id="0:89">
+            <PointsPath id="0:90">
+                <StraightVertex radius="10" x="530" y="160" id="0:91"/>
+                <StraightVertex radius="10" x="538" y="150" id="0:92"/>
+                <StraightVertex radius="10" x="547" y="141" id="0:93"/>
+                <StraightVertex radius="10" x="556" y="133" id="0:94"/>
+                <StraightVertex radius="10" x="567" y="124" id="0:95"/>
+                <StraightVertex radius="10" x="578" y="115" id="0:96"/>
+                <StraightVertex radius="10" x="587" y="105" id="0:97"/>
+                <StraightVertex radius="10" x="597" y="95" id="0:98"/>
+                <StraightVertex radius="10" x="606" y="86" id="0:99"/>
+                <StraightVertex radius="10" x="616" y="77" id="0:100"/>
+                <StraightVertex radius="10" x="627" y="68" id="0:101"/>
+                <StraightVertex radius="10" x="638" y="58" id="0:102"/>
+                <StraightVertex radius="10" x="650" y="50" id="0:103"/>
+                <StraightVertex radius="10" x="668" y="50" id="0:104"/>
+                <StraightVertex radius="10" x="684" y="51" id="0:105"/>
+                <StraightVertex radius="10" x="700" y="52" id="0:106"/>
+                <StraightVertex radius="10" x="716" y="51" id="0:107"/>
+                <StraightVertex radius="10" x="733" y="51" id="0:108"/>
+                <StraightVertex radius="10" x="750" y="53" id="0:109"/>
+                <StraightVertex radius="10" x="745" y="64" id="0:110"/>
+                <StraightVertex radius="10" x="738" y="73" id="0:111"/>
+                <StraightVertex radius="10" x="729" y="82" id="0:112"/>
+                <StraightVertex radius="10" x="720" y="92" id="0:113"/>
+                <StraightVertex radius="10" x="711" y="101" id="0:114"/>
+                <StraightVertex radius="10" x="701" y="111" id="0:115"/>
+                <StraightVertex radius="10" x="691" y="120" id="0:116"/>
+                <StraightVertex radius="10" x="687" y="130" id="0:117"/>
+                <StraightVertex radius="10" x="689" y="138" id="0:118"/>
+                <StraightVertex radius="10" x="692" y="149" id="0:119"/>
+                <StraightVertex radius="10" x="689" y="161" id="0:120"/>
+                <StraightVertex radius="10" x="684" y="172" id="0:121"/>
+                <StraightVertex radius="10" x="682" y="184" id="0:122"/>
+                <StraightVertex radius="10" x="680" y="195" id="0:123"/>
+                <StraightVertex radius="10" x="678" y="207" id="0:124"/>
+                <StraightVertex radius="10" x="678" y="218" id="0:125"/>
+                <StraightVertex radius="10" x="677" y="229" id="0:126"/>
+                <StraightVertex radius="10" x="681" y="240" id="0:127"/>
+                <StraightVertex radius="10" x="684" y="250" id="0:128"/>
+                <StraightVertex radius="10" x="684" y="263" id="0:129"/>
+                <StraightVertex radius="10" x="686" y="273" id="0:130"/>
+                <StraightVertex radius="10" x="689" y="284" id="0:131"/>
+                <StraightVertex radius="10" x="693" y="295" id="0:132"/>
+                <StraightVertex radius="10" x="698" y="306" id="0:133"/>
+                <StraightVertex radius="10" x="703" y="317" id="0:134"/>
+                <StraightVertex radius="10" x="708" y="328" id="0:135"/>
+                <StraightVertex radius="10" x="712" y="338" id="0:136"/>
+                <StraightVertex radius="10" x="711" y="349" id="0:137"/>
+                <StraightVertex radius="10" x="698" y="355" id="0:138"/>
+                <StraightVertex radius="10" x="686" y="362" id="0:139"/>
+                <StraightVertex radius="10" x="673" y="371" id="0:140"/>
+                <StraightVertex radius="10" x="661" y="379" id="0:141"/>
+                <StraightVertex radius="10" x="649" y="387" id="0:142"/>
+                <StraightVertex radius="10" x="637" y="394" id="0:143"/>
+                <StraightVertex radius="10" x="623" y="400" id="0:144"/>
+                <StraightVertex radius="10" x="614" y="405" id="0:145"/>
+                <StraightVertex radius="10" x="601" y="408" id="0:146"/>
+                <StraightVertex radius="10" x="584" y="413" id="0:147"/>
+                <StraightVertex radius="10" x="569" y="417" id="0:148"/>
+                <StraightVertex radius="10" x="555" y="421" id="0:149"/>
+                <StraightVertex radius="10" x="541" y="425" id="0:150"/>
+                <StraightVertex radius="10" x="527" y="429" id="0:151"/>
+                <StraightVertex radius="10" x="513" y="433" id="0:152"/>
+                <StraightVertex radius="10" x="499" y="438" id="0:153"/>
+                <StraightVertex radius="10" x="486" y="443" id="0:154"/>
+                <StraightVertex radius="10" x="473" y="449" id="0:155"/>
+                <StraightVertex radius="10" x="459" y="442" id="0:156"/>
+                <StraightVertex radius="10" x="446" y="433" id="0:157"/>
+                <StraightVertex radius="10" x="435" y="424" id="0:158"/>
+                <StraightVertex radius="10" x="424" y="415" id="0:159"/>
+                <StraightVertex radius="10" x="411" y="422" id="0:160"/>
+                <StraightVertex radius="10" x="399" y="430" id="0:161"/>
+                <StraightVertex radius="10" x="388" y="438" id="0:162"/>
+                <StraightVertex radius="10" x="378" y="446" id="0:163"/>
+                <StraightVertex radius="10" x="366" y="454" id="0:164"/>
+                <StraightVertex radius="10" x="353" y="461" id="0:165"/>
+                <StraightVertex radius="10" x="342" y="459" id="0:166"/>
+                <StraightVertex radius="10" x="331" y="468" id="0:167"/>
+                <StraightVertex radius="10" x="316" y="476" id="0:168"/>
+                <StraightVertex radius="10" x="305" y="484" id="0:169"/>
+                <StraightVertex radius="10" x="293" y="493" id="0:170"/>
+                <StraightVertex radius="10" x="282" y="501" id="0:171"/>
+                <StraightVertex radius="10" x="272" y="507" id="0:172"/>
+                <StraightVertex radius="10" x="263" y="513" id="0:173"/>
+                <StraightVertex radius="10" x="251" y="521" id="0:174"/>
+                <StraightVertex radius="10" x="236" y="528" id="0:175"/>
+                <StraightVertex radius="10" x="221" y="532" id="0:176"/>
+                <StraightVertex radius="10" x="206" y="537" id="0:177"/>
+                <StraightVertex radius="10" x="192" y="541" id="0:178"/>
+                <StraightVertex radius="10" x="176" y="545" id="0:179"/>
+                <StraightVertex radius="10" x="160" y="547" id="0:180"/>
+                <StraightVertex radius="10" x="144" y="548" id="0:181"/>
+                <StraightVertex radius="10" x="128" y="548" id="0:182"/>
+                <StraightVertex radius="10" x="112" y="549" id="0:183"/>
+                <StraightVertex radius="10" x="95" y="550" id="0:184"/>
+                <StraightVertex radius="10" x="79" y="549" id="0:185"/>
+                <StraightVertex radius="10" x="65" y="547" id="0:186"/>
+                <StraightVertex radius="10" x="50" y="549" id="0:187"/>
+                <StraightVertex radius="10" x="69" y="549" id="0:188"/>
+                <StraightVertex radius="10" x="85" y="550" id="0:189"/>
+                <StraightVertex radius="10" x="102" y="550" id="0:190"/>
+                <StraightVertex radius="10" x="119" y="549" id="0:191"/>
+                <StraightVertex radius="10" x="135" y="549" id="0:192"/>
+                <StraightVertex radius="10" x="148" y="548" id="0:193"/>
+                <StraightVertex radius="10" x="163" y="547" id="0:194"/>
+                <StraightVertex radius="10" x="179" y="545" id="0:195"/>
+                <StraightVertex radius="10" x="194" y="542" id="0:196"/>
+                <StraightVertex radius="10" x="208" y="537" id="0:197"/>
+                <StraightVertex radius="10" x="223" y="533" id="0:198"/>
+                <StraightVertex radius="10" x="238" y="528" id="0:199"/>
+                <StraightVertex radius="10" x="246" y="524" id="0:200"/>
+                <StraightVertex radius="10" x="257" y="517" id="0:201"/>
+                <StraightVertex radius="10" x="269" y="510" id="0:202"/>
+                <StraightVertex radius="10" x="281" y="502" id="0:203"/>
+                <StraightVertex radius="10" x="293" y="494" id="0:204"/>
+                <StraightVertex radius="10" x="304" y="485" id="0:205"/>
+                <StraightVertex radius="10" x="316" y="477" id="0:206"/>
+                <StraightVertex radius="10" x="328" y="470" id="0:207"/>
+                <StraightVertex radius="10" x="339" y="462" id="0:208"/>
+                <StraightVertex radius="10" x="349" y="452" id="0:209"/>
+                <StraightVertex radius="10" x="357" y="443" id="0:210"/>
+                <StraightVertex radius="10" x="367" y="434" id="0:211"/>
+                <StraightVertex radius="10" x="375" y="424" id="0:212"/>
+                <StraightVertex radius="10" x="382" y="414" id="0:213"/>
+                <StraightVertex radius="10" x="391" y="404" id="0:214"/>
+                <StraightVertex radius="10" x="400" y="394" id="0:215"/>
+                <StraightVertex radius="10" x="396" y="385" id="0:216"/>
+                <StraightVertex radius="10" x="385" y="378" id="0:217"/>
+                <StraightVertex radius="10" x="371" y="372" id="0:218"/>
+                <StraightVertex radius="10" x="357" y="367" id="0:219"/>
+                <StraightVertex radius="10" x="344" y="361" id="0:220"/>
+                <StraightVertex radius="10" x="348" y="351" id="0:221"/>
+                <StraightVertex radius="10" x="357" y="343" id="0:222"/>
+                <StraightVertex radius="10" x="367" y="333" id="0:223"/>
+                <StraightVertex radius="10" x="377" y="322" id="0:224"/>
+                <StraightVertex radius="10" x="383" y="313" id="0:225"/>
+                <StraightVertex radius="10" x="391" y="302" id="0:226"/>
+                <StraightVertex radius="10" x="399" y="296" id="0:227"/>
+                <StraightVertex radius="10" x="409" y="286" id="0:228"/>
+                <StraightVertex radius="10" x="419" y="276" id="0:229"/>
+                <StraightVertex radius="10" x="430" y="266" id="0:230"/>
+                <StraightVertex radius="10" x="447" y="271" id="0:231"/>
+                <StraightVertex radius="10" x="465" y="276" id="0:232"/>
+                <StraightVertex radius="10" x="480" y="271" id="0:233"/>
+                <StraightVertex radius="10" x="496" y="276" id="0:234"/>
+                <StraightVertex radius="10" x="500" y="264" id="0:235"/>
+            </PointsPath>
+            <Stroke thickness="9" cap="round" id="0:3">
+                <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>
+                <TrimPath end="1" modeValue="sequential" name="TrimWhite" id="0:4"/>
+            </Stroke>
+            <Stroke thickness="3" cap="round" id="0:5">
+                <SolidColor colorValue="FF00A8D6" name="BlueLine" id="0:237"/>
+                <TrimPath end="1" modeValue="sequential" name="TrimBlue" id="0:6"/>
+            </Stroke>
+        </Shape>
+        <Animation name="drive" id="0:238"/>
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Layer 1" id="0:8">
+                <AnyState x="200" y="-120" id="0:85"/>
+                <ExitState x="400" y="-120" id="0:86"/>
+                <EntryState id="0:87"/>
+            </StateMachineLayer>
+        </StateMachine>
+        <LinearAnimation duration="360" loopValue="loop" name="route" id="3:1">
+            <KeyedObject objectId="0:237" id="3:10">
+                <KeyedProperty property="colorValue" id="3:11">
+                    <KeyFrameColor value="FF00A8D6" interpolationType="cubic" id="3:12">
+                        <CubicEaseInterpolator id="3:27"/>
+                    </KeyFrameColor>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:236" id="3:13">
+                <KeyedProperty property="colorValue" id="3:14">
+                    <KeyFrameColor value="FFFFFFFF" interpolationType="cubic" id="3:15">
+                        <CubicEaseInterpolator id="3:28"/>
+                    </KeyFrameColor>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:6" id="3:16">
+                <KeyedProperty property="end" id="3:17">
+                    <KeyFrameDouble interpolationType="cubic" id="3:18">
+                        <CubicEaseInterpolator x1="0.5" x2="0.5" id="3:26"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="300" id="3:23">
+                        <CubicEaseInterpolator id="3:24"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:4" id="3:19">
+                <KeyedProperty property="end" id="3:20">
+                    <KeyFrameDouble interpolationType="cubic" id="3:21">
+                        <CubicEaseInterpolator x1="0.5" x2="0.5" id="3:29"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="300" id="3:22">
+                        <CubicEaseInterpolator id="3:25"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
 </Rive>
