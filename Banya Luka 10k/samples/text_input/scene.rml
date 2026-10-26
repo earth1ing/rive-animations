@@ -1,0 +1,461 @@
+<Rive version="1" kind="fragment">
+    <!-- Host: two placements of the TextInput component, each with its own data.
+         Username shows the placeholder until something is typed; Password starts
+         with a value and obscures it. Each placement is handed its instance from
+         the host's Form view model via dataBindPathIds (the route the CLI runtime
+         applies today; see docs/data.md, "Per-placement data that works"). -->
+    <Artboard defaultStateMachineId="9:20" viewModelId="9:40" viewModelInstanceId="9:41" clip="true" width="400" height="220" styleId="9:10" name="Host" id="9:1">
+        <FocusData canFocus="false" id="9:30"/>
+        <Fill name="Background">
+            <SolidColor colorValue="FF16191D" name="Color"/>
+        </Fill>
+        <LayoutComponentStyle name="Artboard Style" id="9:10"/>
+        <NestedArtboard artboardId="2:45" dataBindPathIds="9:40-9:42" x="40" y="40" name="Username" id="9:2">
+            <NestedStateMachine animationId="2:98" name="SM"/>
+        </NestedArtboard>
+        <NestedArtboard artboardId="2:45" dataBindPathIds="9:40-9:43" x="40" y="110" name="Password" id="9:4">
+            <NestedStateMachine animationId="2:98" name="SM"/>
+        </NestedArtboard>
+        <StateMachine name="State Machine 1" id="9:20">
+            <StateMachineListener targetId="9:1" name="Tab Next" id="9:24">
+                <ListenerInputTypeKeyboard listenerTypeValue="keyboard">
+                    <KeyboardInput keyType="tab" keyPhase="3"/>
+                </ListenerInputTypeKeyboard>
+                <FocusActionTraversal traversalKind="next"/>
+            </StateMachineListener>
+            <StateMachineListener targetId="9:1" name="Tab Previous" id="9:25">
+                <ListenerInputTypeKeyboard listenerTypeValue="keyboard">
+                    <KeyboardInput keyType="tab" keyPhase="3" modifiers="1"/>
+                </ListenerInputTypeKeyboard>
+                <FocusActionTraversal traversalKind="previous"/>
+            </StateMachineListener>
+            <StateMachineLayer name="Layer 1" id="9:21"><AnyState x="200" y="-120"/><ExitState x="400" y="-120"/><EntryState/></StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+
+    <!-- The TextInput component, ported from the editor's bundled library
+         (packages/editor/assets/libraries/text_input.rml) with the editor-only
+         state stripped. The library artboard is 24pt tall and expects the
+         placement to size it; the host here uses fixed NestedArtboards, so the
+         artboard stays 50pt. -->
+    <Artboard x="480" y="0" defaultStateMachineId="2:98" viewModelId="2:16" viewModelInstanceId="2:17" isComponent="true" artboardKind="1" clip="false" width="200" height="50" styleId="2:46" name="TextInput" id="2:45">
+        <LayoutComponent clip="true" styleId="2:52" name="Viewport" id="2:48">
+            <!-- Placeholder: an absolute overlay sharing the input's padding, shown by
+                 the Placeholder state machine layer only while the value is empty. -->
+            <LayoutComponent clip="false" styleId="0:5" name="Placeholder" id="0:4">
+                <LayoutComponentStyle positionLeftUnitsValue="1" positionRightUnitsValue="1" positionTopUnitsValue="1" positionBottomUnitsValue="1" edgeConstraints="84" positionTypeValue="2" marginLeftUnitsValue="1" marginRightUnitsValue="1" marginTopUnitsValue="1" marginBottomUnitsValue="1" paddingLeftUnitsValue="1" paddingRightUnitsValue="1" paddingTopUnitsValue="1" paddingBottomUnitsValue="1" gapHorizontalUnitsValue="1" gapVerticalUnitsValue="1" layoutWidthScaleType="1" layoutHeightScaleType="1" widthUnitsValue="3" heightUnitsValue="3" displayValue="1" name="Layout Style" id="0:5">
+                    <DataBindContext sourcePathIds="2:16-1:98" propertyKey="513"/>
+                    <DataBindContext sourcePathIds="2:16-1:92" propertyKey="512"/>
+                    <DataBindContext sourcePathIds="2:16-1:101" propertyKey="515"/>
+                    <DataBindContext sourcePathIds="2:16-1:95" propertyKey="514"/>
+                </LayoutComponentStyle>
+                <ComponentOrigin name="Component"/>
+                <Text overflowValue="3" width="83" height="24" wrapValue="1" verticalAlignValue="2" name="Placeholder Text" id="0:9">
+                    <TextStylePaint fontSize="20" fontAssetId="1:10" familyName="Inter" styleName="Regular" name="Style 1" id="0:10">
+                        <Fill fillRule="2" version="1" name="Fill 1">
+                            <SolidColor colorValue="FF000000" name="Component">
+                                <DataBindContext sourcePathIds="2:16-0:145" propertyKey="37"/>
+                            </SolidColor>
+                        </Fill>
+                        <TextStyleAxis tag="1869640570" axisValue="14" name="Style Axis"/>
+                        <TextStyleAxis tag="2003265652" axisValue="400" name="Style Axis"/>
+                        <DataBindContext sourcePathIds="2:16-2:25" propertyKey="274"/>
+                        <DataBindContext sourcePathIds="2:16-2:22" propertyKey="279"/>
+                    </TextStylePaint>
+                    <TextValueRun styleId="0:10" name="Run 1">
+                        <DataBindContext sourcePathIds="2:16-0:142" propertyKey="268"/>
+                    </TextValueRun>
+                    <LayoutParticipant layoutWidthScaleType="1" layoutHeightScaleType="1" name="Component"/>
+                    <DataBindContext sourcePathIds="2:16-1:139" propertyKey="281" converterId="2:66"/>
+                    <DataBindContext sourcePathIds="2:16-2:169" propertyKey="685" converterId="2:66"/>
+                </Text>
+            </LayoutComponent>
+            <LayoutComponent clip="false" styleId="2:53" name="Scroll Content" id="2:50">
+                <LayoutComponent clip="false" width="273" styleId="2:54" name="Text Container" id="2:49">
+                    <TextInput verticalAlignValue="2" name="Text Input" id="2:51">
+                        <TextStyle fontSize="20" fontAssetId="1:10" familyName="Inter" styleName="Regular" name="Style 1" id="2:58">
+                            <TextStyleAxis tag="1869640570" axisValue="14" name="Style Axis"/>
+                            <TextStyleAxis tag="2003265652" axisValue="400" name="Style Axis"/>
+                            <DataBindContext sourcePathIds="2:16-2:25" propertyKey="274"/>
+                            <DataBindContext sourcePathIds="2:16-2:22" propertyKey="279"/>
+                        </TextStyle>
+                        <TextInputText name="Text" id="2:71">
+                            <Fill fillRule="2" version="1" name="Fill 1">
+                                <SolidColor colorValue="FF000000" name="Component">
+                                    <DataBindContext sourcePathIds="2:16-2:27" propertyKey="37"/>
+                                </SolidColor>
+                            </Fill>
+                        </TextInputText>
+                        <TextInputSelection name="Selection" id="2:72">
+                            <Fill fillRule="2" version="1" name="Fill 1">
+                                <SolidColor colorValue="55000000" name="Component">
+                                    <DataBindContext sourcePathIds="2:16-2:33" propertyKey="37"/>
+                                </SolidColor>
+                            </Fill>
+                        </TextInputSelection>
+                        <TextInputCursor name="Cursor" id="2:73">
+                            <Fill fillRule="2" version="1" name="Fill 1">
+                                <SolidColor colorValue="FF000000" name="Component">
+                                    <DataBindContext sourcePathIds="2:16-2:31" propertyKey="37"/>
+                                </SolidColor>
+                            </Fill>
+                        </TextInputCursor>
+                        <FocusData id="2:145"/>
+                        <DataBindContext sourcePathIds="2:16-0:1" propertyKey="1095"/>
+                        <DataBindContext sourcePathIds="2:16-1:139" propertyKey="222" converterId="2:66"/>
+                        <DataBindContext sourcePathIds="2:16-2:35" propertyKey="818"/>
+                        <DataBindContext sourcePathIds="2:16-2:169" propertyKey="1094" converterId="2:66"/>
+                        <DataBindContext sourcePathIds="2:16-2:37" propertyKey="979"/>
+                        <DataBindContext sourcePathIds="2:16-2:20" propertyKey="817" twoWay="true" sourceToTargetRunsFirst="true"/>
+                    </TextInput>
+                    <ComponentOrigin name="Component" id="11:3"/>
+                    <LayoutComponentStyle intrinsicallySizedValue="true" marginLeftUnitsValue="1" marginRightUnitsValue="1" marginTopUnitsValue="1" marginBottomUnitsValue="1" paddingLeftUnitsValue="1" paddingRightUnitsValue="1" paddingTopUnitsValue="1" paddingBottomUnitsValue="1" gapHorizontalUnitsValue="1" gapVerticalUnitsValue="1" layoutWidthScaleType="2" layoutHeightScaleType="2" name="Layout Style" id="2:54"/>
+                </LayoutComponent>
+                <ScrollConstraint physicsTypeValue="1" physicsId="2:151" name="Scroll" id="2:83"/>
+                <ComponentOrigin name="Component" id="11:2"/>
+                <LayoutComponentStyle intrinsicallySizedValue="true" marginLeftUnitsValue="1" marginRightUnitsValue="1" marginTopUnitsValue="1" marginBottomUnitsValue="1" paddingLeftUnitsValue="1" paddingRightUnitsValue="1" paddingTopUnitsValue="1" paddingBottomUnitsValue="1" gapHorizontalUnitsValue="1" gapVerticalUnitsValue="1" layoutWidthScaleType="1" layoutHeightScaleType="2" widthUnitsValue="3" name="Layout Style" id="2:53"/>
+            </LayoutComponent>
+            <Fill fillRule="2" version="1" name="Fill 1">
+                <SolidColor colorValue="FFF1F1F1" name="Component">
+                    <DataBindContext sourcePathIds="2:16-2:29" propertyKey="37"/>
+                </SolidColor>
+            </Fill>
+            <ComponentOrigin name="Component" id="11:1"/>
+            <Stroke thickness="0" version="1" name="Stroke 1">
+                <SolidColor colorValue="00000000" name="Component">
+                    <DataBindContext sourcePathIds="2:16-1:110" propertyKey="37"/>
+                </SolidColor>
+                <DataBindContext sourcePathIds="2:16-1:113" propertyKey="47"/>
+            </Stroke>
+            <LayoutComponentStyle marginLeftUnitsValue="1" marginRightUnitsValue="1" marginTopUnitsValue="1" marginBottomUnitsValue="1" paddingLeftUnitsValue="1" paddingRightUnitsValue="1" paddingTopUnitsValue="1" paddingBottomUnitsValue="1" gapHorizontalUnitsValue="1" gapVerticalUnitsValue="1" linkCornerRadius="false" layoutWidthScaleType="1" layoutHeightScaleType="1" widthUnitsValue="3" heightUnitsValue="3" name="Layout Style" id="2:52">
+                <DataBindContext sourcePathIds="2:16-1:116" propertyKey="640"/>
+                <DataBindContext sourcePathIds="2:16-1:134" propertyKey="639"/>
+                <DataBindContext sourcePathIds="2:16-1:98" propertyKey="513"/>
+                <DataBindContext sourcePathIds="2:16-1:119" propertyKey="641"/>
+                <DataBindContext sourcePathIds="2:16-1:125" propertyKey="642"/>
+                <DataBindContext sourcePathIds="2:16-1:92" propertyKey="512"/>
+                <DataBindContext sourcePathIds="2:16-1:122" propertyKey="643"/>
+                <DataBindContext sourcePathIds="2:16-1:95" propertyKey="514"/>
+                <DataBindContext sourcePathIds="2:16-1:101" propertyKey="515"/>
+            </LayoutComponentStyle>
+        </LayoutComponent>
+        <LayoutComponentStyle marginLeftUnitsValue="1" marginRightUnitsValue="1" marginTopUnitsValue="1" marginBottomUnitsValue="1" paddingLeftUnitsValue="1" paddingRightUnitsValue="1" paddingTopUnitsValue="1" paddingBottomUnitsValue="1" gapHorizontalUnitsValue="1" gapVerticalUnitsValue="1" name="Layout Style" id="2:46"/>
+        <!-- Placeholder visibility: activeText hides the overlay (display none),
+             emptyText shows it. -->
+        <LinearAnimation viewEnd="60" name="activeText" id="0:27">
+            <KeyedObject objectId="0:5">
+                <KeyedProperty propertyKey="596">
+                    <KeyFrameUint value="1"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation viewEnd="60" name="emptyText" id="0:16">
+            <KeyedObject objectId="0:5">
+                <KeyedProperty propertyKey="596">
+                    <KeyFrameUint/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation viewEnd="60" name="Empty"/>
+        <LinearAnimation viewEnd="60" name="SingleLine" id="1:40">
+            <KeyedObject objectId="2:83">
+                <KeyedProperty propertyKey="722">
+                    <KeyFrameUint/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="2:53">
+                <KeyedProperty propertyKey="655">
+                    <KeyFrameUint value="2"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation viewEnd="60" name="Multiline" id="1:33">
+            <KeyedObject objectId="2:53">
+                <KeyedProperty propertyKey="655">
+                    <KeyFrameUint value="1"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="2:83">
+                <KeyedProperty propertyKey="722">
+                    <KeyFrameUint value="1"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation viewEnd="60" name="VerticalAlignmentCenter">
+            <KeyedObject objectId="2:52">
+                <KeyedProperty propertyKey="632">
+                    <KeyFrameUint value="3"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation viewEnd="60" name="VerticalAlignmentBottom">
+            <KeyedObject objectId="2:52">
+                <KeyedProperty propertyKey="632">
+                    <KeyFrameUint value="6"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation viewEnd="60" name="VerticalAlignmentTop">
+            <KeyedObject objectId="2:52">
+                <KeyedProperty propertyKey="632">
+                    <KeyFrameUint/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <StateMachine name="TextInputStateMachine" id="2:98">
+            <!-- _isFocused tracks focus for the host: set on focus (and on a press
+                 anywhere in the viewport), cleared on blur. -->
+            <StateMachineListener targetId="2:51" name="Text Input Focus" id="0:95">
+                <ListenerInputType listenerTypeValue="focus"/>
+                <ListenerViewModelChange>
+                    <BindablePropertyBoolean propertyValue="true">
+                        <DataBindContext sourcePathIds="2:16-0:50" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+            </StateMachineListener>
+            <StateMachineListener targetId="2:51" name="Text Input" id="0:89">
+                <ListenerInputType listenerTypeValue="blur"/>
+                <ListenerViewModelChange>
+                    <BindablePropertyBoolean>
+                        <DataBindContext sourcePathIds="2:16-0:50" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+            </StateMachineListener>
+            <StateMachineListener targetId="2:48" name="Down Listener" id="2:142">
+                <ListenerInputType listenerTypeValue="down"/>
+                <FocusActionTarget targetId="2:51"/>
+                <ListenerViewModelChange>
+                    <BindablePropertyBoolean propertyValue="true">
+                        <DataBindContext sourcePathIds="2:16-0:50" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+            </StateMachineListener>
+            <StateMachineLayer name="Focus">
+                <EntryState/>
+                <AnyState x="200" y="-120">
+                    <StateTransition stateToId="2:133">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyTrigger>
+                                    <DataBindContext sourcePathIds="2:16-2:43" propertyKey="686"/>
+                                </BindablePropertyTrigger>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueTriggerComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnyState>
+                <ExitState x="400" y="-120" id="2:131"/>
+                <AnimationState x="200" stateName="Focus" id="2:133">
+                    <FocusActionTarget targetId="2:51" flags="4"/>
+                    <StateTransition stateToId="2:131"/>
+                </AnimationState>
+            </StateMachineLayer>
+            <StateMachineListener targetId="2:51" name="Focus Listener" id="2:146">
+                <ListenerInputTypeKeyboard listenerTypeValue="keyboard"/>
+                <ListenerInputTypeText listenerTypeValue="textInput"/>
+            </StateMachineListener>
+            <StateMachineLayer name="Multiline" id="1:29">
+                <EntryState/>
+                <AnimationState x="200" animationId="1:40" id="1:47"/>
+                <AnimationState x="400" animationId="1:33" id="1:48"/>
+                <AnyState x="200" y="-120">
+                    <StateTransition stateToId="1:47">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyBoolean>
+                                    <DataBindContext sourcePathIds="2:16-2:37" propertyKey="634"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                    <StateTransition stateToId="1:48">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyBoolean>
+                                    <DataBindContext sourcePathIds="2:16-2:37" propertyKey="634"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator value="true"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnyState>
+                <ExitState x="400" y="-120"/>
+            </StateMachineLayer>
+            <!-- Placeholder: emptyText while the value equals "", activeText otherwise. -->
+            <StateMachineLayer name="Placeholder" id="0:17">
+                <EntryState x="-160" y="-120">
+                    <StateTransition stateToId="0:34"/>
+                </EntryState>
+                <AnimationState x="0" y="-120" animationId="0:27" id="0:34"/>
+                <AnimationState x="260" y="-120" animationId="0:16" id="0:35"/>
+                <AnyState x="130" y="-15">
+                    <StateTransition stateToId="0:34">
+                        <TransitionViewModelCondition opValue="1">
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyString>
+                                    <DataBindContext sourcePathIds="2:16-2:20" propertyKey="635"/>
+                                </BindablePropertyString>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueStringComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                    <StateTransition stateToId="0:35">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyString>
+                                    <DataBindContext sourcePathIds="2:16-2:20" propertyKey="635"/>
+                                </BindablePropertyString>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueStringComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnyState>
+                <ExitState x="400" y="-15"/>
+            </StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+
+    <ComponentAsset artboardId="2:45" name="TextInput"/>
+
+
+    <ClampedScrollPhysics constraintId="2:83" name="Component" id="2:151"/>
+
+    <DataConverterEnumToUint name="System Enum to Uint" id="2:66"/>
+
+    <DataEnumSystem id="1:0">
+        <DataEnumValue key="Left align" id="2:0"/>
+        <DataEnumValue key="Right align"/>
+        <DataEnumValue key="Center align"/>
+    </DataEnumSystem>
+
+    <!-- A system enum's values must be listed in the runtime's own order, since
+         the index in the list is the integer a bind delivers: VerticalTextAlign is
+         top, bottom, middle. -->
+    <DataEnumSystem enumType="1" id="5:0">
+        <DataEnumValue key="Top align" id="6:0"/>
+        <DataEnumValue key="Bottom align"/>
+        <DataEnumValue key="Middle align" id="7:0"/>
+    </DataEnumSystem>
+
+    <DataEnumSystem enumType="13" id="62:0">
+        <DataEnumValue key="Vertical"/>
+        <DataEnumValue key="All"/>
+        <DataEnumValue key="Horizontal" id="63:0"/>
+    </DataEnumSystem>
+
+    <DataEnumSystem enumType="11" id="54:0">
+        <DataEnumValue key="Fixed"/>
+        <DataEnumValue key="Fill"/>
+        <DataEnumValue key="Hug" id="57:0"/>
+    </DataEnumSystem>
+
+    <FontAsset file="Inter.ttf" name="Inter" id="1:10"/>
+
+    <ViewModel defaultInstanceId="2:17" viewModelType="1" name="TextInputViewModel" id="2:16">
+        <ViewModelPropertyColor componentProps="1" displayName="Placeholder Color" name="placeholderColor" id="0:145"/>
+        <ViewModelPropertyString componentProps="1" displayName="Placeholder Text" name="placeholderText" id="0:142"/>
+        <ViewModelPropertyBoolean name="_isFocused" id="0:50"/>
+        <ViewModelPropertyBoolean componentProps="1" displayName="Obscured" name="isObscured" id="0:1"/>
+        <ViewModelPropertyEnumSystem enumId="1:0" componentProps="1" displayName="Horizontal Alignment" name="horizontalAlignment" id="1:139"/>
+        <ViewModelPropertyBoolean componentProps="1" displayName="Link Corners" name="linkCorners" id="1:134"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Corner Left Top" name="cornerLeftTop" id="1:116"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Corner Right Top" name="cornerRightTop" id="1:119"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Corner Right Bottom" name="cornerRightBottom" id="1:122"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Corner Left Bottom" name="cornerLeftBottom" id="1:125"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Stroke Width" name="strokeWidth" id="1:113"/>
+        <ViewModelPropertyColor componentProps="1" displayName="Stroke Color" name="strokeColor" id="1:110"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Left Padding" name="leftPadding" id="1:92"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Top Padding" name="topPadding" id="1:95"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Right Padding" name="rightPadding" id="1:98"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Bottom Padding" name="bottomPadding" id="1:101"/>
+        <ViewModelPropertyEnumSystem enumType="1" enumId="5:0" componentProps="1" displayName="Vertical Alignment" name="verticalAlignment" id="2:169"/>
+        <ViewModelPropertyString componentProps="3" displayName="Value" name="text" id="2:20"/>
+        <ViewModelPropertyAssetFont componentProps="1" displayName="Font" name="font" id="2:22"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Font Size" name="fontSize" id="2:25"/>
+        <ViewModelPropertyColor componentProps="1" displayName="Text" name="textColor" id="2:27"/>
+        <ViewModelPropertyColor componentProps="1" displayName="Background" name="backgroundColor" id="2:29"/>
+        <ViewModelPropertyColor componentProps="1" displayName="Cursor" name="cursorColor" id="2:31"/>
+        <ViewModelPropertyColor componentProps="1" displayName="Selection" name="selectionColor" id="2:33"/>
+        <ViewModelPropertyNumber componentProps="1" displayName="Select Radius" name="selectionRadius" id="2:35"/>
+        <ViewModelPropertyBoolean componentProps="1" displayName="Multiline" name="multiline" id="2:37"/>
+        <ViewModelPropertyEnumSystem enumType="13" enumId="62:0" name="scrollDirection" id="2:39"/>
+        <ViewModelPropertyEnumSystem enumType="11" enumId="54:0" name="_widthScaleType" id="2:41"/>
+        <ViewModelPropertyTrigger componentProps="1" displayName="Focus" name="focus" id="2:43"/>
+        <!-- Defaults match the editor library. -->
+        <ViewModelInstance exports="true" name="Instance" id="2:17">
+            <ViewModelInstanceString propertyValue="placeholder" playbackValue="placeholder" viewModelPropertyId="0:142" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF888888" playbackValue="FF888888" viewModelPropertyId="0:145" name="Component"/>
+            <ViewModelInstanceBoolean viewModelPropertyId="0:50" name="Component"/>
+            <ViewModelInstanceBoolean viewModelPropertyId="0:1" name="Component"/>
+            <ViewModelInstanceEnum propertyValue="2:0" playbackValue="2:0" viewModelPropertyId="1:139"/>
+            <ViewModelInstanceBoolean propertyValue="true" playbackValue="true" viewModelPropertyId="1:134" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="4" playbackValue="4" viewModelPropertyId="1:116" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="4" playbackValue="4" viewModelPropertyId="1:119" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="4" playbackValue="4" viewModelPropertyId="1:122" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="4" playbackValue="4" viewModelPropertyId="1:125" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="1" playbackValue="1" viewModelPropertyId="1:113" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FFAAAAAA" playbackValue="FFAAAAAA" viewModelPropertyId="1:110" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="6" playbackValue="6" viewModelPropertyId="1:92" name="Component"/>
+            <ViewModelInstanceNumber viewModelPropertyId="1:95" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="6" playbackValue="6" viewModelPropertyId="1:98" name="Component"/>
+            <ViewModelInstanceNumber viewModelPropertyId="1:101" name="Component"/>
+            <ViewModelInstanceEnum propertyValue="7:0" playbackValue="7:0" viewModelPropertyId="2:169"/>
+            <ViewModelInstanceString viewModelPropertyId="2:20" name="Component"/>
+            <ViewModelInstanceAssetFont propertyValue="1:10" playbackValue="1:10" viewModelPropertyId="2:22" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="12" playbackValue="12" viewModelPropertyId="2:25" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF1F1F1F" playbackValue="FF1F1F1F" viewModelPropertyId="2:27" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FFF1F1F1" playbackValue="FFF1F1F1" viewModelPropertyId="2:29" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF2475B2" playbackValue="FF2475B2" viewModelPropertyId="2:31" name="Component"/>
+            <ViewModelInstanceColor propertyValue="622475B2" playbackValue="622475B2" viewModelPropertyId="2:33" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="2" playbackValue="2" viewModelPropertyId="2:35" name="Component"/>
+            <ViewModelInstanceBoolean viewModelPropertyId="2:37" name="Component"/>
+            <ViewModelInstanceEnum propertyValue="63:0" playbackValue="63:0" viewModelPropertyId="2:39"/>
+            <ViewModelInstanceEnum propertyValue="57:0" playbackValue="57:0" viewModelPropertyId="2:41"/>
+            <ViewModelInstanceTrigger viewModelPropertyId="2:43" name="Component"/>
+        </ViewModelInstance>
+        <ViewModelInstance exports="true" name="Username Instance" id="9:3">
+            <ViewModelInstanceString propertyValue="" viewModelPropertyId="2:20" name="Component"/>
+            <ViewModelInstanceString propertyValue="Username" viewModelPropertyId="0:142" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF7A8590" viewModelPropertyId="0:145" name="Component"/>
+            <ViewModelInstanceBoolean propertyValue="false" viewModelPropertyId="2:37" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF20262C" viewModelPropertyId="2:29" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FFE8ECEF" viewModelPropertyId="2:27" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FFE8ECEF" viewModelPropertyId="2:31" name="Component"/>
+            <ViewModelInstanceColor propertyValue="59D6456B" viewModelPropertyId="2:33" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF39434D" viewModelPropertyId="1:110" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="1.5" viewModelPropertyId="1:113" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="15" viewModelPropertyId="2:25" name="Component"/>
+            <ViewModelInstanceBoolean propertyValue="true" viewModelPropertyId="1:134" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="8" viewModelPropertyId="1:116" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="12" viewModelPropertyId="1:92" name="Component"/>
+        </ViewModelInstance>
+        <ViewModelInstance exports="true" name="Password Instance" id="9:5">
+            <ViewModelInstanceString propertyValue="secret" viewModelPropertyId="2:20" name="Component"/>
+            <ViewModelInstanceString propertyValue="Password" viewModelPropertyId="0:142" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF7A8590" viewModelPropertyId="0:145" name="Component"/>
+            <ViewModelInstanceBoolean propertyValue="true" viewModelPropertyId="0:1" name="Component"/>
+            <ViewModelInstanceBoolean propertyValue="false" viewModelPropertyId="2:37" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF20262C" viewModelPropertyId="2:29" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FFE8ECEF" viewModelPropertyId="2:27" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FFE8ECEF" viewModelPropertyId="2:31" name="Component"/>
+            <ViewModelInstanceColor propertyValue="59D6456B" viewModelPropertyId="2:33" name="Component"/>
+            <ViewModelInstanceColor propertyValue="FF39434D" viewModelPropertyId="1:110" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="1.5" viewModelPropertyId="1:113" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="15" viewModelPropertyId="2:25" name="Component"/>
+            <ViewModelInstanceBoolean propertyValue="true" viewModelPropertyId="1:134" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="8" viewModelPropertyId="1:116" name="Component"/>
+            <ViewModelInstanceNumber propertyValue="12" viewModelPropertyId="1:92" name="Component"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <!-- The host's view model: one TextInput instance per field. -->
+    <ViewModel defaultInstanceId="9:41" name="Form" id="9:40">
+        <ViewModelPropertyViewModel viewModelReferenceId="2:16" name="username" id="9:42"/>
+        <ViewModelPropertyViewModel viewModelReferenceId="2:16" name="password" id="9:43"/>
+        <ViewModelInstance exports="true" name="Instance" id="9:41">
+            <ViewModelInstanceViewModel propertyValue="9:3" viewModelPropertyId="9:42"/>
+            <ViewModelInstanceViewModel propertyValue="9:5" viewModelPropertyId="9:43"/>
+        </ViewModelInstance>
+    </ViewModel>
+</Rive>

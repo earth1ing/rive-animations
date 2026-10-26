@@ -1,0 +1,9 @@
+name: hello_rive
+main: main
+artboard:
+  width: 800
+  height: 600
+  background: "#1D1D1D"
+logs:
+  file: build/rive.log
+  problems: build/problems.log

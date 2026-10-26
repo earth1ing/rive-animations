@@ -1,0 +1,41 @@
+<Rive version="1" kind="fragment">
+<Artboard defaultStateMachineId="0:7" clip="true" width="500" height="500" styleId="0:5" name="Artboard" id="0:2">
+    <Fill name="Background">
+        <SolidColor colorValue="FF282828" name="Color"/>
+    </Fill>
+    <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+    <Shape x="250" y="150" name="Box" id="0:20">
+        <Rectangle width="300" height="160" name="Path" id="0:21"/>
+        <Stroke thickness="2" name="Stroke" id="0:22">
+            <SolidColor colorValue="FFFFFFFF" name="Color"/>
+            <ScriptedPathEffect scriptAssetId="0:81" name="Effect" id="0:23">
+                <ScriptInputNumber propertyValue="5" name="amplitude"/>
+                <ScriptInputNumber propertyValue="30" name="wavelength"/>
+                <ScriptInputNumber propertyValue="1" name="speed"/>
+                <ScriptInputNumber propertyValue="2000" name="segments"/>
+            </ScriptedPathEffect>
+        </Stroke>
+    </Shape>
+    <Shape x="250" y="370" name="Disc" id="0:30">
+        <Ellipse width="220" height="160" name="Path" id="0:31"/>
+        <Stroke thickness="2" name="Stroke" id="0:32">
+            <SolidColor colorValue="FF57A5E0" name="Color"/>
+            <ScriptedPathEffect scriptAssetId="0:81" name="Effect" id="0:33">
+                <ScriptInputNumber propertyValue="4" name="amplitude"/>
+                <ScriptInputNumber propertyValue="24" name="wavelength"/>
+                <ScriptInputNumber propertyValue="1.5" name="speed"/>
+                <ScriptInputNumber propertyValue="2000" name="segments"/>
+            </ScriptedPathEffect>
+        </Stroke>
+    </Shape>
+    <StateMachine name="State Machine 1" id="0:7">
+        <StateMachineLayer name="Layer 1" id="0:8">
+            <AnyState/>
+            <ExitState/>
+            <EntryState/>
+        </StateMachineLayer>
+    </StateMachine>
+</Artboard>
+
+<ScriptAsset file="wavy_path_effect.as" name="wavy_path_effect" id="0:81"/>
+</Rive>

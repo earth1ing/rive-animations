@@ -1,0 +1,10 @@
+name: mesh_skin_as
+main: main
+scripting: wasm
+artboard:
+  width: 500
+  height: 500
+  background: "#161616"
+logs:
+  file: build/rive.log
+  problems: build/problems.log

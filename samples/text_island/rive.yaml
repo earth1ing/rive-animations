@@ -1,0 +1,9 @@
+name: text_island
+main: main
+artboard:
+  width: 1000
+  height: 700
+  background: "#161616"
+logs:
+  file: build/rive.log
+  problems: build/problems.log

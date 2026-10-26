@@ -1,0 +1,15 @@
+<Rive version="1" kind="fragment">
+    <ViewModel defaultInstanceId="0:51" name="Settings" id="0:50">
+        <ViewModelPropertyNumber name="speed" id="0:52"/>
+        <ViewModelInstance exports="true" name="Instance" id="0:51">
+            <ViewModelInstanceNumber propertyValue="2.5" viewModelPropertyId="0:52" id="0:81"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <ViewModel defaultInstanceId="0:41" name="Root" id="0:40">
+        <ViewModelPropertyViewModel viewModelReferenceId="0:50" name="settings" id="0:45"/>
+        <ViewModelInstance exports="true" name="Instance" id="0:41">
+            <ViewModelInstanceViewModel propertyValue="0:51" viewModelPropertyId="0:45" id="0:82"/>
+        </ViewModelInstance>
+    </ViewModel>
+</Rive>

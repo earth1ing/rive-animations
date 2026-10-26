@@ -1,0 +1,51 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:40" viewModelInstanceId="0:41" clip="true" width="640" height="400" styleId="0:5" name="Cursor Demo" id="0:2">
+        <Fill name="Background" id="0:81">
+            <SolidColor colorValue="FF1D1D1D" name="Color" id="0:82"/>
+        </Fill>
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+        <LayoutComponent width="640" height="400" styleId="0:11" name="Root Layout" id="0:10">
+            <LayoutComponentStyle layoutWidthScaleType="1" layoutHeightScaleType="1" widthUnitsValue="3" heightUnitsValue="3" name="Layout Style" id="0:11"/>
+            <ScriptedLayout scriptAssetId="0:80" name="Divider" id="0:12"/>
+        </LayoutComponent>
+        <Shape x="90" y="60" name="Button" id="0:20">
+            <Rectangle width="120" height="48" name="Plate" id="0:83"/>
+            <Fill name="Fill" id="0:84">
+                <SolidColor colorValue="FF57A5E0" name="Color" id="0:85"/>
+            </Fill>
+        </Shape>
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Layer 1" id="0:8">
+                <AnyState x="200" y="-120" id="0:86"/>
+                <ExitState x="400" y="-120" id="0:87"/>
+                <EntryState id="0:88"/>
+            </StateMachineLayer>
+            <StateMachineListenerSingle targetId="0:20" listenerTypeValue="enter" name="Button In" id="0:50">
+                <ListenerViewModelChange id="0:89">
+                    <BindablePropertyString propertyValue="pointer" id="0:90">
+                        <DataBindContext sourcePathIds="0:40-0:45" propertyKey="635" direction="true" id="0:91"/>
+                    </BindablePropertyString>
+                </ListenerViewModelChange>
+            </StateMachineListenerSingle>
+            <StateMachineListenerSingle targetId="0:20" listenerTypeValue="exit" name="Button Out" id="0:51">
+                <ListenerViewModelChange id="0:92">
+                    <BindablePropertyString propertyValue="arrow" id="0:93">
+                        <DataBindContext sourcePathIds="0:40-0:45" propertyKey="635" direction="true" id="0:94"/>
+                    </BindablePropertyString>
+                </ListenerViewModelChange>
+            </StateMachineListenerSingle>
+        </StateMachine>
+    </Artboard>
+
+
+    <ViewModel defaultInstanceId="0:41" name="Root" id="0:40">
+        <ViewModelPropertyString name="cursor" id="0:45"/>
+        <ViewModelPropertyNumber name="dividerX" id="0:46"/>
+        <ViewModelInstance exports="true" name="Instance" id="0:41">
+            <ViewModelInstanceString propertyValue="arrow" viewModelPropertyId="0:45" id="0:96"/>
+            <ViewModelInstanceNumber propertyValue="260" viewModelPropertyId="0:46" id="0:97"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <ScriptAsset file="divider.luau" name="divider" id="0:80"/>
+</Rive>

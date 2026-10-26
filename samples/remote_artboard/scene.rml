@@ -1,0 +1,44 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:40" viewModelInstanceId="0:41" clip="true" width="480" height="360" styleId="0:5" name="Main" id="0:2">
+        <Fill name="Background">
+            <SolidColor colorValue="FF1D1D1D" name="Color"/>
+        </Fill>
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+        <LayoutComponent width="480" height="360" styleId="0:11" name="Root Layout" id="0:10">
+            <LayoutComponentStyle layoutWidthScaleType="1" layoutHeightScaleType="1" widthUnitsValue="3" heightUnitsValue="3" name="Layout Style" id="0:11"/>
+            <!-- Shows whatever artboard the `character` property holds: the
+                 placeholder until the script assigns a downloaded one. -->
+            <NestedArtboardLeaf fit="1" artboardId="0:30" name="Character" id="0:20">
+                <DataBindContext sourcePathIds="0:40-0:42" propertyKey="197" id="0:21"/>
+            </NestedArtboardLeaf>
+        </LayoutComponent>
+        <ScriptedDrawable scriptAssetId="0:80" name="Loader" id="0:12"/>
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Layer 1" id="0:8">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState/>
+            </StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+
+    <Artboard isComponent="true" width="200" height="200" name="Placeholder" id="0:30">
+        <Shape x="100" y="100" name="Dot" id="0:31">
+            <Ellipse width="48" height="48" name="Path"/>
+            <Fill name="Fill">
+                <SolidColor colorValue="FF444444" name="Color"/>
+            </Fill>
+        </Shape>
+    </Artboard>
+
+    <ComponentAsset artboardId="0:30" name="Placeholder"/>
+
+    <ViewModel defaultInstanceId="0:41" name="Scene" id="0:40">
+        <ViewModelPropertyArtboard name="character" id="0:42"/>
+        <ViewModelInstance exports="true" name="Instance" id="0:41">
+            <ViewModelInstanceArtboard propertyValue="0:30" viewModelPropertyId="0:42"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <ScriptAsset file="main.luau" name="main" id="0:80"/>
+</Rive>

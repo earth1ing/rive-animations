@@ -1,0 +1,340 @@
+<!-- An app shell drawn across the whole window, traffic lights included.
+
+     rive.yaml asks the tool for the integrated title bar, so the window has
+     no title bar strip: this scene's own header sits where it would be, the
+     native close, minimize and zoom buttons draw over the header's left end,
+     and the artboard is laid out to the full window height.
+
+     Three things the tool hands the scene:
+     - titleBarHeight and titleBarControlsWidth are view model numbers the
+       tool writes with the strip's height and how far the native controls
+       reach in from the left, so the header keeps its title clear of them
+       (and both go to zero in full screen, where they hide).
+     - A press in the header on nothing interactive drags the window. The
+       button is a listener target, so it keeps its click; the divider is a
+       scripted layout with pointer handlers, so it keeps its drag.
+     - sidebarWidth is written by divider.luau and read by the sidebar. -->
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:40" clip="true" width="960" height="600" styleId="0:5" name="Shell" id="0:2">
+        <Fill name="Background">
+            <SolidColor colorValue="FF14161B" name="Color"/>
+        </Fill>
+        <LayoutComponentStyle flexDirectionValue="column" layoutAlignmentType="topLeft" name="Shell Style" id="0:5"/>
+
+        <!-- Header: fixed height, full width. The tool's drag strip is this tall
+             (rive.yaml dragHeight) and the traffic lights are centred in it. -->
+        <LayoutComponent clip="false" height="52" styleId="0:11" name="Header" id="0:10">
+            <LayoutComponentStyle flexDirectionValue="row" layoutAlignmentType="spaceBetweenCenter"
+                layoutWidthScaleType="fill" layoutHeightScaleType="fixed"
+                paddingRight="12" paddingRightUnitsValue="points"
+                name="Header Style" id="0:11"/>
+            <Fill name="Fill">
+                <SolidColor colorValue="FF1E222B" name="Color"/>
+            </Fill>
+
+            <!-- Left group: a spacer as wide as the native controls, then the title. -->
+            <LayoutComponent clip="false" styleId="0:13" name="Lead" id="0:12">
+                <LayoutComponentStyle flexDirectionValue="row" layoutAlignmentType="centerLeft"
+                    layoutWidthScaleType="hug" layoutHeightScaleType="fill"
+                    gapHorizontal="12" gapHorizontalUnitsValue="points"
+                    name="Lead Style" id="0:13"/>
+                <!-- Width bound to titleBarControlsWidth: the tool keeps it as wide
+                     as the traffic lights reach. -->
+                <LayoutComponent clip="false" width="80" height="1" styleId="0:15" name="Controls Spacer" id="0:14">
+                    <DataBindContext sourcePathIds="0:40-0:42" propertyKey="7"/>
+                    <LayoutComponentStyle name="Spacer Style" id="0:15"/>
+                </LayoutComponent>
+                <LayoutComponent clip="false" width="260" height="20" styleId="0:17" name="Title Box" id="0:16">
+                    <LayoutComponentStyle name="Title Style" id="0:17"/>
+                    <Text width="260" height="20" sizingValue="fixed" name="Title" id="0:18">
+                        <TextStylePaint fontSize="15" fontAssetId="0:90" name="Title Paint" id="0:19">
+                            <Fill name="Fill">
+                                <SolidColor colorValue="FFE6E9EF" name="Color"/>
+                            </Fill>
+                        </TextStylePaint>
+                        <TextValueRun styleId="0:19" text="Integrated title bar" name="Run"/>
+                    </Text>
+                </LayoutComponent>
+            </LayoutComponent>
+
+            <!-- The button. A listener target, so a press here is the button's,
+                 not a window drag. -->
+            <LayoutComponent clip="false" width="132" height="30" styleId="0:21" name="Accent Button" id="0:20">
+                <LayoutComponentStyle cornerRadiusTL="8" cornerRadiusTR="8" cornerRadiusBL="8" cornerRadiusBR="8"
+                    name="Button Style" id="0:21"/>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF2B3140" name="Button Color" id="0:22"/>
+                </Fill>
+                <Text width="132" height="30" sizingValue="fixed" alignValue="center" verticalAlignValue="middle" name="Label" id="0:23">
+                    <TextStylePaint fontSize="13" fontAssetId="0:90" name="Label Paint" id="0:24">
+                        <Fill name="Fill">
+                            <SolidColor colorValue="FFE6E9EF" name="Color"/>
+                        </Fill>
+                    </TextStylePaint>
+                    <TextValueRun styleId="0:24" text="Toggle accent" name="Run"/>
+                </Text>
+            </LayoutComponent>
+        </LayoutComponent>
+
+        <!-- Body: sidebar, divider, content. Fills the rest of the window. -->
+        <LayoutComponent clip="false" styleId="0:31" name="Body" id="0:30">
+            <LayoutComponentStyle flexDirectionValue="row" layoutAlignmentType="topLeft"
+                layoutWidthScaleType="fill" layoutHeightScaleType="fill"
+                name="Body Style" id="0:31"/>
+
+            <!-- Width bound to sidebarWidth, which the divider script writes. -->
+            <LayoutComponent clip="true" width="240" styleId="0:33" name="Sidebar" id="0:32">
+                <DataBindContext sourcePathIds="0:40-0:43" propertyKey="7"/>
+                <LayoutComponentStyle flexDirectionValue="column" layoutAlignmentType="topLeft"
+                    layoutWidthScaleType="fixed" layoutHeightScaleType="fill"
+                    paddingLeft="16" paddingLeftUnitsValue="points"
+                    paddingTop="16" paddingTopUnitsValue="points"
+                    gapVertical="8" gapVerticalUnitsValue="points"
+                    name="Sidebar Style" id="0:33"/>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF191C23" name="Color"/>
+                </Fill>
+                <LayoutComponent clip="false" width="200" height="28" styleId="0:39" name="Item 1" id="0:38">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Item Style 1" id="0:39"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF262B36" name="Color"/></Fill>
+                </LayoutComponent>
+                <LayoutComponent clip="false" width="200" height="28" styleId="0:101" name="Item 2" id="0:100">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Item Style 2" id="0:101"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF262B36" name="Color"/></Fill>
+                </LayoutComponent>
+                <LayoutComponent clip="false" width="200" height="28" styleId="0:103" name="Item 3" id="0:102">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="Item Style 3" id="0:103"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF262B36" name="Color"/></Fill>
+                </LayoutComponent>
+            </LayoutComponent>
+
+            <!-- The divider: a strip with a Fill and a scripted layout that turns
+                 a drag into sidebarWidth. -->
+            <LayoutComponent clip="false" width="8" styleId="0:35" name="Divider" id="0:34">
+                <LayoutComponentStyle layoutWidthScaleType="fixed" layoutHeightScaleType="fill"
+                    name="Divider Style" id="0:35"/>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF2A2F3A" name="Color"/>
+                </Fill>
+                <ScriptedLayout scriptAssetId="0:80" name="Divider Drag" id="0:36"/>
+            </LayoutComponent>
+
+            <!-- Content: its colour follows the accent toggle. -->
+            <LayoutComponent clip="true" styleId="0:105" name="Content" id="0:104">
+                <LayoutComponentStyle flexDirectionValue="column" layoutAlignmentType="topLeft"
+                    layoutWidthScaleType="fill" layoutHeightScaleType="fill"
+                    paddingLeft="24" paddingLeftUnitsValue="points"
+                    paddingTop="24" paddingTopUnitsValue="points"
+                    name="Content Style" id="0:105"/>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF1B1F27" name="Content Color" id="0:37"/>
+                </Fill>
+                <LayoutComponent clip="false" width="420" height="72" styleId="0:107" name="Copy Box" id="0:106">
+                    <LayoutComponentStyle name="Copy Style" id="0:107"/>
+                    <Text width="420" height="72" sizingValue="fixed" wrapValue="wrap" name="Copy" id="0:108">
+                        <TextStylePaint fontSize="14" fontAssetId="0:90" name="Copy Paint" id="0:109">
+                            <Fill name="Fill">
+                                <SolidColor colorValue="FF9AA3B2" name="Color"/>
+                            </Fill>
+                        </TextStylePaint>
+                        <TextValueRun styleId="0:109" text="Drag the header to move the window. Double-click it to zoom. Drag the divider to resize the sidebar." name="Run"/>
+                    </Text>
+                </LayoutComponent>
+            </LayoutComponent>
+        </LayoutComponent>
+
+        <StateMachine name="State Machine 1" id="0:7">
+            <!-- Button feedback: hover and down are written by the pointer. -->
+            <StateMachineListenerSingle targetId="0:20" listenerTypeValue="enter" name="Button In" id="0:50">
+                <ListenerViewModelChange>
+                    <BindablePropertyBoolean propertyValue="true">
+                        <DataBindContext sourcePathIds="0:40-0:44" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+            </StateMachineListenerSingle>
+            <StateMachineListenerSingle targetId="0:20" listenerTypeValue="exit" name="Button Out" id="0:51">
+                <ListenerViewModelChange>
+                    <BindablePropertyBoolean propertyValue="false">
+                        <DataBindContext sourcePathIds="0:40-0:44" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+                <ListenerViewModelChange>
+                    <BindablePropertyBoolean propertyValue="false">
+                        <DataBindContext sourcePathIds="0:40-0:45" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+            </StateMachineListenerSingle>
+            <StateMachineListenerSingle targetId="0:20" listenerTypeValue="down" name="Button Down" id="0:52">
+                <ListenerViewModelChange>
+                    <BindablePropertyBoolean propertyValue="true">
+                        <DataBindContext sourcePathIds="0:40-0:45" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+            </StateMachineListenerSingle>
+            <StateMachineListenerSingle targetId="0:20" listenerTypeValue="up" name="Button Up" id="0:53">
+                <ListenerViewModelChange>
+                    <BindablePropertyBoolean propertyValue="false">
+                        <DataBindContext sourcePathIds="0:40-0:45" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+            </StateMachineListenerSingle>
+            <!-- Click flips accent: read it through the negate converter, write it back. -->
+            <StateMachineListenerSingle targetId="0:20" listenerTypeValue="click" name="Button Click" id="0:54">
+                <ListenerViewModelChange fromViewModelProperty="true" fromDataBindId="0:55">
+                    <BindablePropertyBoolean>
+                        <DataBindContext sourcePathIds="0:40-0:46" propertyKey="634" id="0:55" converterId="0:98"/>
+                        <DataBindContext sourcePathIds="0:40-0:46" propertyKey="634" direction="true"/>
+                    </BindablePropertyBoolean>
+                </ListenerViewModelChange>
+            </StateMachineListenerSingle>
+
+            <StateMachineLayer name="Button" id="0:60">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState>
+                    <StateTransition stateToId="0:62"/>
+                </EntryState>
+                <AnimationState x="0" y="60" animationId="0:70" id="0:62">
+                    <StateTransition stateToId="0:63" duration="100">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyBoolean>
+                                    <DataBindContext sourcePathIds="0:40-0:44" propertyKey="634"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator value="true"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+                <AnimationState x="200" y="60" animationId="0:71" id="0:63">
+                    <StateTransition stateToId="0:62" duration="150">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyBoolean>
+                                    <DataBindContext sourcePathIds="0:40-0:44" propertyKey="634"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator value="false"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                    <StateTransition stateToId="0:64" duration="60">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyBoolean>
+                                    <DataBindContext sourcePathIds="0:40-0:45" propertyKey="634"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator value="true"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+                <AnimationState x="400" y="60" animationId="0:72" id="0:64">
+                    <StateTransition stateToId="0:63" duration="100">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyBoolean>
+                                    <DataBindContext sourcePathIds="0:40-0:45" propertyKey="634"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator value="false"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+            </StateMachineLayer>
+
+            <StateMachineLayer name="Accent" id="0:61">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState>
+                    <StateTransition stateToId="0:65"/>
+                </EntryState>
+                <AnimationState x="0" y="60" animationId="0:73" id="0:65">
+                    <StateTransition stateToId="0:66" duration="200">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyBoolean>
+                                    <DataBindContext sourcePathIds="0:40-0:46" propertyKey="634"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator value="true"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+                <AnimationState x="200" y="60" animationId="0:74" id="0:66">
+                    <StateTransition stateToId="0:65" duration="200">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyBoolean>
+                                    <DataBindContext sourcePathIds="0:40-0:46" propertyKey="634"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator value="false"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+            </StateMachineLayer>
+        </StateMachine>
+
+        <!-- One hold key per state; the transitions cross-fade between them. -->
+        <LinearAnimation duration="1" name="Button Rest" id="0:70">
+            <KeyedObject objectId="0:22">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF2B3140" frame="0" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="1" name="Button Hover" id="0:71">
+            <KeyedObject objectId="0:22">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF3B4457" frame="0" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="1" name="Button Down" id="0:72">
+            <KeyedObject objectId="0:22">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF5B8DEF" frame="0" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="1" name="Accent Off" id="0:73">
+            <KeyedObject objectId="0:37">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF1B1F27" frame="0" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="1" name="Accent On" id="0:74">
+            <KeyedObject objectId="0:37">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FF1F3A5A" frame="0" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
+
+    <DataConverterBooleanNegate name="Not" id="0:98"/>
+
+    <ViewModel defaultInstanceId="0:47" name="Shell" id="0:40">
+        <!-- Written by the tool under an integrated title bar. -->
+        <ViewModelPropertyNumber name="titleBarHeight" id="0:41"/>
+        <ViewModelPropertyNumber name="titleBarControlsWidth" id="0:42"/>
+        <!-- Written by divider.luau. -->
+        <ViewModelPropertyNumber name="sidebarWidth" id="0:43"/>
+        <!-- Written by the button's listeners. -->
+        <ViewModelPropertyBoolean name="hover" id="0:44"/>
+        <ViewModelPropertyBoolean name="down" id="0:45"/>
+        <ViewModelPropertyBoolean name="accent" id="0:46"/>
+        <ViewModelInstance exports="true" name="Instance" id="0:47">
+            <ViewModelInstanceNumber propertyValue="52" viewModelPropertyId="0:41"/>
+            <ViewModelInstanceNumber propertyValue="80" viewModelPropertyId="0:42"/>
+            <ViewModelInstanceNumber propertyValue="240" viewModelPropertyId="0:43"/>
+            <ViewModelInstanceBoolean propertyValue="false" viewModelPropertyId="0:44"/>
+            <ViewModelInstanceBoolean propertyValue="false" viewModelPropertyId="0:45"/>
+            <ViewModelInstanceBoolean propertyValue="false" viewModelPropertyId="0:46"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <ScriptAsset file="divider.luau" name="divider" id="0:80"/>
+    <FontAsset file="Montserrat.ttf" name="Montserrat" id="0:90"/>
+</Rive>

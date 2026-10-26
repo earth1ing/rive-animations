@@ -1,0 +1,11 @@
+name: vm_debug
+main: Main
+# The same scene is scripted twice. Keep one pair of lines and comment out
+# the other to pick which language runs.
+scripting: bytecode
+exclude: [as]
+# scripting: wasm
+# exclude: [luau]
+logs:
+  file: build/rive.log
+  problems: build/problems.log

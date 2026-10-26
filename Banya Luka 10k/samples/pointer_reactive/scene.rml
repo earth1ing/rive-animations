@@ -1,0 +1,74 @@
+<Rive version="1" kind="fragment">
+    <!-- A card that tilts toward the cursor, and a dot that follows it.
+
+         Nothing here is animated by a timeline: every moving property is bound to
+         a view model number that track.luau writes each frame. -->
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:40" clip="true" width="500" height="500" styleId="0:5" name="Artboard" id="0:2">
+        <Fill name="Background">
+            <SolidColor colorValue="FF16181D" name="Color"/>
+        </Fill>
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+
+        <!-- Declared first, so it draws in front of the card. Fill-sized, so it
+             receives pointer events for the whole artboard. -->
+        <LayoutComponent width="500" height="500" styleId="0:11" name="Input Layer" id="0:10">
+            <LayoutComponentStyle layoutWidthScaleType="1" layoutHeightScaleType="1" widthUnitsValue="3" heightUnitsValue="3" name="Layout Style" id="0:11"/>
+            <ScriptedLayout scriptAssetId="0:80" name="Track" id="0:12"/>
+        </LayoutComponent>
+
+        <!-- The dot: x and y bound straight to the smoothed pointer. -->
+        <Shape name="Dot" id="0:20">
+            <DataBindContext sourcePathIds="0:40-0:46" propertyKey="13"/>
+            <DataBindContext sourcePathIds="0:40-0:47" propertyKey="14"/>
+            <Ellipse width="14" height="14" originX="0.5" originY="0.5" name="Path"/>
+            <Fill name="Fill">
+                <SolidColor colorValue="FF5FBDB2" name="Color"/>
+            </Fill>
+        </Shape>
+
+        <!-- The card: x (13), y (14) and rotation (15) all bound to the script. -->
+        <Node x="250" y="250" name="Card" id="0:30">
+            <DataBindContext sourcePathIds="0:40-0:44" propertyKey="13"/>
+            <DataBindContext sourcePathIds="0:40-0:45" propertyKey="14"/>
+            <DataBindContext sourcePathIds="0:40-0:48" propertyKey="15"/>
+            <Shape name="Face" id="0:31">
+                <Rectangle width="220" height="300" cornerRadiusTL="18" originX="0.5" originY="0.5" name="Path"/>
+                <Fill name="Fill">
+                    <LinearGradient startX="-110" startY="-150" endX="110" endY="150" name="Gradient">
+                        <GradientStop colorValue="FF2E3440" position="0"/>
+                        <GradientStop colorValue="FF1B6660" position="1"/>
+                    </LinearGradient>
+                </Fill>
+                <Stroke thickness="2" name="Edge">
+                    <SolidColor colorValue="FF5FBDB2" name="Color"/>
+                </Stroke>
+            </Shape>
+        </Node>
+
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Layer 1" id="0:8">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState/>
+            </StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+
+
+    <ViewModel defaultInstanceId="0:41" name="Pointer" id="0:40">
+        <ViewModelPropertyNumber name="cardX" id="0:44"/>
+        <ViewModelPropertyNumber name="cardY" id="0:45"/>
+        <ViewModelPropertyNumber name="cardRot" id="0:48"/>
+        <ViewModelPropertyNumber name="dotX" id="0:46"/>
+        <ViewModelPropertyNumber name="dotY" id="0:47"/>
+        <ViewModelInstance exports="true" name="Instance" id="0:41">
+            <ViewModelInstanceNumber propertyValue="250" viewModelPropertyId="0:44"/>
+            <ViewModelInstanceNumber propertyValue="250" viewModelPropertyId="0:45"/>
+            <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:48"/>
+            <ViewModelInstanceNumber propertyValue="250" viewModelPropertyId="0:46"/>
+            <ViewModelInstanceNumber propertyValue="250" viewModelPropertyId="0:47"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <ScriptAsset file="track.luau" name="track" id="0:80"/>
+</Rive>

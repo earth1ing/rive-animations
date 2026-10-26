@@ -1,0 +1,10 @@
+name: text_string_as
+main: main
+scripting: wasm
+artboard:
+  width: 900
+  height: 640
+  background: "#F5F0E8"
+logs:
+  file: build/rive.log
+  problems: build/problems.log

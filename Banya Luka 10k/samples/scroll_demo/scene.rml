@@ -1,0 +1,134 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" width="420" height="520" styleId="0:5" name="Artboard" id="0:2">
+        <Fill name="Background">
+            <SolidColor colorValue="FF16181D" name="Color"/>
+        </Fill>
+        <LayoutComponentStyle flexDirectionValue="column"
+                              paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10"
+                              paddingLeftUnitsValue="points" paddingRightUnitsValue="points"
+                              paddingTopUnitsValue="points" paddingBottomUnitsValue="points"
+                              name="Artboard Style" id="0:5"/>
+
+        <!-- Lower friction than the 8.0 default so a fling actually carries. -->
+        <ElasticScrollPhysics friction="2.5" speedMultiplier="1.2" elasticFactor="0.7"
+                              name="Physics V" id="0:90"/>
+        <ElasticScrollPhysics friction="2.5" speedMultiplier="1.2" elasticFactor="0.7"
+                              name="Physics H" id="0:91"/>
+
+        <!-- Vertical scroll view: fixed + clipped viewport, hugging content. -->
+        <LayoutComponent width="400" height="500" clip="true" styleId="0:11" name="Viewport" id="0:10">
+            <LayoutComponentStyle layoutWidthScaleType="fixed" layoutHeightScaleType="fixed"
+                                  flexDirectionValue="column"
+                                  cornerRadiusTL="8" cornerRadiusTR="8"
+                                  cornerRadiusBL="8" cornerRadiusBR="8"
+                                  name="Viewport Style" id="0:11"/>
+
+            <LayoutComponent width="400" styleId="0:13" name="Content" id="0:12">
+                <LayoutComponentStyle layoutWidthScaleType="fixed" layoutHeightScaleType="hug"
+                                      flexDirectionValue="column"
+                                      gapVertical="8" gapVerticalUnitsValue="points"
+                                      paddingLeft="8" paddingRight="8" paddingTop="8" paddingBottom="8"
+                                      paddingLeftUnitsValue="points" paddingRightUnitsValue="points"
+                                      paddingTopUnitsValue="points" paddingBottomUnitsValue="points"
+                                      name="Content Style" id="0:13"/>
+                <ScrollConstraint directionValue="vertical" physicsId="0:90" name="Scroll V" id="0:14"/>
+
+                <LayoutComponent width="384" height="70" styleId="0:21" name="Row 1" id="0:20">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="R1S" id="0:21"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF2E6FA8" name="C"/></Fill>
+                </LayoutComponent>
+                <LayoutComponent width="384" height="70" styleId="0:23" name="Row 2" id="0:22">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="R2S" id="0:23"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF35789B" name="C"/></Fill>
+                </LayoutComponent>
+                <LayoutComponent width="384" height="70" styleId="0:25" name="Row 3" id="0:24">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="R3S" id="0:25"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF3C818E" name="C"/></Fill>
+                </LayoutComponent>
+
+                <!-- Nested horizontal strip. Scrolling it vertically has to fall
+                     through to the list above; horizontally it keeps the gesture. -->
+                <LayoutComponent width="384" height="110" clip="true" styleId="0:31" name="Strip Viewport" id="0:30">
+                    <LayoutComponentStyle layoutWidthScaleType="fixed" layoutHeightScaleType="fixed"
+                                          flexDirectionValue="row"
+                                          cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6"
+                                          name="Strip Viewport Style" id="0:31"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF20242B" name="C"/></Fill>
+
+                    <LayoutComponent height="110" styleId="0:33" name="Strip Content" id="0:32">
+                        <LayoutComponentStyle layoutWidthScaleType="hug" layoutHeightScaleType="fixed"
+                                              flexDirectionValue="row"
+                                              gapHorizontal="8" gapHorizontalUnitsValue="points"
+                                              paddingLeft="8" paddingRight="8" paddingTop="8" paddingBottom="8"
+                                              paddingLeftUnitsValue="points" paddingRightUnitsValue="points"
+                                              paddingTopUnitsValue="points" paddingBottomUnitsValue="points"
+                                              name="Strip Content Style" id="0:33"/>
+                        <ScrollConstraint directionValue="horizontal" physicsId="0:91" name="Scroll H" id="0:34"/>
+
+                        <LayoutComponent width="120" height="94" styleId="0:41" name="Card 1" id="0:40">
+                            <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="C1S" id="0:41"/>
+                            <Fill name="Fill"><SolidColor colorValue="FFD9884A" name="C"/></Fill>
+                        </LayoutComponent>
+                        <LayoutComponent width="120" height="94" styleId="0:43" name="Card 2" id="0:42">
+                            <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="C2S" id="0:43"/>
+                            <Fill name="Fill"><SolidColor colorValue="FFCE7C55" name="C"/></Fill>
+                        </LayoutComponent>
+                        <LayoutComponent width="120" height="94" styleId="0:45" name="Card 3" id="0:44">
+                            <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="C3S" id="0:45"/>
+                            <Fill name="Fill"><SolidColor colorValue="FFC37060" name="C"/></Fill>
+                        </LayoutComponent>
+                        <LayoutComponent width="120" height="94" styleId="0:47" name="Card 4" id="0:46">
+                            <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="C4S" id="0:47"/>
+                            <Fill name="Fill"><SolidColor colorValue="FFB8646B" name="C"/></Fill>
+                        </LayoutComponent>
+                        <LayoutComponent width="120" height="94" styleId="0:49" name="Card 5" id="0:48">
+                            <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="C5S" id="0:49"/>
+                            <Fill name="Fill"><SolidColor colorValue="FFAD5876" name="C"/></Fill>
+                        </LayoutComponent>
+                        <LayoutComponent width="120" height="94" styleId="0:51" name="Card 6" id="0:50">
+                            <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="C6S" id="0:51"/>
+                            <Fill name="Fill"><SolidColor colorValue="FFA24C81" name="C"/></Fill>
+                        </LayoutComponent>
+                        <LayoutComponent width="120" height="94" styleId="0:53" name="Card 7" id="0:52">
+                            <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="C7S" id="0:53"/>
+                            <Fill name="Fill"><SolidColor colorValue="FF97408C" name="C"/></Fill>
+                        </LayoutComponent>
+                        <LayoutComponent width="120" height="94" styleId="0:55" name="Card 8" id="0:54">
+                            <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="C8S" id="0:55"/>
+                            <Fill name="Fill"><SolidColor colorValue="FF8C3497" name="C"/></Fill>
+                        </LayoutComponent>
+                    </LayoutComponent>
+                </LayoutComponent>
+
+                <LayoutComponent width="384" height="70" styleId="0:61" name="Row 4" id="0:60">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="R4S" id="0:61"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF438A81" name="C"/></Fill>
+                </LayoutComponent>
+                <LayoutComponent width="384" height="70" styleId="0:63" name="Row 5" id="0:62">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="R5S" id="0:63"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF4A9374" name="C"/></Fill>
+                </LayoutComponent>
+                <LayoutComponent width="384" height="70" styleId="0:65" name="Row 6" id="0:64">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="R6S" id="0:65"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF519C67" name="C"/></Fill>
+                </LayoutComponent>
+                <LayoutComponent width="384" height="70" styleId="0:67" name="Row 7" id="0:66">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="R7S" id="0:67"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF58A55A" name="C"/></Fill>
+                </LayoutComponent>
+                <LayoutComponent width="384" height="70" styleId="0:69" name="Row 8" id="0:68">
+                    <LayoutComponentStyle cornerRadiusTL="6" cornerRadiusTR="6" cornerRadiusBL="6" cornerRadiusBR="6" name="R8S" id="0:69"/>
+                    <Fill name="Fill"><SolidColor colorValue="FF5FAE4D" name="C"/></Fill>
+                </LayoutComponent>
+            </LayoutComponent>
+        </LayoutComponent>
+
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Layer 1" id="0:8">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState/>
+            </StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+</Rive>

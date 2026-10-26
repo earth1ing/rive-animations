@@ -1,0 +1,6 @@
+name: text_rain_as
+main: Main
+scripting: wasm
+logs:
+  file: build/rive.log
+  problems: build/problems.log

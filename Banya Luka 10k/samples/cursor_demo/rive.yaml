@@ -1,0 +1,11 @@
+name: cursor_demo
+# Native cursor, opt in: the scene writes a cursor name into this view model
+# property and the CLI window (or a linked rive_player) shows it.
+cursor:
+  property: cursor
+logs:
+  file: build/rive.log
+  problems: build/problems.log
+push:
+  projectId: 44573
+  fileId: 37103

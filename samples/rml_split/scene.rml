@@ -1,0 +1,24 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:40" clip="true" width="500" height="500" styleId="0:5" name="Artboard" id="0:2">
+        <Fill name="Background" id="0:83">
+            <SolidColor colorValue="FF1D1D1D" name="Color" id="0:84"/>
+        </Fill>
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+        <LayoutComponent width="500" height="500" styleId="0:11" name="Root Layout" id="0:10">
+            <LayoutComponentStyle layoutWidthScaleType="1" layoutHeightScaleType="1" widthUnitsValue="3" heightUnitsValue="3" name="Layout Style" id="0:11"/>
+            <ScriptedLayout scriptAssetId="0:80" name="VmSpin" id="0:12">
+                <ScriptInputViewModelProperty dataBindPathIds="0:40-0:45" name="settings" id="0:13"/>
+            </ScriptedLayout>
+        </LayoutComponent>
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Layer 1" id="0:8">
+                <AnyState x="200" y="-120" id="0:85"/>
+                <ExitState x="400" y="-120" id="0:86"/>
+                <EntryState id="0:87"/>
+            </StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+
+
+    <ScriptAsset file="main.luau" name="main" id="0:80"/>
+</Rive>

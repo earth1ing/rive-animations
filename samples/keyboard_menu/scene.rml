@@ -1,0 +1,343 @@
+<Rive version="1" kind="fragment">
+    <!-- Keyboard-driven main menu: up/down move a highlight bar, enter activates. -->
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:40" viewModelInstanceId="0:46"
+              width="500" height="320" styleId="0:5" name="Menu" id="0:2">
+
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+
+        <Text x="250" y="88" originX="0.5" originY="0.5" sizingValue="autoWidth" name="PlayLabel" id="0:20">
+            <TextStylePaint fontSize="28" fontAssetId="0:90" name="Style" id="0:23">
+                <Fill name="Fill"><SolidColor colorValue="FFF2F4F8" name="Color"/></Fill>
+            </TextStylePaint>
+            <TextValueRun styleId="0:23" text="Play" name="Run"/>
+        </Text>
+
+        <Text x="250" y="160" originX="0.5" originY="0.5" sizingValue="autoWidth" name="OptionsLabel" id="0:21">
+            <TextStylePaint fontSize="28" fontAssetId="0:90" name="Style" id="0:24">
+                <Fill name="Fill"><SolidColor colorValue="FFF2F4F8" name="Color"/></Fill>
+            </TextStylePaint>
+            <TextValueRun styleId="0:24" text="Options" name="Run"/>
+        </Text>
+
+        <Text x="250" y="232" originX="0.5" originY="0.5" sizingValue="autoWidth" name="QuitLabel" id="0:22">
+            <TextStylePaint fontSize="28" fontAssetId="0:90" name="Style" id="0:25">
+                <Fill name="Fill"><SolidColor colorValue="FFF2F4F8" name="Color"/></Fill>
+            </TextStylePaint>
+            <TextValueRun styleId="0:25" text="Quit" name="Run"/>
+        </Text>
+
+        <!-- highlight bar: declared after the labels so it sits behind them
+             (first sibling draws on top in RML). Its y is keyed per state. -->
+        <Shape x="250" y="88" name="Highlight" id="0:10">
+            <Rectangle width="360" height="56" cornerRadiusTL="12" name="Path" id="0:11"/>
+            <Fill name="Fill" id="0:12">
+                <SolidColor colorValue="FF3D7EFF" name="Color" id="0:13"/>
+            </Fill>
+        </Shape>
+
+        <!-- Full-bleed backdrop, declared last so it is behind everything. It is
+             also the input surface: keyboard listeners need their target to own
+             the FocusData, semantic listeners need it to own the SemanticData,
+             and the artboard itself is not offered as a target. -->
+        <Shape x="250" y="160" name="MenuSurface" id="0:6">
+            <FocusData id="0:3"/>
+            <SemanticData role="list" label="Menu" id="0:4"/>
+            <Rectangle width="500" height="320" name="Path" id="0:9"/>
+            <Fill name="Fill">
+                <SolidColor colorValue="FF14171C" name="Color"/>
+            </Fill>
+        </Shape>
+
+        <!-- events the host receives when an item is activated -->
+        <Event name="playChosen" id="0:80"/>
+        <Event name="optionsChosen" id="0:81"/>
+        <Event name="quitChosen" id="0:82"/>
+
+        <!-- one-key timelines: each parks the highlight on a row -->
+        <LinearAnimation duration="1" name="Select Play" id="0:30">
+            <KeyedObject objectId="0:10">
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="88" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="1" name="Select Options" id="0:31">
+            <KeyedObject objectId="0:10">
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="160" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="1" name="Select Quit" id="0:32">
+            <KeyedObject objectId="0:10">
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="232" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+
+        <!-- activation flash: holds the row, pulses the bar white and back -->
+        <LinearAnimation duration="18" name="Activate Play" id="0:33">
+            <KeyedObject objectId="0:10">
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="88" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:13">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FFFFFFFF" interpolationType="linear"/>
+                    <KeyFrameColor value="FF3D7EFF" interpolationType="linear" frame="18"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="18" name="Activate Options" id="0:34">
+            <KeyedObject objectId="0:10">
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="160" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:13">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FFFFFFFF" interpolationType="linear"/>
+                    <KeyFrameColor value="FF3D7EFF" interpolationType="linear" frame="18"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="18" name="Activate Quit" id="0:35">
+            <KeyedObject objectId="0:10">
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="232" interpolationType="linear"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="0:13">
+                <KeyedProperty propertyKey="37">
+                    <KeyFrameColor value="FFFFFFFF" interpolationType="linear"/>
+                    <KeyFrameColor value="FF3D7EFF" interpolationType="linear" frame="18"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+
+        <StateMachine name="State Machine 1" id="0:7">
+
+            <!-- Three listeners, each pairing a key with the equivalent
+                 screen-reader action so the menu is operable either way, and
+                 so --semantic-action can drive it headless in a test.
+
+                 keyPhase="1" is down only. The mask is 1 down, 2 repeat,
+                 4 up: setting all three would fire the listener on the press
+                 AND the release, moving two rows per keystroke, and 0 matches
+                 nothing at all. propertyValue="1" on the trigger write is
+                 load-bearing -- it defaults to 0, a write of 0 is a no-op, and
+                 the whole menu goes dead with a clean build and no problems
+                 reported. -->
+
+            <!-- up arrow / screen-reader decrement -> moveUp trigger -->
+            <StateMachineListener targetId="0:6" name="Move Up" id="0:50">
+                <ListenerInputTypeKeyboard listenerTypeValue="keyboard">
+                    <KeyboardInput keyType="up" keyPhase="1"/>
+                </ListenerInputTypeKeyboard>
+                <ListenerInputTypeSemantic listenerTypeValue="semanticAction">
+                    <SemanticInput actionType="decrease"/>
+                </ListenerInputTypeSemantic>
+                <ListenerViewModelChange>
+                    <BindablePropertyTrigger propertyValue="1">
+                        <DataBindContext sourcePathIds="0:40-0:42" propertyKey="686" direction="true"/>
+                    </BindablePropertyTrigger>
+                </ListenerViewModelChange>
+            </StateMachineListener>
+
+            <!-- down arrow / screen-reader increment -> moveDown trigger -->
+            <StateMachineListener targetId="0:6" name="Move Down" id="0:51">
+                <ListenerInputTypeKeyboard listenerTypeValue="keyboard">
+                    <KeyboardInput keyType="down" keyPhase="1"/>
+                </ListenerInputTypeKeyboard>
+                <ListenerInputTypeSemantic listenerTypeValue="semanticAction">
+                    <SemanticInput actionType="increase"/>
+                </ListenerInputTypeSemantic>
+                <ListenerViewModelChange>
+                    <BindablePropertyTrigger propertyValue="1">
+                        <DataBindContext sourcePathIds="0:40-0:43" propertyKey="686" direction="true"/>
+                    </BindablePropertyTrigger>
+                </ListenerViewModelChange>
+            </StateMachineListener>
+
+            <!-- enter (and keypad enter) / screen-reader tap -> activate trigger -->
+            <StateMachineListener targetId="0:6" name="Activate" id="0:52">
+                <ListenerInputTypeKeyboard listenerTypeValue="keyboard">
+                    <KeyboardInput keyType="enter" keyPhase="1"/>
+                    <KeyboardInput keyType="kpEnter" keyPhase="1"/>
+                </ListenerInputTypeKeyboard>
+                <ListenerInputTypeSemantic listenerTypeValue="semanticAction">
+                    <SemanticInput actionType="tap"/>
+                </ListenerInputTypeSemantic>
+                <ListenerViewModelChange>
+                    <BindablePropertyTrigger propertyValue="1">
+                        <DataBindContext sourcePathIds="0:40-0:44" propertyKey="686" direction="true"/>
+                    </BindablePropertyTrigger>
+                </ListenerViewModelChange>
+            </StateMachineListener>
+
+            <StateMachineLayer name="Selection" id="0:8">
+                <AnyState x="640" y="-120" id="0:60"/>
+                <ExitState x="840" y="-120" id="0:61"/>
+                <EntryState x="0" y="100" id="0:62">
+                    <StateTransition stateToId="0:70"/>
+                </EntryState>
+
+                <!-- Play selected. The focus action is what makes the keys
+                     work at all: a FocusData only registers a node as
+                     focusable, and with nothing focused the runtime has
+                     nobody to offer key events to. `rive` focuses the first
+                     FocusData itself, so leaving this out still works in the
+                     player and goes dead once the file is embedded.
+                     targetId names the node, not its FocusData child. -->
+                <AnimationState x="160" y="0" animationId="0:30" stateName="Play" id="0:70">
+                    <FocusActionTarget targetId="0:6"/>
+                    <ListenerViewModelChange>
+                        <BindablePropertyNumber propertyValue="0">
+                            <DataBindContext sourcePathIds="0:40-0:41" propertyKey="636" direction="true"/>
+                        </BindablePropertyNumber>
+                    </ListenerViewModelChange>
+                    <ListenerViewModelChange>
+                        <BindablePropertyString propertyValue="Play">
+                            <DataBindContext sourcePathIds="0:40-0:45" propertyKey="635" direction="true"/>
+                        </BindablePropertyString>
+                    </ListenerViewModelChange>
+                    <StateTransition stateToId="0:71" duration="120" enableEarlyExit="true">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyTrigger>
+                                    <DataBindContext sourcePathIds="0:40-0:43" propertyKey="686"/>
+                                </BindablePropertyTrigger>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueTriggerComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                    <StateTransition stateToId="0:73">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyTrigger>
+                                    <DataBindContext sourcePathIds="0:40-0:44" propertyKey="686"/>
+                                </BindablePropertyTrigger>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueTriggerComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+
+                <!-- Options selected -->
+                <AnimationState x="160" y="100" animationId="0:31" stateName="Options" id="0:71">
+                    <ListenerViewModelChange>
+                        <BindablePropertyNumber propertyValue="1">
+                            <DataBindContext sourcePathIds="0:40-0:41" propertyKey="636" direction="true"/>
+                        </BindablePropertyNumber>
+                    </ListenerViewModelChange>
+                    <ListenerViewModelChange>
+                        <BindablePropertyString propertyValue="Options">
+                            <DataBindContext sourcePathIds="0:40-0:45" propertyKey="635" direction="true"/>
+                        </BindablePropertyString>
+                    </ListenerViewModelChange>
+                    <StateTransition stateToId="0:72" duration="120" enableEarlyExit="true">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyTrigger>
+                                    <DataBindContext sourcePathIds="0:40-0:43" propertyKey="686"/>
+                                </BindablePropertyTrigger>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueTriggerComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                    <StateTransition stateToId="0:70" duration="120" enableEarlyExit="true">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyTrigger>
+                                    <DataBindContext sourcePathIds="0:40-0:42" propertyKey="686"/>
+                                </BindablePropertyTrigger>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueTriggerComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                    <StateTransition stateToId="0:74">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyTrigger>
+                                    <DataBindContext sourcePathIds="0:40-0:44" propertyKey="686"/>
+                                </BindablePropertyTrigger>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueTriggerComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+
+                <!-- Quit selected -->
+                <AnimationState x="160" y="200" animationId="0:32" stateName="Quit" id="0:72">
+                    <ListenerViewModelChange>
+                        <BindablePropertyNumber propertyValue="2">
+                            <DataBindContext sourcePathIds="0:40-0:41" propertyKey="636" direction="true"/>
+                        </BindablePropertyNumber>
+                    </ListenerViewModelChange>
+                    <ListenerViewModelChange>
+                        <BindablePropertyString propertyValue="Quit">
+                            <DataBindContext sourcePathIds="0:40-0:45" propertyKey="635" direction="true"/>
+                        </BindablePropertyString>
+                    </ListenerViewModelChange>
+                    <StateTransition stateToId="0:71" duration="120" enableEarlyExit="true">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyTrigger>
+                                    <DataBindContext sourcePathIds="0:40-0:42" propertyKey="686"/>
+                                </BindablePropertyTrigger>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueTriggerComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                    <StateTransition stateToId="0:75">
+                        <TransitionViewModelCondition>
+                            <TransitionPropertyViewModelComparator>
+                                <BindablePropertyTrigger>
+                                    <DataBindContext sourcePathIds="0:40-0:44" propertyKey="686"/>
+                                </BindablePropertyTrigger>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueTriggerComparator/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+
+                <!-- activation states: fire the event, flash, fall back to the row -->
+                <AnimationState x="400" y="0" animationId="0:33" stateName="Play Chosen" id="0:73">
+                    <StateMachineFireEvent eventId="0:80" occursValue="0"/>
+                    <StateTransition stateToId="0:70" enableExitTime="true"
+                                     exitTimeIsPercetange="true" exitTime="100"/>
+                </AnimationState>
+                <AnimationState x="400" y="100" animationId="0:34" stateName="Options Chosen" id="0:74">
+                    <StateMachineFireEvent eventId="0:81" occursValue="0"/>
+                    <StateTransition stateToId="0:71" enableExitTime="true"
+                                     exitTimeIsPercetange="true" exitTime="100"/>
+                </AnimationState>
+                <AnimationState x="400" y="200" animationId="0:35" stateName="Quit Chosen" id="0:75">
+                    <StateMachineFireEvent eventId="0:82" occursValue="0"/>
+                    <StateTransition stateToId="0:72" enableExitTime="true"
+                                     exitTimeIsPercetange="true" exitTime="100"/>
+                </AnimationState>
+            </StateMachineLayer>
+        </StateMachine>
+    </Artboard>
+
+    <FontAsset file="Inter.ttf" name="Inter" id="0:90"/>
+
+    <ViewModel defaultInstanceId="0:46" name="Menu" id="0:40">
+        <ViewModelPropertyNumber name="index" id="0:41"/>
+        <ViewModelPropertyTrigger name="moveUp" id="0:42"/>
+        <ViewModelPropertyTrigger name="moveDown" id="0:43"/>
+        <ViewModelPropertyTrigger name="activate" id="0:44"/>
+        <ViewModelPropertyString name="selectedLabel" id="0:45"/>
+
+        <ViewModelInstance exports="true" name="Default" id="0:46">
+            <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:41"/>
+            <ViewModelInstanceTrigger viewModelPropertyId="0:42"/>
+            <ViewModelInstanceTrigger viewModelPropertyId="0:43"/>
+            <ViewModelInstanceTrigger viewModelPropertyId="0:44"/>
+            <ViewModelInstanceString propertyValue="Play" viewModelPropertyId="0:45"/>
+        </ViewModelInstance>
+    </ViewModel>
+</Rive>

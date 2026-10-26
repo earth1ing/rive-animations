@@ -1,0 +1,12 @@
+name: tests_demo
+main: mathutil_test
+artboard:
+  width: 400
+  height: 300
+  background: "#101418"
+excludeFromRev:
+  scripts:
+    - "*_test"
+logs:
+  file: build/rive.log
+  problems: build/problems.log

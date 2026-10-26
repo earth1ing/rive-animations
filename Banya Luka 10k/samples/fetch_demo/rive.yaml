@@ -1,0 +1,9 @@
+name: fetch_demo
+main: main
+artboard:
+  width: 480
+  height: 320
+  background: "#1D1D1D"
+logs:
+  file: build/rive.log
+  problems: build/problems.log
