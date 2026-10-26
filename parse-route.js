@@ -97,7 +97,11 @@ async function run() {
         const projectFolder = baseName;
 
         fs.mkdirSync(projectFolder, { recursive: true });
-        fs.writeFileSync(path.join(projectFolder, 'rive.yaml'), `name: ${baseName}\n`);
+        
+        const yamlPath = path.join(projectFolder, 'rive.yaml');
+        if (!fs.existsSync(yamlPath)) {
+            fs.writeFileSync(yamlPath, `name: ${baseName}\n`);
+        }
 
         const rmlTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 <Rive kind="fragment" version="1">
@@ -159,11 +163,11 @@ ${rmlVertices.join('\n')}
         console.log('Сборка завершена.');
 
         console.log('Пуш проекта в Rive Editor...');
-        execSync('xvfb-run rive push', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+        execSync('xvfb-run rive push --yes', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
 
         console.log('Создание коммита в Git...');
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Use StateTransition and update route animation structure: ${projectFolder}"`, { stdio: 'inherit' });
+        execSync(`git commit -m "Use rive push --yes and preserve rive.yaml: ${projectFolder}"`, { stdio: 'inherit' });
 
         console.log('Готово! Всё собрано, запушено и закоммичено.');
 
