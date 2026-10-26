@@ -164,6 +164,7 @@
         <ExitState x="400" y="-120" id="0:86"/>
         <EntryState id="0:87"/>
         <AnimationState animationId="3:1" x="300" y="0" id="0:88"/>
+        <StateTransition stateFromId="0:87" stateToId="0:88" id="0:89"/>
       </StateMachineLayer>
     </StateMachine>
     <LinearAnimation duration="360" loopValue="loop" name="route" id="3:1">

@@ -121,6 +121,7 @@ ${rmlVertices.join('\n')}
         <ExitState x="400" y="-120" id="0:86"/>
         <EntryState id="0:87"/>
         <AnimationState animationId="3:1" x="300" y="0" id="0:88"/>
+        <StateTransition stateFromId="0:87" stateToId="0:88" id="0:89"/>
       </StateMachineLayer>
     </StateMachine>
     <LinearAnimation duration="360" loopValue="loop" name="route" id="3:1">
@@ -162,7 +163,7 @@ ${rmlVertices.join('\n')}
 
         console.log('Создание коммита в Git...');
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Fix trim end to 1 and add animation state: ${projectFolder}"`, { stdio: 'inherit' });
+        execSync(`git commit -m "Use StateTransition and update route animation structure: ${projectFolder}"`, { stdio: 'inherit' });
 
         console.log('Готово! Всё собрано, запушено и закоммичено.');
 
