@@ -108,11 +108,11 @@ ${rmlVertices.join('\n')}
       </PointsPath>
       <Stroke thickness="9" cap="round" id="0:3">
         <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236" />
-        <TrimPath end="0" modeValue="sequential" name="TrimWhite" id="0:4" />
+        <TrimPath end="1" modeValue="sequential" name="TrimWhite" id="0:4" />
       </Stroke>
       <Stroke thickness="3" cap="round" id="0:5">
         <SolidColor colorValue="FF00A8D6" name="BlueLine" id="0:237" />
-        <TrimPath end="0" modeValue="sequential" name="TrimBlue" id="0:6" />
+        <TrimPath end="1" modeValue="sequential" name="TrimBlue" id="0:6" />
       </Stroke>
     </Shape>
     <StateMachine name="State Machine 1" id="0:7">
@@ -120,6 +120,7 @@ ${rmlVertices.join('\n')}
         <AnyState x="200" y="-120" id="0:85"/>
         <ExitState x="400" y="-120" id="0:86"/>
         <EntryState id="0:87"/>
+        <AnimationState animationId="3:1" x="300" y="0" id="0:88"/>
       </StateMachineLayer>
     </StateMachine>
     <LinearAnimation duration="360" loopValue="loop" name="route" id="3:1">
@@ -161,7 +162,7 @@ ${rmlVertices.join('\n')}
 
         console.log('Создание коммита в Git...');
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Update Rive generator with editor-accurate RML structure and loop animation: ${projectFolder}"`, { stdio: 'inherit' });
+        execSync(`git commit -m "Fix trim end to 1 and add animation state: ${projectFolder}"`, { stdio: 'inherit' });
 
         console.log('Готово! Всё собрано, запушено и закоммичено.');
 
