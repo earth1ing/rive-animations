@@ -584,11 +584,10 @@ ${rmlWaypoints.join('\n')}
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
         console.log(`Структура проекта обновлена в папке ${projectFolder}/`);
 
-        console.log('Сборка .riv файла...');
+       console.log('Сборка .riv файла...');
         try {
-            // Исправлено: теперь вывод ошибок сборки не скрывается, а пишется в консоль
             execSync('xvfb-run rive . --once', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-            console.log('Сборка .riv файла завершена!');
+            console.log('Сборка .riv файла успешно завершена!');
         } catch (e) {
             console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
         }
