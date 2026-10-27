@@ -33,7 +33,7 @@ function parseGPX(content) {
     return points;
 }
 
-// Парсинг точек (<wpt>)
+// ИСПРАВЛЕННЫЙ ПАРСИНГ ТОЧЕК (<wpt>)
 function parseWaypoints(content) {
     const regex = /<wpt\s+lat="([^"]+)"\s+lon="([^"]+)">([\s\S]*?)<\/wpt>/g;
     let match;
@@ -80,7 +80,7 @@ function parseSVG(content) {
     if (points.length === 0) {
         const pathRegex = /d="([^"]+)"/g;
         let pathMatch;
-        while ((pathMatch = pathMatch.exec(content)) !== null) {
+        while ((pathMatch = pathRegex.exec(content)) !== null) {
             const numbers = pathMatch[1].match(/[-+]?[0-9]*\.?[0-9]+/g);
             if (numbers) {
                 for (let i = 0; i < numbers.length; i += 2) {
@@ -210,10 +210,7 @@ async function run() {
                 ? Math.round(550 - ((wpt.y - minY) / (maxY - minY || 1)) * 500)
                 : Math.round(50 + ((wpt.y - minY) / (maxY - minY || 1)) * 500);
 
-            // Числовой идентификатор формата Rive (0:500, 0:501, ...)
-            const wptId = `0:${500 + index}`;
-
-            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="${wptId}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
+            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="0:${index}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
         });
 
         const baseName = path.basename(fileName, ext).trim();
@@ -531,40 +528,73 @@ ${rmlWaypoints.join('\n')}
           <CubicDetachedVertex inRotation="1.5707964" inDistance="2.3970001" x="32.9995" y="50.359001" name="Component" id="3:572"/>
           <CubicDetachedVertex outRotation="-1.5707964" outDistance="1.436" x="32.9995" y="28.676001" name="Component" id="3:573"/>
           <CubicDetachedVertex inRotation="1.1660875" inDistance="1.4349167" outRotation="-1.9757247" outDistance="3.5892613" x="32.142502" y="24.5" name="Component" id="3:574"/>
+          <CubicDetachedVertex inRotation="1.5707964" inDistance="3.589" x="30.0005" y="14.06" name="Component" id="3:575"/>
+          <CubicDetachedVertex outRotation="-1.5707964" outDistance="3.589" x="30.0005" y="-15.06" name="Component" id="3:576"/>
+          <CubicDetachedVertex inRotation="1.9757247" inDistance="3.5892613" outRotation="-1.1663618" outDistance="1.435836" x="32.142502" y="-25.5" name="Component" id="3:577"/>
+          <CubicDetachedVertex inRotation="1.5707964" inDistance="1.436" x="32.9995" y="-29.676001" name="Component" id="3:578"/>
+          <CubicDetachedVertex outRotation="-1.5707964" outDistance="1.946" x="32.9995" y="-52.556" name="Component" id="3:579"/>
+          <CubicDetachedVertex inRotation="1.0065886" inDistance="1.9467167" outRotation="-2.1350935" outDistance="9.6181526" x="31.6875" y="-58.132" name="Component" id="3:580"/>
+          <CubicDetachedVertex inDistance="14.099" outRotation="3.1415927" outDistance="14.099" x="-0.00050000002" y="-67.5" name="Component" id="3:581"/>
+          <CubicDetachedVertex inRotation="-1.0064992" inDistance="9.6181526" outRotation="2.135004" outDistance="1.9467167" x="-31.688499" y="-58.132" name="Component" id="3:582"/>
+          <CubicDetachedVertex inRotation="-1.5707964" inDistance="1.946" x="-32.9995" y="-52.556" name="Component" id="3:583"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="1.436" x="-32.9995" y="-29.676001" name="Component" id="3:584"/>
+          <CubicDetachedVertex inRotation="-1.975871" inDistance="1.4362298" outRotation="1.1661241" outDistance="3.5888674" x="-32.142502" y="-25.5" name="Component" id="3:585"/>
+          <CubicDetachedVertex inRotation="-1.5707964" inDistance="3.589" x="-30.0005" y="-15.06" name="Component" id="3:586"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="3.589" x="-30.0005" y="14.06" name="Component" id="3:587"/>
+          <CubicDetachedVertex inRotation="-1.1661241" inDistance="3.5888674" outRotation="1.9761455" outDistance="1.4353107" x="-32.142502" y="24.5" name="Component" id="3:588"/>
+          <CubicDetachedVertex inRotation="-1.5707964" inDistance="1.436" x="-32.9995" y="28.676001" name="Component" id="3:589"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="2.3970001" x="-32.9995" y="50.359001" name="Component" id="3:590"/>
         </PointsPath>
-        <Stroke thickness="2" id="3:639">
-          <SolidColor colorValue="FF000000" name="Component" id="3:640"/>
+        <PointsPath isClosed="true" name="Path" id="3:639">
+          <StraightVertex radius="4" x="-36.997501" y="-13" name="Component" id="3:640"/>
+          <StraightVertex radius="4" x="36.997501" y="-13" name="Component" id="3:641"/>
+          <StraightVertex radius="4" x="36.997501" y="13" name="Component" id="3:642"/>
+          <StraightVertex radius="4" x="-36.997501" y="13" name="Component" id="3:643"/>
+        </PointsPath>
+        <PointsPath isClosed="true" x="-3.594939e-05" y="83.000053" rotation="-1.0421609e-14" name="Path" id="3:692">
+          <StraightVertex radius="4" x="-36.997501" y="-13" name="Component" id="3:693"/>
+          <StraightVertex radius="4" x="36.997501" y="-13" name="Component" id="3:694"/>
+          <StraightVertex radius="4" x="36.997501" y="13" name="Component" id="3:695"/>
+          <StraightVertex radius="4" x="-36.997501" y="13" name="Component" id="3:696"/>
+        </PointsPath>
+        <Stroke thickness="6" join="round" transformAffectsStroke="false" id="3:871">
+          <SolidColor colorValue="FFFFFFFF" id="3:872"/>
         </Stroke>
       </Shape>
     </Node>
+    <LayoutComponentStyle id="3:39"/>
+    <StateMachine name="State Machine 1" id="3:453">
+      <StateMachineLayer disabled="true" name="Layer 1" id="3:454">
+        <AnimationState animationId="3:450" x="160" id="3:451"/>
+        <EntryState id="3:455">
+          <StateTransition stateToId="3:451" id="3:452"/>
+        </EntryState>
+        <ExitState x="480" id="3:456"/>
+        <AnyState x="400" id="3:457"/>
+      </StateMachineLayer>
+    </StateMachine>
+    <LinearAnimation name="Timeline 1" id="3:450"/>
   </Artboard>
-  <LinearAnimation duration="0" name="Empty" id="3:453"/>
-  <Style id="3:39">
-    <Layout scaleX="1" scaleY="1"/>
-  </Style>
+  <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
 </Rive>`;
-
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
         console.log(`Структура проекта обновлена в папке ${projectFolder}/`);
 
-        console.log('Сборка .riv файла...');
-        try {
-            execSync(`npx rive --once ${path.join(projectFolder, 'scene.rml')} -o ${path.join(projectFolder, 'output.riv')}`, { stdio: 'inherit' });
-        } catch (buildErr) {
-            console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
-        }
+       console.log('Сборка .riv файла...');
+try {
+    execSync(`xvfb-run npx rive ${projectFolder} --once`, { stdio: 'inherit' });
+} catch (buildErr) {
+    console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
+}
 
         console.log('Создание коммита в Git...');
-        try {
-            execSync('git add .');
-            execSync(`git commit -m "Generate RML, download map background and parse waypoints: ${baseName}"`);
-        } catch (gitErr) {
-            console.log('Git commit пропущен или не требуется.');
-        }
+        execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+        execSync(`git commit -m "Generate RML, download map background and parse waypoints: ${projectFolder}"`, { stdio: 'inherit' });
 
         console.log('Готово!');
+
     } catch (err) {
-        console.error('Произошла ошибка:', err);
+        console.error('Ошибка:', err);
     } finally {
         rl.close();
     }
