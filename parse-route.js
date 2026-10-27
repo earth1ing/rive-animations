@@ -1,10 +1,28 @@
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 const { execSync } = require('child_process');
-const readline = require('readline/promises').createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
+const readline = require('readline/promises');
+
+// Функция для безопасного чтения токена из файла .env
+function loadEnv() {
+    const envPath = path.join(__dirname, '.env');
+    if (fs.existsSync(envPath)) {
+        const envContent = fs.readFileSync(envPath, 'utf8');
+        envContent.split(/\r?\n/).forEach(line => {
+            const parts = line.split('=');
+            if (parts.length === 2) {
+                const key = parts[0].trim();
+                const value = parts[1].trim();
+                process.env[key] = value;
+            }
+        });
+    }
+}
+
+// Загружаем переменные окружения и берем токен
+loadEnv();
+const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN;
 
 function parseGPX(content) {
     const regex = /<trkpt\s+lat="([^"]+)"\s+lon="([^"]+)">/g;
@@ -14,6 +32,23 @@ function parseGPX(content) {
         points.push({ x: parseFloat(match[2]), y: parseFloat(match[1]) });
     }
     return points;
+}
+
+function parseWaypoints(content) {
+    const regex = /<wpt\s+lat="([^"]+)"\s+lon="([^"]+)">([\s\S]*?)<\/wpt>/g;
+    let match;
+    const waypoints = [];
+    while ((match = regex.exec(content)) !== null) {
+        const lat = parseFloat(match[1]);
+        const lon = parseFloat(match[2]);
+        const inner = match[3];
+        
+        const nameMatch = /<name>([^<]+)<\/name>/.exec(inner);
+        const name = nameMatch ? nameMatch[1].trim() : `Waypoint (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
+
+        waypoints.push({ x: lon, y: lat, name });
+    }
+    return waypoints;
 }
 
 function parseSVG(content) {
@@ -45,32 +80,93 @@ function parseSVG(content) {
     return points;
 }
 
+function downloadMapImage(minLon, minLat, maxLon, maxLat, destPath) {
+    return new Promise((resolve) => {
+        if (!MAPBOX_TOKEN) {
+            console.log('Предупреждение: Токен MAPBOX_TOKEN не найден в файле .env. Скачивание карты пропущено.');
+            return resolve();
+        }
+
+        const url = `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/[${minLon},${minLat},${maxLon},${maxLat}]/800x600?access_token=${MAPBOX_TOKEN}`;
+        
+        console.log('Скачивание карты-подложки из Mapbox...');
+        https.get(url, (res) => {
+            if (res.statusCode !== 200) {
+                console.error(`Ошибка скачивания карты: HTTP статус ${res.statusCode}`);
+                res.resume();
+                return resolve();
+            }
+            const fileStream = fs.createWriteStream(destPath);
+            res.pipe(fileStream);
+            fileStream.on('finish', () => {
+                fileStream.close();
+                console.log('Карта-подложка успешно сохранена как map.png!');
+                resolve();
+            });
+        }).on('error', (err) => {
+            console.error('Ошибка соединения при скачивании карты:', err.message);
+            resolve();
+        });
+    });
+}
+
 async function run() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
     try {
-        const fileName = await readline.question('Введите имя файла (например, Banya Luka 10k.gpx): ');
+        const fileName = await rl.question('Введите имя файла (например, Banya Luka 10k.gpx): ');
         if (!fs.existsSync(fileName)) {
             console.log(`Ошибка: файл "${fileName}" не найден.`);
-            readline.close();
+            rl.close();
             return;
         }
 
         const fileContent = fs.readFileSync(fileName, 'utf8');
         const ext = path.extname(fileName).toLowerCase();
         let rawPoints = [];
+        let rawWaypoints = [];
 
-        if (ext === '.gpx') rawPoints = parseGPX(fileContent);
-        else if (ext === '.svg') rawPoints = parseSVG(fileContent);
-        else {
+        if (ext === '.gpx') {
+            rawPoints = parseGPX(fileContent);
+            rawWaypoints = parseWaypoints(fileContent);
+        } else if (ext === '.svg') {
+            rawPoints = parseSVG(fileContent);
+        } else {
             console.log('Неподдерживаемый формат. Используйте .gpx или .svg');
-            readline.close();
+            rl.close();
             return;
         }
 
         if (rawPoints.length === 0) {
-            console.log('Координаты не найдены.');
-            readline.close();
+            console.log('Координаты маршрута не найдены.');
+            rl.close();
             return;
         }
+
+        // Интерактивная обработка промежуточных точек (<wpt>)
+        const selectedWaypoints = [];
+        if (rawWaypoints.length > 0) {
+            console.log(`\nНайдено промежуточных точек в файле: ${rawWaypoints.length}`);
+            for (const wpt of rawWaypoints) {
+                const answer = await rl.question(`Оставить точку "${wpt.name}" на маршруте? (y/n): `);
+                if (answer.trim().toLowerCase() === 'y') {
+                    const customName = await rl.question(`Как назвать точку? [по умолчанию: ${wpt.name}]: `);
+                    selectedWaypoints.push({
+                        x: wpt.x,
+                        y: wpt.y,
+                        name: customName.trim() || wpt.name
+                    });
+                }
+            }
+        }
+
+        const lons = rawPoints.map(p => p.x);
+        const lats = rawPoints.map(p => p.y);
+        const minLon = Math.min(...lons), maxLon = Math.max(...lons);
+        const minLat = Math.min(...lats), maxLat = Math.max(...lats);
 
         let pointsToUse = rawPoints;
         if (rawPoints.length > 150) {
@@ -93,11 +189,24 @@ async function run() {
             rmlVertices.push(`      <StraightVertex radius="10" x="${normX}" y="${normY}" />`);
         });
 
+        // Конвертируем выбранные вейпоинты в пиксели холста
+        const rmlWaypoints = [];
+        selectedWaypoints.forEach((wpt, index) => {
+            const wptX = Math.round(50 + ((wpt.x - minX) / (maxX - minX || 1)) * 700);
+            const wptY = ext === '.gpx'
+                ? Math.round(550 - ((wpt.y - minY) / (maxY - minY || 1)) * 500)
+                : Math.round(50 + ((wpt.y - minY) / (maxY - minY || 1)) * 500);
+
+            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="wpt_${index}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
+        });
+
         const baseName = path.basename(fileName, ext).trim();
         const projectFolder = baseName;
 
         fs.mkdirSync(projectFolder, { recursive: true });
         
+        await downloadMapImage(minLon, minLat, maxLon, maxLat, path.join(projectFolder, 'map.png'));
+
         const yamlPath = path.join(projectFolder, 'rive.yaml');
         if (!fs.existsSync(yamlPath)) {
             fs.writeFileSync(yamlPath, `name: ${baseName}\n`);
@@ -106,6 +215,9 @@ async function run() {
         const rmlTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 <Rive kind="fragment" version="1">
   <Artboard defaultStateMachineId="0:7" name="RouteArtboard" width="800" height="600" id="0:238">
+    <!-- Фоновое изображение карты из Mapbox -->
+    <Image imageId="map_asset_id" width="800" height="600" x="0" y="0" name="MapBackground" id="0:200"/>
+
     <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" name="Car" complexDependency="true" id="3:459">
       <NestedStateMachine animationId="3:453" id="3:460"/>
       <FollowPathConstraint targetId="0:239" id="3:877"/>
@@ -123,6 +235,10 @@ ${rmlVertices.join('\n')}
         <TrimPath end="1" modeValue="sequential" name="TrimBlue" id="0:6" />
       </Stroke>
     </Shape>
+    
+    <!-- Промежуточные точки маршрута -->
+${rmlWaypoints.join('\n')}
+
     <StateMachine name="State Machine 1" id="0:7">
       <StateMachineLayer name="Layer 1" id="0:8">
         <AnyState x="200" y="-120" id="0:85"/>
@@ -166,7 +282,7 @@ ${rmlVertices.join('\n')}
   </Artboard>
   <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" isComponent="true" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
     <Node x="-0.12497568" y="-0.25060511" rotation="1.110223e-16" scaleX="0.25" scaleY="0.25" id="3:874">
-      <Shape x="22.611509" y="0.0013960004" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Glassâ↑" id="3:95">
+      <Shape x="22.611509" y="0.0013960004" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Glass↑" id="3:95">
         <PointsPath isClosed="true" name="Path" id="3:96">
           <CubicDetachedVertex outRotation="-0.22389977" outDistance="4.0849648" x="-17.327999" y="-9.0535002" name="Component" id="3:97"/>
           <CubicDetachedVertex inRotation="3.1415927" inDistance="7.8319998" outDistance="7.8319998" x="1.1368684e-13" y="-10.8885" name="Component" id="3:98"/>
@@ -451,6 +567,7 @@ ${rmlVertices.join('\n')}
     <LinearAnimation name="Timeline 1" id="3:450"/>
   </Artboard>
   <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
+  <ImageAsset fileName="map.png" name="map" id="map_asset_id"/>
 </Rive>`;
 
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
@@ -464,14 +581,14 @@ ${rmlVertices.join('\n')}
 
         console.log('Создание коммита в Git...');
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Generate RML without auto push: ${projectFolder}"`, { stdio: 'inherit' });
+        execSync(`git commit -m "Generate RML, download map background and parse waypoints: ${projectFolder}"`, { stdio: 'inherit' });
 
-        console.log('Готово! Всё собрано, сохранено и закоммичено (без пуша).');
+        console.log('Готово! Точкам заданы имена, карта скачена на фон, всё собрано и закоммичено.');
 
     } catch (err) {
         console.error('Ошибка:', err);
     } finally {
-        readline.close();
+        rl.close();
     }
 }
 
