@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Rive kind="fragment" version="1">
   <Artboard defaultStateMachineId="0:7" name="RouteArtboard" width="800" height="600" id="0:238">
-    <!-- Фоновое изображение карты из Mapbox -->
     <Image imageId="map_asset_id" width="800" height="600" x="0" y="0" name="MapBackground" id="0:200"/>
 
     <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" name="Car" complexDependency="true" id="3:459">
@@ -161,7 +160,6 @@
       </Stroke>
     </Shape>
     
-    <!-- Промежуточные точки маршрута -->
 
 
     <StateMachine name="State Machine 1" id="0:7">

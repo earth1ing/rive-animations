@@ -20,7 +20,6 @@ function loadEnv() {
     }
 }
 
-// Загружаем переменные окружения и берем токен
 loadEnv();
 const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN;
 
@@ -34,6 +33,7 @@ function parseGPX(content) {
     return points;
 }
 
+// ИСПРАВЛЕННЫЙ ПАРСИНГ ТОЧЕК (<wpt>)
 function parseWaypoints(content) {
     const regex = /<wpt\s+lat="([^"]+)"\s+lon="([^"]+)">([\s\S]*?)<\/wpt>/g;
     let match;
@@ -48,6 +48,20 @@ function parseWaypoints(content) {
 
         waypoints.push({ x: lon, y: lat, name });
     }
+
+    // Запасной вариант, если теги закрыты иначе
+    if (waypoints.length === 0) {
+        const simpleRegex = /<wpt\s+lat="([^"]+)"\s+lon="([^"]+)"[^>]*>/g;
+        let simpleMatch;
+        while ((simpleMatch = simpleRegex.exec(content)) !== null) {
+            waypoints.push({
+                x: parseFloat(simpleMatch[2]),
+                y: parseFloat(simpleMatch[1]),
+                name: `Waypoint (${parseFloat(simpleMatch[1]).toFixed(4)}, ${parseFloat(simpleMatch[2]).toFixed(4)})`
+            });
+        }
+    }
+
     return waypoints;
 }
 
@@ -189,7 +203,6 @@ async function run() {
             rmlVertices.push(`      <StraightVertex radius="10" x="${normX}" y="${normY}" />`);
         });
 
-        // Конвертируем выбранные вейпоинты в пиксели холста
         const rmlWaypoints = [];
         selectedWaypoints.forEach((wpt, index) => {
             const wptX = Math.round(50 + ((wpt.x - minX) / (maxX - minX || 1)) * 700);
@@ -215,7 +228,6 @@ async function run() {
         const rmlTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 <Rive kind="fragment" version="1">
   <Artboard defaultStateMachineId="0:7" name="RouteArtboard" width="800" height="600" id="0:238">
-    <!-- Фоновое изображение карты из Mapbox -->
     <Image imageId="map_asset_id" width="800" height="600" x="0" y="0" name="MapBackground" id="0:200"/>
 
     <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" name="Car" complexDependency="true" id="3:459">
@@ -236,7 +248,6 @@ ${rmlVertices.join('\n')}
       </Stroke>
     </Shape>
     
-    <!-- Промежуточные точки маршрута -->
 ${rmlWaypoints.join('\n')}
 
     <StateMachine name="State Machine 1" id="0:7">
@@ -575,15 +586,18 @@ ${rmlWaypoints.join('\n')}
 
         console.log('Сборка .riv файла...');
         try {
-            execSync('timeout 3 xvfb-run rive', { cwd: path.join(__dirname, projectFolder), stdio: 'ignore' });
-        } catch (e) {}
-        console.log('Сборка завершена.');
+            // Исправлено: теперь вывод ошибок сборки не скрывается, а пишется в консоль
+            execSync('xvfb-run rive build', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+            console.log('Сборка .riv файла завершена!');
+        } catch (e) {
+            console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
+        }
 
         console.log('Создание коммита в Git...');
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
         execSync(`git commit -m "Generate RML, download map background and parse waypoints: ${projectFolder}"`, { stdio: 'inherit' });
 
-        console.log('Готово! Точкам заданы имена, карта скачена на фон, всё собрано и закоммичено.');
+        console.log('Готово!');
 
     } catch (err) {
         console.error('Ошибка:', err);
