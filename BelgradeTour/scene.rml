@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Rive kind="fragment" version="1">
   <Artboard defaultStateMachineId="0:7" name="RouteArtboard" width="800" height="600" id="0:238">
-    <Image imageId="map_asset_id" width="800" height="600" x="0" y="0" name="MapBackground" id="0:200"/>
-
     <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" name="Car" complexDependency="true" id="3:459">
       <NestedStateMachine animationId="3:453" id="3:460"/>
       <FollowPathConstraint targetId="0:239" id="3:877"/>
@@ -373,7 +371,7 @@
             <StraightVertex x="36.997501" y="6.5" name="Component" id="3:229"/>
             <StraightVertex radius="4" x="36.99762" y="21.500065" name="Component" id="3:230"/>
             <StraightVertex radius="4" x="-36.997383" y="21.500065" name="Component" id="3:231"/>
-            <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:232"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:232"/>
           </PointsPath>
           <Fill name="Fill 1" id="3:233">
             <SolidColor colorValue="FFA1A1A1" name="Component" id="3:234"/>
@@ -387,7 +385,7 @@
             <StraightVertex x="36.997501" y="6.5" name="Component" id="3:240"/>
             <StraightVertex radius="4" x="36.997585" y="13.500046" name="Component" id="3:241"/>
             <StraightVertex radius="4" x="-36.997417" y="13.500046" name="Component" id="3:242"/>
-            <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:243"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:243"/>
           </PointsPath>
           <Fill name="Fill 1" id="3:244">
             <SolidColor colorValue="FFA1A1A1" name="Component" id="3:245"/>
@@ -401,7 +399,7 @@
             <StraightVertex x="36.997501" y="6.5" name="Component" id="3:251"/>
             <StraightVertex radius="4" x="36.997551" y="5.5000272" name="Component" id="3:252"/>
             <StraightVertex radius="4" x="-36.997452" y="5.5000272" name="Component" id="3:253"/>
-            <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:254"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:254"/>
           </PointsPath>
           <Fill name="Fill 1" id="3:255">
             <SolidColor colorValue="FFA1A1A1" name="Component" id="3:256"/>
@@ -415,7 +413,7 @@
             <StraightVertex x="36.997501" y="6.5" name="Component" id="3:262"/>
             <StraightVertex radius="4" x="36.997517" y="-2.4999909" name="Component" id="3:263"/>
             <StraightVertex radius="4" x="-36.997486" y="-2.4999909" name="Component" id="3:264"/>
-            <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:265"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:265"/>
           </PointsPath>
           <Fill name="Fill 1" id="3:266">
             <SolidColor colorValue="FFA1A1A1" name="Component" id="3:267"/>
@@ -490,5 +488,4 @@
     <LinearAnimation name="Timeline 1" id="3:450"/>
   </Artboard>
   <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
-  <ImageAsset fileName="map.png" name="map" id="map_asset_id"/>
 </Rive>
