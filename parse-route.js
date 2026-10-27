@@ -587,7 +587,7 @@ ${rmlWaypoints.join('\n')}
         console.log('Сборка .riv файла...');
         try {
             // Исправлено: теперь вывод ошибок сборки не скрывается, а пишется в консоль
-            execSync('xvfb-run rive build', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+            execSync('xvfb-run rive . --once', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
             console.log('Сборка .riv файла завершена!');
         } catch (e) {
             console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
