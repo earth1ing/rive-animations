@@ -581,11 +581,11 @@ ${rmlWaypoints.join('\n')}
         console.log(`Структура проекта обновлена в папке ${projectFolder}/`);
 
        console.log('Сборка .riv файла...');
-try {
-    execSync(`xvfb-run npx rive ${projectFolder} --once`, { stdio: 'inherit' });
-} catch (buildErr) {
-    console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
-}
+        try {
+            execSync('xvfb-run rive . --once', { cwd: projectFolder, stdio: 'inherit' });
+        } catch (buildErr) {
+            console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
+        }
 
         console.log('Создание коммита в Git...');
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
