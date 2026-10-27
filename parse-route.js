@@ -210,7 +210,7 @@ async function run() {
                 ? Math.round(550 - ((wpt.y - minY) / (maxY - minY || 1)) * 500)
                 : Math.round(50 + ((wpt.y - minY) / (maxY - minY || 1)) * 500);
 
-            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" wptId="0:${500 + index}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
+            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" Id="0:${500 + index}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
         });
 
         const baseName = path.basename(fileName, ext).trim();
