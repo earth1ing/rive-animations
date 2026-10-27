@@ -151,25 +151,25 @@
       </Stroke>
     </Shape>
     
-    <Node x="744" y="442" name="y" id="wpt_0">
+    <Node x="744" y="442" name="y" id="0:0">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="581" y="529" name="y" id="wpt_1">
+    <Node x="581" y="529" name="y" id="0:1">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="82" y="411" name="y" id="wpt_2">
+    <Node x="82" y="411" name="y" id="0:2">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="161" y="279" name="y" id="wpt_3">
+    <Node x="161" y="279" name="y" id="0:3">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="147" y="55" name="y" id="wpt_4">
+    <Node x="147" y="55" name="y" id="0:4">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="109" y="92" name="y" id="wpt_5">
+    <Node x="109" y="92" name="y" id="0:5">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="503" y="285" name="y" id="wpt_6">
+    <Node x="503" y="285" name="y" id="0:6">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
 
