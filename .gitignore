@@ -1,0 +1,9 @@
+# Игнорируем токен и настройки среды
+.env
+
+# Системные файлы macOS и Windows
+.DS_Store
+Thumbs.db
+
+# Временные папки сборки или node_modules (если появятся)
+node_modules/
