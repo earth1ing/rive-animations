@@ -549,7 +549,7 @@ ${rmlWaypoints.join('\n')}
 
         console.log('Сборка .riv файла...');
         try {
-            execSync(`npx rive build ${path.join(projectFolder, 'scene.rml')} -o ${path.join(projectFolder, 'output.riv')}`, { stdio: 'inherit' });
+            execSync(`npx rive --once ${path.join(projectFolder, 'scene.rml')} -o ${path.join(projectFolder, 'output.riv')}`, { stdio: 'inherit' });
         } catch (buildErr) {
             console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
         }
