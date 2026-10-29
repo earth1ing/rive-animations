@@ -7,3 +7,7 @@ Thumbs.db
 
 # Временные папки сборки или node_modules (если появятся)
 node_modules/
+.aider*
+.venv/
+rive-docs/
+Inter.ttf
