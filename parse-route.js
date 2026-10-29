@@ -249,7 +249,7 @@ async function run() {
                 ? Math.round(550 - ((wpt.y - minY) / (maxY - minY || 1)) * 500)
                 : Math.round(50 + ((wpt.y - minY) / (maxY - minY || 1)) * 500);
 
-            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" Id="0:${500 + index}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
+            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="0:${500 + index}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
         });
 
         const baseName = path.basename(fileName, ext).trim();
@@ -266,10 +266,10 @@ async function run() {
 
         const rmlTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 <Rive kind="fragment" version="1">
-  <Artboard defaultStateMachineId="0:7" name="RouteArtboard" width="800" height="600" id="0:238">
-    <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" name="Car" complexDependency="true" id="3:459">
-      <NestedStateMachine animationId="3:453" id="3:460"/>
-      <FollowPathConstraint targetId="0:239" id="3:877"/>
+  <Artboard defaultStateMachineid="0:7" name="RouteArtboard" width="800" height="600" id="0:238">
+    <NestedArtboard artboardid="3:38" x="524.5" y="167.5" rotation="0.90279633" name="Car" complexDependency="true" id="3:459">
+      <NestedStateMachine animationid="3:453" id="3:460"/>
+      <FollowPathConstraint targetid="0:239" id="3:877"/>
     </NestedArtboard>
     <Shape name="RoutePath" id="0:239">
       <PointsPath id="0:240">
@@ -292,13 +292,13 @@ ${rmlWaypoints.join('\n')}
         <AnyState x="200" y="-120" id="0:85"/>
         <ExitState x="400" y="-120" id="0:86"/>
         <EntryState id="0:87">
-          <StateTransition stateToId="0:88" id="3:30"/>
+          <StateTransition stateToid="0:88" id="3:30"/>
         </EntryState>
-        <AnimationState animationId="3:1" x="300" id="0:88"/>
+        <AnimationState animationid="3:1" x="300" id="0:88"/>
       </StateMachineLayer>
     </StateMachine>
     <LinearAnimation duration="360" loopValue="loop" name="route" id="3:1">
-      <KeyedObject objectId="0:6" id="3:16">
+      <KeyedObject objectid="0:6" id="3:16">
         <KeyedProperty property="end" id="3:17">
           <KeyFrameDouble interpolationType="cubic" id="3:18">
             <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:26"/>
@@ -308,7 +308,7 @@ ${rmlWaypoints.join('\n')}
           </KeyFrameDouble>
         </KeyedProperty>
       </KeyedObject>
-      <KeyedObject objectId="0:4" id="3:19">
+      <KeyedObject objectid="0:4" id="3:19">
         <KeyedProperty property="end" id="3:20">
           <KeyFrameDouble interpolationType="cubic" id="3:21">
             <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:29"/>
@@ -318,7 +318,7 @@ ${rmlWaypoints.join('\n')}
           </KeyFrameDouble>
         </KeyedProperty>
       </KeyedObject>
-      <KeyedObject objectId="3:877" id="3:878">
+      <KeyedObject objectid="3:877" id="3:878">
         <KeyedProperty property="distance" id="3:879">
           <KeyFrameDouble interpolationType="cubic" id="3:880">
             <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:883"/>
@@ -328,7 +328,7 @@ ${rmlWaypoints.join('\n')}
       </KeyedObject>
     </LinearAnimation>
   </Artboard>
-  <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" isComponent="true" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
+  <Artboard originX="0.5" originY="0.5" defaultStateMachineid="3:453" isComponent="true" width="34" height="19" styleid="3:39" x="900" name="Car" id="3:38">
     <Node x="-0.12497568" y="-0.25060511" rotation="1.110223e-16" scaleX="0.25" scaleY="0.25" id="3:874">
       <Shape x="22.611509" y="0.0013960004" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Glass↑" id="3:95">
         <PointsPath isClosed="true" name="Path" id="3:96">
@@ -437,9 +437,9 @@ ${rmlWaypoints.join('\n')}
     <LayoutComponentStyle id="3:39"/>
     <StateMachine name="State Machine 1" id="3:453">
       <StateMachineLayer disabled="true" name="Layer 1" id="3:454">
-        <AnimationState animationId="3:450" x="160" id="3:451"/>
+        <AnimationState animationid="3:450" x="160" id="3:451"/>
         <EntryState id="3:455">
-          <StateTransition stateToId="3:451" id="3:452"/>
+          <StateTransition stateToid="3:451" id="3:452"/>
         </EntryState>
         <ExitState x="480" id="3:456"/>
         <AnyState x="400" id="3:457"/>
@@ -447,7 +447,7 @@ ${rmlWaypoints.join('\n')}
     </StateMachine>
     <LinearAnimation name="Timeline 1" id="3:450"/>
   </Artboard>
-  <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
+  <ComponentAsset artboardid="3:38" name="Artboard 1" id="3:458"/>
 </Rive>`;
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
         console.log(`Структура проекта обновлена в папке ${projectFolder}/`);
