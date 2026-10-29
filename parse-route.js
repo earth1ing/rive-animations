@@ -199,21 +199,10 @@ async function run() {
         const epsilon = 0.001; // Параметр для контроля точности
         rawPoints = simplifyPoints(rawPoints, epsilon);
 
-        // Интерактивная обработка промежуточных точек (<wpt>)
-        const selectedWaypoints = [];
+        // Автоматическое добавление всех точек без интерактивного опроса
+        const selectedWaypoints = rawWaypoints;
         if (rawWaypoints.length > 0) {
-            console.log(`\nНайдено промежуточных точек в файле: ${rawWaypoints.length}`);
-            for (const wpt of rawWaypoints) {
-                const answer = await rl.question(`Оставить точку "${wpt.name}" на маршруте? (y/n): `);
-                if (answer.trim().toLowerCase() === 'y') {
-                    const customName = await rl.question(`Как назвать точку? [по умолчанию: ${wpt.name}]: `);
-                    selectedWaypoints.push({
-                        x: wpt.x,
-                        y: wpt.y,
-                        name: customName.trim() || wpt.name
-                    });
-                }
-            }
+            console.log(`\nАвтоматически добавлено точек из файла: ${rawWaypoints.length}`);
         }
 
         const lons = rawPoints.map(p => p.x);
