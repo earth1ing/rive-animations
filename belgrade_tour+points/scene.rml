@@ -34,25 +34,25 @@
       </Stroke>
     </Shape>
     
-    <Node x="744" y="440" name="Home" id="0:500">
+    <Node x="744" y="440" name="y" Id="0:500">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="581" y="528" name="Sveti Sava temple" id="0:501">
+    <Node x="581" y="528" name="y" Id="0:501">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="82" y="409" name="Promenad" id="0:502">
+    <Node x="82" y="409" name="y" Id="0:502">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="161" y="277" name="Old bridge" id="0:503">
+    <Node x="161" y="277" name="y" Id="0:503">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="147" y="52" name="Kalemegdan" id="0:504">
+    <Node x="147" y="52" name="y" Id="0:504">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="109" y="89" name="Bridge to Kalemegdan" id="0:505">
+    <Node x="109" y="89" name="y" Id="0:505">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="503" y="282" name="Skupstina" id="0:506">
+    <Node x="503" y="282" name="y" Id="0:506">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
 

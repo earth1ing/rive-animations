@@ -199,10 +199,21 @@ async function run() {
         const epsilon = 0.001; // Параметр для контроля точности
         rawPoints = simplifyPoints(rawPoints, epsilon);
 
-        // Автоматическое добавление всех точек без интерактивного опроса
-        const selectedWaypoints = rawWaypoints;
+        // Интерактивная обработка промежуточных точек (<wpt>)
+        const selectedWaypoints = [];
         if (rawWaypoints.length > 0) {
-            console.log(`\nАвтоматически добавлено точек из файла: ${rawWaypoints.length}`);
+            console.log(`\nНайдено промежуточных точек в файле: ${rawWaypoints.length}`);
+            for (const wpt of rawWaypoints) {
+                const answer = await rl.question(`Оставить точку "${wpt.name}" на маршруте? (y/n): `);
+                if (answer.trim().toLowerCase() === 'y') {
+                    const customName = await rl.question(`Как назвать точку? [по умолчанию: ${wpt.name}]: `);
+                    selectedWaypoints.push({
+                        x: wpt.x,
+                        y: wpt.y,
+                        name: customName.trim() || wpt.name
+                    });
+                }
+            }
         }
 
         const lons = rawPoints.map(p => p.x);
@@ -238,7 +249,7 @@ async function run() {
                 ? Math.round(550 - ((wpt.y - minY) / (maxY - minY || 1)) * 500)
                 : Math.round(50 + ((wpt.y - minY) / (maxY - minY || 1)) * 500);
 
-            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="0:${500 + index}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
+            rmlWaypoints.push(`    <Node x="${wptX}" y="${wptY}" name="${wpt.name}" Id="0:${500 + index}">\n      <!-- Подготовлено для анимации Fade In + Scale In -->\n    </Node>`);
         });
 
         const baseName = path.basename(fileName, ext).trim();
