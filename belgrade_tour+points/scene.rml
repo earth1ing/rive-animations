@@ -7,22 +7,22 @@
     </NestedArtboard>
     <Shape name="RoutePath" id="0:239">
       <PointsPath id="0:240">
-      <StraightVertex radius="10" x="750" y="438" />
-      <StraightVertex radius="10" x="514" y="550" />
-      <StraightVertex radius="10" x="338" y="459" />
-      <StraightVertex radius="10" x="282" y="477" />
-      <StraightVertex radius="10" x="124" y="397" />
-      <StraightVertex radius="10" x="50" y="440" />
-      <StraightVertex radius="10" x="159" y="296" />
-      <StraightVertex radius="10" x="167" y="205" />
-      <StraightVertex radius="10" x="107" y="88" />
-      <StraightVertex radius="10" x="134" y="50" />
-      <StraightVertex radius="10" x="189" y="52" />
-      <StraightVertex radius="10" x="194" y="83" />
-      <StraightVertex radius="10" x="373" y="193" />
-      <StraightVertex radius="10" x="414" y="261" />
-      <StraightVertex radius="10" x="475" y="262" />
-      <StraightVertex radius="10" x="651" y="372" />
+      <CubicVertex radius="10" x="750" y="438" />
+      <CubicVertex radius="10" x="514" y="550" />
+      <CubicVertex radius="10" x="338" y="459" />
+      <CubicVertex radius="10" x="282" y="477" />
+      <CubicVertex radius="10" x="124" y="397" />
+      <CubicVertex radius="10" x="50" y="440" />
+      <CubicVertex radius="10" x="159" y="296" />
+      <CubicVertex radius="10" x="167" y="205" />
+      <CubicVertex radius="10" x="107" y="88" />
+      <CubicVertex radius="10" x="134" y="50" />
+      <CubicVertex radius="10" x="189" y="52" />
+      <CubicVertex radius="10" x="194" y="83" />
+      <CubicVertex radius="10" x="373" y="193" />
+      <CubicVertex radius="10" x="414" y="261" />
+      <CubicVertex radius="10" x="475" y="262" />
+      <CubicVertex radius="10" x="651" y="372" />
       </PointsPath>
       <Stroke thickness="9" cap="round" id="0:3">
         <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236" />
@@ -173,7 +173,7 @@
           <CubicDetachedVertex outRotation="-1.5707964" outDistance="3.589" x="30.0005" y="-15.06" name="Component" id="3:154"/>
           <CubicDetachedVertex inRotation="1.9757247" inDistance="3.5892613" outRotation="-1.1663618" outDistance="1.435836" x="32.142502" y="-25.5" name="Component" id="3:155"/>
           <CubicDetachedVertex inRotation="1.5707964" inDistance="1.436" x="32.9995" y="-29.676001" name="Component" id="3:156"/>
-          <CubicDetachedVertex outRotation="-1.5707964" outDistance="1.946" x="32.9995" y="-52.556" name="Component" id="3:157"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="1.946" x="32.9995" y="-52.556" name="Component" id="3:157"/>
           <CubicDetachedVertex inRotation="1.0065886" inDistance="1.9467167" outRotation="-2.1350935" outDistance="9.6181526" x="31.6875" y="-58.132" name="Component" id="3:158"/>
           <CubicDetachedVertex inDistance="14.099" outRotation="3.1415927" outDistance="14.099" x="-0.00050000002" y="-67.5" name="Component" id="3:159"/>
           <CubicDetachedVertex inRotation="-1.0064992" inDistance="9.6181526" outRotation="2.135004" outDistance="1.9467167" x="-31.688499" y="-58.132" name="Component" id="3:160"/>
@@ -198,23 +198,8 @@
           <StraightVertex radius="4" x="36.997501" y="13" name="Component" id="3:695"/>
           <StraightVertex radius="4" x="-36.997501" y="13" name="Component" id="3:696"/>
         </PointsPath>
-        <Stroke thickness="6" join="round" transformAffectsStroke="false" id="3:871">
-          <SolidColor colorValue="FFFFFFFF" id="3:872"/>
-        </Stroke>
       </Shape>
     </Node>
-    <LayoutComponentStyle id="3:39"/>
-    <StateMachine name="State Machine 1" id="3:453">
-      <StateMachineLayer disabled="true" name="Layer 1" id="3:454">
-        <AnimationState animationId="3:450" x="160" id="3:451"/>
-        <EntryState id="3:455">
-          <StateTransition stateToId="3:451" id="3:452"/>
-        </EntryState>
-        <ExitState x="480" id="3:456"/>
-        <AnyState x="400" id="3:457"/>
-      </StateMachineLayer>
-    </StateMachine>
-    <LinearAnimation name="Timeline 1" id="3:450"/>
   </Artboard>
   <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
 </Rive>
