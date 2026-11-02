@@ -151,25 +151,25 @@
       </Stroke>
     </Shape>
     
-    <Node x="744" y="442" name="y" Id="0:500">
+    <Node x="744" y="442" name="y" id="0:500">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="581" y="529" name="y" Id="0:501">
+    <Node x="581" y="529" name="y" id="0:501">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="82" y="411" name="y" Id="0:502">
+    <Node x="82" y="411" name="y" id="0:502">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="161" y="279" name="y" Id="0:503">
+    <Node x="161" y="279" name="y" id="0:503">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="147" y="55" name="y" Id="0:504">
+    <Node x="147" y="55" name="y" id="0:504">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="109" y="92" name="y" Id="0:505">
+    <Node x="109" y="92" name="y" id="0:505">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
-    <Node x="503" y="285" name="y" Id="0:506">
+    <Node x="503" y="285" name="y" id="0:506">
       <!-- Подготовлено для анимации Fade In + Scale In -->
     </Node>
 
