@@ -33,7 +33,6 @@ function parseGPX(content) {
     return points;
 }
 
-// ИСПРАВЛЕННЫЙ ПАРСИНГ ТОЧЕК (<wpt>)
 function parseWaypoints(content) {
     const regex = /<wpt\s+lat="([^"]+)"\s+lon="([^"]+)">([\s\S]*?)<\/wpt>/g;
     let match;
@@ -47,19 +46,6 @@ function parseWaypoints(content) {
         const name = nameMatch ? nameMatch[1].trim() : `Waypoint (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
 
         waypoints.push({ x: lon, y: lat, name });
-    }
-
-    // Запасной вариант, если теги закрыты иначе
-    if (waypoints.length === 0) {
-        const simpleRegex = /<wpt\s+lat="([^"]+)"\s+lon="([^"]+)"[^>]*>/g;
-        let simpleMatch;
-        while ((simpleMatch = simpleRegex.exec(content)) !== null) {
-            waypoints.push({
-                x: parseFloat(simpleMatch[2]),
-                y: parseFloat(simpleMatch[1]),
-                name: `Waypoint (${parseFloat(simpleMatch[1]).toFixed(4)}, ${parseFloat(simpleMatch[2]).toFixed(4)})`
-            });
-        }
     }
 
     return waypoints;
@@ -124,7 +110,6 @@ function downloadMapImage(minLon, minLat, maxLon, maxLat, destPath) {
     });
 }
 
-// Дуглас-Пекер алгоритм для прореживания точек
 function simplifyPoints(points, epsilon) {
     if (points.length <= 2) return points;
 
@@ -157,6 +142,22 @@ function perpendicularDistance(point, start, end) {
     const closestY = start.y + u * dy;
     const closestPoint = { x: closestX, y: closestY };
     return Math.sqrt((point.x - closestX) ** 2 + (point.y - closestY) ** 2);
+}
+
+function filterGPSNoise(points, epsilon) {
+    const filteredPoints = [points[0]];
+    for (let i = 1; i < points.length - 1; i++) {
+        const prevPoint = filteredPoints[filteredPoints.length - 1];
+        const nextPoint = points[i + 1];
+        const angle = Math.atan2(nextPoint.y - prevPoint.y, nextPoint.x - prevPoint.x);
+        const prevAngle = Math.atan2(prevPoint.y - points[i].y, prevPoint.x - points[i].x);
+        const angleDiff = Math.abs(angle - prevAngle);
+        if (angleDiff > epsilon) {
+            filteredPoints.push(points[i]);
+        }
+    }
+    filteredPoints.push(points[points.length - 1]);
+    return filteredPoints;
 }
 
 async function run() {
@@ -199,6 +200,9 @@ async function run() {
         const epsilon = 0.001; // Параметр для контроля точности
         rawPoints = simplifyPoints(rawPoints, epsilon);
 
+        // Фильтрация GPS-шума
+        rawPoints = filterGPSNoise(rawPoints, epsilon);
+
         // Автоматическое добавление всех точек без интерактивного опроса
         const selectedWaypoints = rawWaypoints;
         if (rawWaypoints.length > 0) {
@@ -228,7 +232,7 @@ async function run() {
                 ? Math.round(550 - ((p.y - minY) / (maxY - minY || 1)) * 500)
                 : Math.round(50 + ((p.y - minY) / (maxY - minY || 1)) * 500);
 
-            rmlVertices.push(`      <StraightVertex radius="10" x="${normX}" y="${normY}" />`);
+            rmlVertices.push(`      <CubicVertex radius="10" x="${normX}" y="${normY}" />`);
         });
 
         const rmlWaypoints = [];
@@ -393,7 +397,7 @@ ${rmlWaypoints.join('\n')}
           <CubicDetachedVertex outRotation="-1.5707964" outDistance="3.589" x="30.0005" y="-15.06" name="Component" id="3:154"/>
           <CubicDetachedVertex inRotation="1.9757247" inDistance="3.5892613" outRotation="-1.1663618" outDistance="1.435836" x="32.142502" y="-25.5" name="Component" id="3:155"/>
           <CubicDetachedVertex inRotation="1.5707964" inDistance="1.436" x="32.9995" y="-29.676001" name="Component" id="3:156"/>
-          <CubicDetachedVertex outRotation="-1.5707964" outDistance="1.946" x="32.9995" y="-52.556" name="Component" id="3:157"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="1.946" x="32.9995" y="-52.556" name="Component" id="3:157"/>
           <CubicDetachedVertex inRotation="1.0065886" inDistance="1.9467167" outRotation="-2.1350935" outDistance="9.6181526" x="31.6875" y="-58.132" name="Component" id="3:158"/>
           <CubicDetachedVertex inDistance="14.099" outRotation="3.1415927" outDistance="14.099" x="-0.00050000002" y="-67.5" name="Component" id="3:159"/>
           <CubicDetachedVertex inRotation="-1.0064992" inDistance="9.6181526" outRotation="2.135004" outDistance="1.9467167" x="-31.688499" y="-58.132" name="Component" id="3:160"/>
@@ -418,23 +422,8 @@ ${rmlWaypoints.join('\n')}
           <StraightVertex radius="4" x="36.997501" y="13" name="Component" id="3:695"/>
           <StraightVertex radius="4" x="-36.997501" y="13" name="Component" id="3:696"/>
         </PointsPath>
-        <Stroke thickness="6" join="round" transformAffectsStroke="false" id="3:871">
-          <SolidColor colorValue="FFFFFFFF" id="3:872"/>
-        </Stroke>
       </Shape>
     </Node>
-    <LayoutComponentStyle id="3:39"/>
-    <StateMachine name="State Machine 1" id="3:453">
-      <StateMachineLayer disabled="true" name="Layer 1" id="3:454">
-        <AnimationState animationId="3:450" x="160" id="3:451"/>
-        <EntryState id="3:455">
-          <StateTransition stateToId="3:451" id="3:452"/>
-        </EntryState>
-        <ExitState x="480" id="3:456"/>
-        <AnyState x="400" id="3:457"/>
-      </StateMachineLayer>
-    </StateMachine>
-    <LinearAnimation name="Timeline 1" id="3:450"/>
   </Artboard>
   <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
 </Rive>`;
