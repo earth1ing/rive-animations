@@ -124,41 +124,6 @@ function downloadMapImage(minLon, minLat, maxLon, maxLat, destPath) {
     });
 }
 
-// Дуглас-Пекер алгоритм для прореживания точек
-function simplifyPoints(points, epsilon) {
-    if (points.length <= 2) return points;
-
-    let maxDist = 0;
-    let index = 0;
-
-    for (let i = 1; i < points.length - 1; i++) {
-        const dist = perpendicularDistance(points[i], points[0], points[points.length - 1]);
-        if (dist > maxDist) {
-            maxDist = dist;
-            index = i;
-        }
-    }
-
-    if (maxDist > epsilon) {
-        const left = simplifyPoints(points.slice(0, index + 1), epsilon);
-        const right = simplifyPoints(points.slice(index, points.length), epsilon);
-        return [...left.slice(0, -1), ...right];
-    } else {
-        return [points[0], points[points.length - 1]];
-    }
-}
-
-function perpendicularDistance(point, start, end) {
-    const dx = end.x - start.x;
-    const dy = end.y - start.y;
-    const length = Math.sqrt(dx * dx + dy * dy);
-    const u = ((point.x - start.x) * dx + (point.y - start.y) * dy) / (length * length);
-    const closestX = start.x + u * dx;
-    const closestY = start.y + u * dy;
-    const closestPoint = { x: closestX, y: closestY };
-    return Math.sqrt((point.x - closestX) ** 2 + (point.y - closestY) ** 2);
-}
-
 async function run() {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -194,10 +159,6 @@ async function run() {
             rl.close();
             return;
         }
-
-        // Прореживание точек с использованием алгоритма Дугласа-Пекера
-        const epsilon = 0.001; // Параметр для контроля точности
-        rawPoints = simplifyPoints(rawPoints, epsilon);
 
         // Интерактивная обработка промежуточных точек (<wpt>)
         const selectedWaypoints = [];
@@ -417,6 +378,173 @@ ${rmlWaypoints.join('\n')}
           <CubicDetachedVertex inRotation="-1.5707964" inDistance="1.436" x="-32.9995" y="28.676001" name="Component" id="3:167"/>
           <CubicDetachedVertex outRotation="1.5707964" outDistance="2.3970001" x="-32.9995" y="50.359001" name="Component" id="3:168"/>
         </PointsPath>
+        <Fill name="Fill 1" id="3:169">
+          <SolidColor colorValue="FF00A8D6" name="Component" id="3:170"/>
+        </Fill>
+      </Shape>
+      <Node x="41.50005" y="-6.9260597e-05" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Front wheels 2" id="3:171">
+        <Shape y="-6.5" name="FW 4" id="3:172">
+          <PointsPath isClosed="true" name="Path" id="3:173">
+            <StraightVertex radius="4" x="-36.997501" y="17.5" name="Component" id="3:174"/>
+            <StraightVertex radius="4" x="36.997501" y="17.5" name="Component" id="3:175"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:176"/>
+            <StraightVertex radius="4" x="36.997555" y="21.499989" name="Component" id="3:177"/>
+            <StraightVertex radius="4" x="-36.997448" y="21.499989" name="Component" id="3:178"/>
+            <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:179"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:180">
+            <SolidColor colorValue="FFA1A1A1" name="Component" id="3:181"/>
+          </Fill>
+          <ClippingShape sourceId="3:216" id="3:182"/>
+        </Shape>
+        <Shape y="-6.5" name="FW 3" id="3:183">
+          <PointsPath isClosed="true" name="Path" id="3:184">
+            <StraightVertex radius="4" x="-36.997391" y="9.4999781" name="Component" id="3:185"/>
+            <StraightVertex radius="4" x="36.997612" y="9.4999781" name="Component" id="3:186"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:187"/>
+            <StraightVertex radius="4" x="36.997555" y="13.499989" name="Component" id="3:188"/>
+            <StraightVertex radius="4" x="-36.997448" y="13.499989" name="Component" id="3:189"/>
+            <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:190"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:191">
+            <SolidColor colorValue="FFA1A1A1" name="Component" id="3:192"/>
+          </Fill>
+          <ClippingShape sourceId="3:216" id="3:193"/>
+        </Shape>
+        <Shape y="-6.5" name="FW 2" id="3:194">
+          <PointsPath isClosed="true" name="Path" id="3:195">
+            <StraightVertex radius="4" x="-36.997501" y="1.5" name="Component" id="3:196"/>
+            <StraightVertex radius="4" x="36.997501" y="1.5" name="Component" id="3:197"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:198"/>
+            <StraightVertex radius="4" x="36.997555" y="5.4999886" name="Component" id="3:199"/>
+            <StraightVertex radius="4" x="-36.997448" y="5.4999886" name="Component" id="3:200"/>
+            <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:201"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:202">
+            <SolidColor colorValue="FFA1A1A1" name="Component" id="3:203"/>
+          </Fill>
+          <ClippingShape sourceId="3:216" id="3:204"/>
+        </Shape>
+        <Shape y="-6.5" name="FW 1" id="3:205">
+          <PointsPath isClosed="true" name="Path" id="3:206">
+            <StraightVertex radius="4" x="-36.997501" y="-6.5" name="Component" id="3:207"/>
+            <StraightVertex radius="4" x="36.997501" y="-6.5" name="Component" id="3:208"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:209"/>
+            <StraightVertex radius="4" x="36.997555" y="-2.5" name="Component" id="3:210"/>
+            <StraightVertex radius="4" x="-36.997448" y="-2.5" name="Component" id="3:211"/>
+            <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:212"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:213">
+            <SolidColor colorValue="FFA1A1A1" name="Component" id="3:214"/>
+          </Fill>
+          <ClippingShape sourceId="3:216" id="3:215"/>
+        </Shape>
+        <Shape name="BG" id="3:216">
+          <PointsPath isClosed="true" name="Path" id="3:217">
+            <StraightVertex radius="4" x="-36.997501" y="-13" name="Component" id="3:218"/>
+            <StraightVertex radius="4" x="36.997501" y="-13" name="Component" id="3:219"/>
+            <StraightVertex radius="4" x="36.997501" y="13" name="Component" id="3:220"/>
+            <StraightVertex radius="4" x="-36.997501" y="13" name="Component" id="3:221"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:222">
+            <SolidColor colorValue="FF000000" name="Component" id="3:223"/>
+          </Fill>
+        </Shape>
+      </Node>
+      <Node x="-41.5" y="-7.2956085e-05" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Back wheels 2" id="3:224">
+        <Shape y="-6.5" name="BW 4" id="3:225">
+          <PointsPath isClosed="true" name="Path" id="3:226">
+            <StraightVertex radius="4" x="-36.997398" y="17.500055" name="Component" id="3:227"/>
+            <StraightVertex radius="4" x="36.997604" y="17.500055" name="Component" id="3:228"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:229"/>
+            <StraightVertex radius="4" x="36.99762" y="21.500065" name="Component" id="3:230"/>
+            <StraightVertex radius="4" x="-36.997383" y="21.500065" name="Component" id="3:231"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:232"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:233">
+            <SolidColor colorValue="FFA1A1A1" name="Component" id="3:234"/>
+          </Fill>
+          <ClippingShape sourceId="3:269" id="3:235"/>
+        </Shape>
+        <Shape y="-6.5" name="BW 3" id="3:236">
+          <PointsPath isClosed="true" name="Path" id="3:237">
+            <StraightVertex radius="4" x="-36.997433" y="9.5000362" name="Component" id="3:238"/>
+            <StraightVertex radius="4" x="36.99757" y="9.5000362" name="Component" id="3:239"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:240"/>
+            <StraightVertex radius="4" x="36.997585" y="13.500046" name="Component" id="3:241"/>
+            <StraightVertex radius="4" x="-36.997417" y="13.500046" name="Component" id="3:242"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:243"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:244">
+            <SolidColor colorValue="FFA1A1A1" name="Component" id="3:245"/>
+          </Fill>
+          <ClippingShape sourceId="3:269" id="3:246"/>
+        </Shape>
+        <Shape y="-6.5" name="BW 2" id="3:247">
+          <PointsPath isClosed="true" name="Path" id="3:248">
+            <StraightVertex radius="4" x="-36.997467" y="1.5000182" name="Component" id="3:249"/>
+            <StraightVertex radius="4" x="36.997536" y="1.5000182" name="Component" id="3:250"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:251"/>
+            <StraightVertex radius="4" x="36.997551" y="5.5000272" name="Component" id="3:252"/>
+            <StraightVertex radius="4" x="-36.997452" y="5.5000272" name="Component" id="3:253"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:254"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:255">
+            <SolidColor colorValue="FFA1A1A1" name="Component" id="3:256"/>
+          </Fill>
+          <ClippingShape sourceId="3:269" id="3:257"/>
+        </Shape>
+        <Shape y="-6.5" name="BW 1" id="3:258">
+          <PointsPath isClosed="true" name="Path" id="3:259">
+            <StraightVertex radius="4" x="-36.997501" y="-6.5" name="Component" id="3:260"/>
+            <StraightVertex radius="4" x="36.997501" y="-6.5" name="Component" id="3:261"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:262"/>
+            <StraightVertex radius="4" x="36.997517" y="-2.4999909" name="Component" id="3:263"/>
+            <StraightVertex radius="4" x="-36.997486" y="-2.4999909" name="Component" id="3:264"/>
+            <StraightVertex x="36.997501" y="6.5" name="Component" id="3:265"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:266">
+            <SolidColor colorValue="FFA1A1A1" name="Component" id="3:267"/>
+          </Fill>
+          <ClippingShape sourceId="3:269" id="3:268"/>
+        </Shape>
+        <Shape name="BG" id="3:269">
+          <PointsPath isClosed="true" name="Path" id="3:270">
+            <StraightVertex radius="4" x="-36.997501" y="-13" name="Component" id="3:271"/>
+            <StraightVertex radius="4" x="36.997501" y="-13" name="Component" id="3:272"/>
+            <StraightVertex radius="4" x="36.997501" y="13" name="Component" id="3:273"/>
+            <StraightVertex radius="4" x="-36.997501" y="13" name="Component" id="3:274"/>
+          </PointsPath>
+          <Fill name="Fill 1" id="3:275">
+            <SolidColor colorValue="FF000000" name="Component" id="3:276"/>
+          </Fill>
+        </Shape>
+      </Node>
+      <Shape x="41.50005" y="-6.9260597e-05" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Outline" id="3:638">
+        <PointsPath isClosed="true" isClockwise="false" x="0.0020572203" y="41.500057" rotation="-1.0421609e-14" name="Path" id="3:568">
+          <CubicDetachedVertex inRotation="-2.1237357" inDistance="2.3972237" outRotation="1.0177649" outDistance="11.137146" x="-31.265499" y="57.200001" name="Component" id="3:569"/>
+          <CubicDetachedVertex inRotation="3.1415927" inDistance="17.232" outDistance="17.231001" x="0.00050000002" y="67.5" name="Component" id="3:570"/>
+          <CubicDetachedVertex inRotation="2.1238277" inDistance="11.137146" outRotation="-1.018212" outDistance="2.3966985" x="31.265499" y="57.200001" name="Component" id="3:571"/>
+          <CubicDetachedVertex inRotation="1.5707964" inDistance="2.3970001" x="32.9995" y="50.359001" name="Component" id="3:572"/>
+          <CubicDetachedVertex outRotation="-1.5707964" outDistance="1.436" x="32.9995" y="28.676001" name="Component" id="3:573"/>
+          <CubicDetachedVertex inRotation="1.1660875" inDistance="1.4349167" outRotation="-1.9757247" outDistance="3.5892613" x="32.142502" y="24.5" name="Component" id="3:574"/>
+          <CubicDetachedVertex inRotation="1.5707964" inDistance="3.589" x="30.0005" y="14.06" name="Component" id="3:575"/>
+          <CubicDetachedVertex outRotation="-1.5707964" outDistance="3.589" x="30.0005" y="-15.06" name="Component" id="3:576"/>
+          <CubicDetachedVertex inRotation="1.9757247" inDistance="3.5892613" outRotation="-1.1663618" outDistance="1.435836" x="32.142502" y="-25.5" name="Component" id="3:577"/>
+          <CubicDetachedVertex inRotation="1.5707964" inDistance="1.436" x="32.9995" y="-29.676001" name="Component" id="3:578"/>
+          <CubicDetachedVertex outRotation="-1.5707964" outDistance="1.946" x="32.9995" y="-52.556" name="Component" id="3:579"/>
+          <CubicDetachedVertex inRotation="1.0065886" inDistance="1.9467167" outRotation="-2.1350935" outDistance="9.6181526" x="31.6875" y="-58.132" name="Component" id="3:580"/>
+          <CubicDetachedVertex inDistance="14.099" outRotation="3.1415927" outDistance="14.099" x="-0.00050000002" y="-67.5" name="Component" id="3:581"/>
+          <CubicDetachedVertex inRotation="-1.0064992" inDistance="9.6181526" outRotation="2.135004" outDistance="1.9467167" x="-31.688499" y="-58.132" name="Component" id="3:582"/>
+          <CubicDetachedVertex inRotation="-1.5707964" inDistance="1.946" x="-32.9995" y="-52.556" name="Component" id="3:583"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="1.436" x="-32.9995" y="-29.676001" name="Component" id="3:584"/>
+          <CubicDetachedVertex inRotation="-1.975871" inDistance="1.4362298" outRotation="1.1661241" outDistance="3.5888674" x="-32.142502" y="-25.5" name="Component" id="3:585"/>
+          <CubicDetachedVertex inRotation="-1.5707964" inDistance="3.589" x="-30.0005" y="-15.06" name="Component" id="3:586"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="3.589" x="-30.0005" y="14.06" name="Component" id="3:587"/>
+          <CubicDetachedVertex inRotation="-1.1661241" inDistance="3.5888674" outRotation="1.9761455" outDistance="1.4353107" x="-32.142502" y="24.5" name="Component" id="3:588"/>
+          <CubicDetachedVertex inRotation="-1.5707964" inDistance="1.436" x="-32.9995" y="28.676001" name="Component" id="3:589"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="2.3970001" x="-32.9995" y="50.359001" name="Component" id="3:590"/>
+        </PointsPath>
         <PointsPath isClosed="true" name="Path" id="3:639">
           <StraightVertex radius="4" x="-36.997501" y="-13" name="Component" id="3:640"/>
           <StraightVertex radius="4" x="36.997501" y="-13" name="Component" id="3:641"/>
@@ -452,7 +580,7 @@ ${rmlWaypoints.join('\n')}
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
         console.log(`Структура проекта обновлена в папке ${projectFolder}/`);
 
-        console.log('Сборка .riv файла...');
+       console.log('Сборка .riv файла...');
         try {
             execSync('xvfb-run rive . --once', { cwd: projectFolder, stdio: 'inherit' });
         } catch (buildErr) {
