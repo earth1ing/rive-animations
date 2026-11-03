@@ -258,8 +258,8 @@ async function run() {
         }
 
         const rmlTemplate = `<?xml version="1.0" encoding="UTF-8"?>
-<Rive version="1" kind="fragment">
-  <Artboard defaultStateMachineId="0:7" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
+<Rive kind="fragment" version="1">
+  <Artboard defaultStateMachineId="0:7" name="RouteArtboard" width="800" height="600" id="0:238">
     <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" name="Car" complexDependency="true" id="3:459">
       <NestedStateMachine animationId="3:453" id="3:460"/>
       <FollowPathConstraint targetId="0:239" id="3:877"/>
@@ -321,8 +321,8 @@ ${rmlWaypoints.join('\n')}
       </KeyedObject>
     </LinearAnimation>
   </Artboard>
-  <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" isComponent="true" spaceId="17:1" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
-    <Node x="-0.12497568" y="-0.25060511" rotation="1.110223e-16" scaleX="0.25" scaleY="0.25" id="3:874">
+  <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" isComponent="true" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
+    <Node x="-0.12497568" y="-0.25060511" rotation="1.570796" scaleX="0.25" scaleY="0.25" id="3:874">
       <Shape x="22.611509" y="0.0013960004" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Glass↑" id="3:95">
         <PointsPath isClosed="true" name="Path" id="3:96">
           <CubicDetachedVertex outRotation="-0.22389977" outDistance="4.0849648" x="-17.327999" y="-9.0535002" name="Component" id="3:97"/>
@@ -365,7 +365,7 @@ ${rmlWaypoints.join('\n')}
           <CubicDetachedVertex inRotation="1.3439975" inDistance="6.6708322" outRotation="1.5810215" outDistance="33.25174" x="-2.2709999" y="-40.292" name="Component" id="3:128"/>
           <CubicDetachedVertex inRotation="-1.6251754" inDistance="12.437385" outRotation="1.5158778" outDistance="1.5303072" x="-2.553" y="38.312" name="Component" id="3:129"/>
           <CubicDetachedVertex inRotation="2.0446775" inDistance="1.5295506" outRotation="-1.0970179" outDistance="3.4432743" x="-0.31600001" y="38.931" name="Component" id="3:130"/>
-          <CubicDetachedVertex inRotation="1.5707964" inDistance="2.523" outRotation="-1.5707964" outDistance="4.5" x="2.7279999" y="28.708" name="Component" id="3:131"/>
+          <CubicDetachedVertex inRotation="1.5707964" inDistance="2.397" outRotation="-1.5707964" outDistance="4.5" x="2.7279999" y="28.708" name="Component" id="3:131"/>
           <CubicDetachedVertex inRotation="1.5253731" inDistance="11.011357" x="2.7290001" y="-13.792" name="Component" id="3:132"/>
         </PointsPath>
         <Fill name="Fill 1" id="3:133">
@@ -378,7 +378,7 @@ ${rmlWaypoints.join('\n')}
           <CubicDetachedVertex inRotation="1.7977413" inDistance="6.6710567" outRotation="1.5606012" outDistance="33.251728" x="2.2715001" y="-40.292" name="Component" id="3:138"/>
           <CubicDetachedVertex inRotation="-1.5164173" inDistance="12.437385" outRotation="1.6250623" outDistance="1.5302526" x="2.5525" y="38.312" name="Component" id="3:139"/>
           <CubicDetachedVertex inRotation="1.0969151" inDistance="1.5295506" outRotation="-2.0443163" outDistance="3.4428179" x="0.31549999" y="38.931" name="Component" id="3:140"/>
-          <CubicDetachedVertex inRotation="1.5707964" inDistance="2.523" outRotation="-1.5707964" outDistance="4.5" x="-2.7284999" y="28.708" name="Component" id="3:141"/>
+          <CubicDetachedVertex inRotation="1.5707964" inDistance="2.397" outRotation="-1.5707964" outDistance="4.5" x="-2.7284999" y="28.708" name="Component" id="3:141"/>
           <CubicDetachedVertex inRotation="1.6162196" inDistance="11.011357" x="-2.7284999" y="-13.792" name="Component" id="3:142"/>
         </PointsPath>
         <Fill name="Fill 1" id="3:143">
@@ -397,7 +397,7 @@ ${rmlWaypoints.join('\n')}
           <CubicDetachedVertex outRotation="-1.5707964" outDistance="3.589" x="30.0005" y="-15.06" name="Component" id="3:154"/>
           <CubicDetachedVertex inRotation="1.9757247" inDistance="3.5892613" outRotation="-1.1663618" outDistance="1.435836" x="32.142502" y="-25.5" name="Component" id="3:155"/>
           <CubicDetachedVertex inRotation="1.5707964" inDistance="1.436" x="32.9995" y="-29.676001" name="Component" id="3:156"/>
-          <CubicDetachedVertex outRotation="-1.5707964" outDistance="1.946" x="32.9995" y="-52.556" name="Component" id="3:157"/>
+          <CubicDetachedVertex outRotation="1.5707964" outDistance="1.946" x="32.9995" y="-52.556" name="Component" id="3:157"/>
           <CubicDetachedVertex inRotation="1.0065886" inDistance="1.9467167" outRotation="-2.1350935" outDistance="9.6181526" x="31.6875" y="-58.132" name="Component" id="3:158"/>
           <CubicDetachedVertex inDistance="14.099" outRotation="3.1415927" outDistance="14.099" x="-0.00050000002" y="-67.5" name="Component" id="3:159"/>
           <CubicDetachedVertex inRotation="-1.0064992" inDistance="9.6181526" outRotation="2.135004" outDistance="1.9467167" x="-31.688499" y="-58.132" name="Component" id="3:160"/>
@@ -410,14 +410,22 @@ ${rmlWaypoints.join('\n')}
           <CubicDetachedVertex inRotation="-1.5707964" inDistance="1.436" x="-32.9995" y="28.676001" name="Component" id="3:167"/>
           <CubicDetachedVertex outRotation="1.5707964" outDistance="2.3970001" x="-32.9995" y="50.359001" name="Component" id="3:168"/>
         </PointsPath>
-        <Fill name="Fill 1" id="3:169">
-          <SolidColor colorValue="FF00A8D6" name="Component" id="3:170"/>
-        </Fill>
+        <PointsPath isClosed="true" name="Path" id="3:639">
+          <StraightVertex radius="4" x="-36.997501" y="-13" name="Component" id="3:640"/>
+          <StraightVertex radius="4" x="36.997501" y="-13" name="Component" id="3:641"/>
+          <StraightVertex radius="4" x="36.997501" y="13" name="Component" id="3:642"/>
+          <StraightVertex radius="4" x="-36.997501" y="13" name="Component" id="3:643"/>
+        </PointsPath>
+        <PointsPath isClosed="true" x="-3.594939e-05" y="83.000053" rotation="-1.0421609e-14" name="Path" id="3:692">
+          <StraightVertex radius="4" x="-36.997501" y="-13" name="Component" id="3:693"/>
+          <StraightVertex radius="4" x="36.997501" y="-13" name="Component" id="3:694"/>
+          <StraightVertex radius="4" x="36.997501" y="13" name="Component" id="3:695"/>
+          <StraightVertex radius="4" x="-36.997501" y="13" name="Component" id="3:696"/>
+        </PointsPath>
       </Shape>
     </Node>
   </Artboard>
   <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
-  <Space name="Space 1" id="17:1"/>
 </Rive>`;
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
         console.log(`Структура проекта обновлена в папке ${projectFolder}/`);
