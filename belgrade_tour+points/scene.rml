@@ -7,22 +7,22 @@
     </NestedArtboard>
     <Shape name="RoutePath" id="0:239">
       <PointsPath id="0:240">
-      <CubicVertex radius="10" x="750" y="438" />
-      <CubicVertex radius="10" x="514" y="550" />
-      <CubicVertex radius="10" x="338" y="459" />
-      <CubicVertex radius="10" x="282" y="477" />
-      <CubicVertex radius="10" x="124" y="397" />
-      <CubicVertex radius="10" x="50" y="440" />
-      <CubicVertex radius="10" x="159" y="296" />
-      <CubicVertex radius="10" x="167" y="205" />
-      <CubicVertex radius="10" x="107" y="88" />
-      <CubicVertex radius="10" x="134" y="50" />
-      <CubicVertex radius="10" x="189" y="52" />
-      <CubicVertex radius="10" x="194" y="83" />
-      <CubicVertex radius="10" x="373" y="193" />
-      <CubicVertex radius="10" x="414" y="261" />
-      <CubicVertex radius="10" x="475" y="262" />
-      <CubicVertex radius="10" x="651" y="372" />
+      <StraightVertex radius="10" x="750" y="438" />
+      <StraightVertex radius="10" x="514" y="550" />
+      <StraightVertex radius="10" x="338" y="459" />
+      <StraightVertex radius="10" x="282" y="477" />
+      <StraightVertex radius="10" x="124" y="397" />
+      <StraightVertex radius="10" x="50" y="440" />
+      <StraightVertex radius="10" x="159" y="296" />
+      <StraightVertex radius="10" x="167" y="205" />
+      <StraightVertex radius="10" x="107" y="88" />
+      <StraightVertex radius="10" x="134" y="50" />
+      <StraightVertex radius="10" x="189" y="52" />
+      <StraightVertex radius="10" x="194" y="83" />
+      <StraightVertex radius="10" x="373" y="193" />
+      <StraightVertex radius="10" x="414" y="261" />
+      <StraightVertex radius="10" x="475" y="262" />
+      <StraightVertex radius="10" x="651" y="372" />
       </PointsPath>
       <Stroke thickness="9" cap="round" id="0:3">
         <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236" />

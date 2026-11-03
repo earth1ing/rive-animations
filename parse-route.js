@@ -232,7 +232,7 @@ async function run() {
                 ? Math.round(550 - ((p.y - minY) / (maxY - minY || 1)) * 500)
                 : Math.round(50 + ((p.y - minY) / (maxY - minY || 1)) * 500);
 
-            rmlVertices.push(`      <CubicVertex radius="10" x="${normX}" y="${normY}" />`);
+            rmlVertices.push(`      <StraightVertex radius="10" x="${normX}" y="${normY}" />`);
         });
 
         const rmlWaypoints = [];
