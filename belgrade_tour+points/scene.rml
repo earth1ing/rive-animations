@@ -7,22 +7,22 @@
         </NestedArtboard>
         <Shape name="RoutePath" id="0:239">
             <PointsPath id="0:240">
-                <StraightVertex radius="10" x="66" y="547" id="0:884"/>
-                <StraightVertex radius="10" x="61" y="550" id="0:885"/>
-                <StraightVertex radius="10" x="57" y="548" id="0:886"/>
-                <StraightVertex radius="10" x="55" y="548" id="0:887"/>
-                <StraightVertex radius="10" x="52" y="546" id="0:888"/>
-                <StraightVertex radius="10" x="50" y="547" id="0:889"/>
-                <StraightVertex radius="10" x="53" y="543" id="0:890"/>
-                <StraightVertex radius="10" x="53" y="541" id="0:891"/>
-                <StraightVertex radius="10" x="51" y="538" id="0:892"/>
-                <StraightVertex radius="10" x="52" y="537" id="0:893"/>
-                <StraightVertex radius="10" x="53" y="537" id="0:894"/>
-                <StraightVertex radius="10" x="53" y="538" id="0:895"/>
-                <StraightVertex radius="10" x="57" y="541" id="0:896"/>
-                <StraightVertex radius="10" x="58" y="543" id="0:897"/>
-                <StraightVertex radius="10" x="60" y="543" id="0:898"/>
-                <StraightVertex radius="10" x="64" y="545" id="0:899"/>
+                <StraightVertex radius="10" x="750" y="438" id="0:884"/>
+                <StraightVertex radius="10" x="514" y="550" id="0:885"/>
+                <StraightVertex radius="10" x="338" y="459" id="0:886"/>
+                <StraightVertex radius="10" x="282" y="477" id="0:887"/>
+                <StraightVertex radius="10" x="124" y="397" id="0:888"/>
+                <StraightVertex radius="10" x="50" y="440" id="0:889"/>
+                <StraightVertex radius="10" x="159" y="296" id="0:890"/>
+                <StraightVertex radius="10" x="167" y="205" id="0:891"/>
+                <StraightVertex radius="10" x="107" y="88" id="0:892"/>
+                <StraightVertex radius="10" x="134" y="50" id="0:893"/>
+                <StraightVertex radius="10" x="189" y="52" id="0:894"/>
+                <StraightVertex radius="10" x="194" y="83" id="0:895"/>
+                <StraightVertex radius="10" x="373" y="193" id="0:896"/>
+                <StraightVertex radius="10" x="414" y="261" id="0:897"/>
+                <StraightVertex radius="10" x="475" y="262" id="0:898"/>
+                <StraightVertex radius="10" x="651" y="372" id="0:899"/>
             </PointsPath>
             <Stroke thickness="9" cap="round" id="0:3">
                 <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>

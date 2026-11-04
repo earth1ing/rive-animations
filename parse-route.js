@@ -220,24 +220,18 @@ async function run() {
         const minX = Math.min(...xs), maxX = Math.max(...xs);
         const minY = Math.min(...ys), maxY = Math.max(...ys);
 
-        // Расчет коэффициента с учетом широты местности (для компенсации вертикального сжатия)
-        const avgLat = (minLat + maxY) / 2;
-        const latCos = Math.cos(avgLat * Math.PI / 180);
-
-        const spanX = (maxX - minX) * latCos;
-        const spanY = maxY - minY;
-        const maxSpan = Math.max(spanX, spanY, 1);
-
-        const targetWidth = 700;
-        const targetHeight = 500;
+        // Расчет средней широты трека для компенсации вертикального сжатия
+        const avgLat = lats.reduce((sum, lat) => sum + lat, 0) / lats.length;
+        const latRad = avgLat * (Math.PI / 180);
+        const latCorrection = Math.cos(latRad); // Коэффициент коррекции по широте
 
         const rmlVertices = [];
         pointsToUse.forEach((p, idx) => {
-            // Корректная пропорциональная нормализация с учетом долготы и широты
-            const normX = Math.round(50 + (((p.x - minX) * latCos) / maxSpan) * targetWidth);
+            // Независимое масштабирование осей с коррекцией долготы по широте
+            const normX = Math.round(50 + (((p.x - minX) * latCorrection) / ((maxX - minX) * latCorrection || 1)) * 700);
             const normY = ext === '.gpx'
-                ? Math.round(550 - ((p.y - minY) / maxSpan) * targetHeight)
-                : Math.round(50 + ((p.y - minY) / maxSpan) * targetHeight);
+                ? Math.round(550 - ((p.y - minY) / (maxY - minY || 1)) * 500)
+                : Math.round(50 + ((p.y - minY) / (maxY - minY || 1)) * 500);
 
             rmlVertices.push(`                <StraightVertex radius="10" x="${normX}" y="${normY}" id="0:${884 + idx}"/>`);
         });
