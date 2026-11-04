@@ -204,7 +204,7 @@ async function run() {
             console.log(`\nАвтоматически добавлено точек из файла: ${rawWaypoints.length}`);
         }
 
-        const lons = rawPoints.map(p => p.x);
+       const lons = rawPoints.map(p => p.x);
         const lats = rawPoints.map(p => p.y);
         const minLon = Math.min(...lons), maxLon = Math.max(...lons);
         const minLat = Math.min(...lats), maxLat = Math.max(...lats);
