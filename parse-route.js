@@ -89,7 +89,7 @@ function downloadMapImage(minLon, minLat, maxLon, maxLat, destPath) {
 
         const url = `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/[${minLon},${minLat},${maxLon},${maxLat}]/800x600?access_token=${MAPBOX_TOKEN}`;
         
-        console.log('Скачивание карты-подложки из Mapbox...');
+        console.log('Скачивание карты-подложки с учетом отступов из Mapbox...');
         https.get(url, (res) => {
             if (res.statusCode !== 200) {
                 console.error(`Ошибка скачивания карты: HTTP статус ${res.statusCode}`);
@@ -257,12 +257,29 @@ async function run() {
             rmlWaypoints.push(`        <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="0:${500 + index}"/>`);
         });
 
+        // Единая переменная отступа (padding) в пикселях для карты и трека
+        const padding = 50;
+        const targetWidth = 800 - padding * 2;   // 700
+        const targetHeight = 600 - padding * 2;  // 500
+
+        // Расчет географического отступа (в градусах) на основе пиксельного отступа
+        const lonSpan = maxLon - minLon;
+        const latSpan = maxLat - minLat;
+        const lonPadding = lonSpan * (padding / targetWidth);
+        const latPadding = latSpan * (padding / targetHeight);
+
+        const paddedMinLon = minLon - lonPadding;
+        const paddedMinLat = minLat - latPadding;
+        const paddedMaxLon = maxLon + lonPadding;
+        const paddedMaxLat = maxLat + latPadding;
+
         const baseName = path.basename(fileName, ext).trim();
         const projectFolder = baseName;
 
         fs.mkdirSync(projectFolder, { recursive: true });
         
-        await downloadMapImage(minLon, minLat, maxLon, maxLat, path.join(projectFolder, 'map.png'));
+        // Передаем расширенный bbox с отступом в функцию скачивания
+        await downloadMapImage(paddedMinLon, paddedMinLat, paddedMaxLon, paddedMaxLat, path.join(projectFolder, 'map.png'));
 
         const yamlPath = path.join(projectFolder, 'rive.yaml');
         if (!fs.existsSync(yamlPath)) {
