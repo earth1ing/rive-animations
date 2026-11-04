@@ -136,11 +136,7 @@ async function run() {
         const minLon = Math.min(...lons), maxLon = Math.max(...lons);
         const minLat = Math.min(...lats), maxLat = Math.max(...lats);
 
-        let pointsToUse = rawPoints;
-        if (rawPoints.length > 150) {
-            const step = Math.ceil(rawPoints.length / 150);
-            pointsToUse = rawPoints.filter((_, index) => index % step === 0);
-        }
+        const pointsToUse = rawPoints;
 
         const xs = pointsToUse.map(p => p.x), ys = pointsToUse.map(p => p.y);
         const minX = Math.min(...xs), maxX = Math.max(...xs);
@@ -185,16 +181,17 @@ async function run() {
         const yamlPath = path.join(projectFolder, 'rive.yaml');
         if (!fs.existsSync(yamlPath)) fs.writeFileSync(yamlPath, `name: ${baseName}\n`);
 
-        // Читаем внешний шаблон разметки
-        const templatePath = path.join(__dirname, 'route-template.rml');
-        let rmlTemplate = fs.readFileSync(templatePath, 'utf8');
+        // Вместо гигантской строки rmlTemplate в скрипте теперь просто чтение файла:
+const templatePath = path.join(__dirname, 'route-template.rml');
+let rmlTemplate = fs.readFileSync(templatePath, 'utf8');
 
-        // Подставляем сгенерированные вершины и вейпоинты в шаблон
-        rmlTemplate = rmlTemplate
-            .replace('{{RML_VERTICES}}', rmlVertices.join('\n'))
-            .replace('{{RML_WAYPOINTS}}', rmlWaypoints.join('\n'));
+// Подставляем сгенерированные вершины и вейпоинты в шаблон:
+rmlTemplate = rmlTemplate
+    .replace('{{RML_VERTICES}}', rmlVertices.join('\n'))
+    .replace('{{RML_WAYPOINTS}}', rmlWaypoints.join('\n'));
 
-        // Записываем итоговый файл сцены в папку проекта
+fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
+
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
         console.log(`Проект обновлен в ${projectFolder}/`);
 
