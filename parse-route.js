@@ -220,28 +220,39 @@ async function run() {
         const minX = Math.min(...xs), maxX = Math.max(...xs);
         const minY = Math.min(...ys), maxY = Math.max(...ys);
 
-        // Расчет средней широты трека для компенсации вертикального сжатия
+        // Расчет средней широты трека для коррекции проекции
         const avgLat = lats.reduce((sum, lat) => sum + lat, 0) / lats.length;
-        const latRad = avgLat * (Math.PI / 180);
-        const latCorrection = Math.cos(latRad); // Коэффициент коррекции по широте
+        const latCorrection = Math.cos(avgLat * (Math.PI / 180));
+
+        // Реальные географические размеры с учетом поправки по широте
+        const spanX = (maxX - minX) * latCorrection;
+        const spanY = maxY - minY;
+
+        // Единый масштаб для сохранения пропорций подложки Mapbox (800x600, рабочая зона 700x500)
+        const scaleX = 700 / (spanX || 1);
+        const scaleY = 500 / (spanY || 1);
+        const scale = Math.min(scaleX, scaleY);
+
+        // Центрирование трека внутри зоны 700x500
+        const offsetX = 50 + (700 - spanX * scale) / 2;
+        const offsetY = 50 + (500 - spanY * scale) / 2;
 
         const rmlVertices = [];
         pointsToUse.forEach((p, idx) => {
-            // Независимое масштабирование осей с коррекцией долготы по широте
-            const normX = Math.round(50 + (((p.x - minX) * latCorrection) / ((maxX - minX) * latCorrection || 1)) * 700);
+            const normX = Math.round(offsetX + (p.x - minX) * latCorrection * scale);
             const normY = ext === '.gpx'
-                ? Math.round(550 - ((p.y - minY) / (maxY - minY || 1)) * 500)
-                : Math.round(50 + ((p.y - minY) / (maxY - minY || 1)) * 500);
+                ? Math.round(550 - ( offsetY - 50 + (p.y - minY) * scale )) // Инверсия для GPX
+                : Math.round(offsetY + (p.y - minY) * scale);
 
             rmlVertices.push(`                <StraightVertex radius="10" x="${normX}" y="${normY}" id="0:${884 + idx}"/>`);
         });
 
         const rmlWaypoints = [];
         selectedWaypoints.forEach((wpt, index) => {
-            const wptX = Math.round(50 + ((wpt.x - minX) / (maxX - minX || 1)) * 700);
+            const wptX = Math.round(offsetX + (wpt.x - minX) * latCorrection * scale);
             const wptY = ext === '.gpx'
-                ? Math.round(550 - ((wpt.y - minY) / (maxY - minY || 1)) * 500)
-                : Math.round(50 + ((wpt.y - minY) / (maxY - minY || 1)) * 500);
+                ? Math.round(550 - ( offsetY - 50 + (wpt.y - minY) * scale ))
+                : Math.round(offsetY + (wpt.y - minY) * scale);
 
             rmlWaypoints.push(`        <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="0:${500 + index}"/>`);
         });

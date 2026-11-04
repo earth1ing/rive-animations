@@ -7,22 +7,22 @@
         </NestedArtboard>
         <Shape name="RoutePath" id="0:239">
             <PointsPath id="0:240">
-                <StraightVertex radius="10" x="750" y="438" id="0:884"/>
-                <StraightVertex radius="10" x="514" y="550" id="0:885"/>
-                <StraightVertex radius="10" x="338" y="459" id="0:886"/>
-                <StraightVertex radius="10" x="282" y="477" id="0:887"/>
-                <StraightVertex radius="10" x="124" y="397" id="0:888"/>
-                <StraightVertex radius="10" x="50" y="440" id="0:889"/>
-                <StraightVertex radius="10" x="159" y="296" id="0:890"/>
-                <StraightVertex radius="10" x="167" y="205" id="0:891"/>
-                <StraightVertex radius="10" x="107" y="88" id="0:892"/>
-                <StraightVertex radius="10" x="134" y="50" id="0:893"/>
-                <StraightVertex radius="10" x="189" y="52" id="0:894"/>
-                <StraightVertex radius="10" x="194" y="83" id="0:895"/>
-                <StraightVertex radius="10" x="373" y="193" id="0:896"/>
-                <StraightVertex radius="10" x="414" y="261" id="0:897"/>
-                <StraightVertex radius="10" x="475" y="262" id="0:898"/>
-                <StraightVertex radius="10" x="651" y="372" id="0:899"/>
+                <StraightVertex radius="10" x="624" y="438" id="0:884"/>
+                <StraightVertex radius="10" x="473" y="550" id="0:885"/>
+                <StraightVertex radius="10" x="360" y="459" id="0:886"/>
+                <StraightVertex radius="10" x="324" y="477" id="0:887"/>
+                <StraightVertex radius="10" x="223" y="397" id="0:888"/>
+                <StraightVertex radius="10" x="176" y="440" id="0:889"/>
+                <StraightVertex radius="10" x="246" y="296" id="0:890"/>
+                <StraightVertex radius="10" x="251" y="205" id="0:891"/>
+                <StraightVertex radius="10" x="213" y="88" id="0:892"/>
+                <StraightVertex radius="10" x="229" y="50" id="0:893"/>
+                <StraightVertex radius="10" x="265" y="52" id="0:894"/>
+                <StraightVertex radius="10" x="268" y="83" id="0:895"/>
+                <StraightVertex radius="10" x="383" y="193" id="0:896"/>
+                <StraightVertex radius="10" x="409" y="261" id="0:897"/>
+                <StraightVertex radius="10" x="448" y="262" id="0:898"/>
+                <StraightVertex radius="10" x="561" y="372" id="0:899"/>
             </PointsPath>
             <Stroke thickness="9" cap="round" id="0:3">
                 <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>
@@ -34,13 +34,13 @@
             </Stroke>
         </Shape>
         
-        <Node x="744" y="440" name="Home" id="0:500"/>
-        <Node x="581" y="528" name="Sveti Sava temple" id="0:501"/>
-        <Node x="82" y="409" name="Promenad" id="0:502"/>
-        <Node x="161" y="277" name="Old bridge" id="0:503"/>
-        <Node x="147" y="52" name="Kalemegdan" id="0:504"/>
-        <Node x="109" y="89" name="Bridge to Kalemegdan" id="0:505"/>
-        <Node x="503" y="282" name="Skupstina" id="0:506"/>
+        <Node x="620" y="440" name="Home" id="0:500"/>
+        <Node x="516" y="528" name="Sveti Sava temple" id="0:501"/>
+        <Node x="197" y="409" name="Promenad" id="0:502"/>
+        <Node x="247" y="277" name="Old bridge" id="0:503"/>
+        <Node x="238" y="52" name="Kalemegdan" id="0:504"/>
+        <Node x="214" y="89" name="Bridge to Kalemegdan" id="0:505"/>
+        <Node x="466" y="282" name="Skupstina" id="0:506"/>
 
         <StateMachine name="State Machine 1" id="0:7">
             <StateMachineLayer name="Layer 1" id="0:8">
