@@ -4,7 +4,6 @@ const https = require('https');
 const { execSync } = require('child_process');
 const readline = require('readline/promises');
 
-// Функция для безопасного чтения токена из файла .env
 function loadEnv() {
     const envPath = path.join(__dirname, '.env');
     if (fs.existsSync(envPath)) {
@@ -12,9 +11,7 @@ function loadEnv() {
         envContent.split(/\r?\n/).forEach(line => {
             const parts = line.split('=');
             if (parts.length === 2) {
-                const key = parts[0].trim();
-                const value = parts[1].trim();
-                process.env[key] = value;
+                process.env[parts[0].trim()] = parts[1].trim();
             }
         });
     }
@@ -38,61 +35,25 @@ function parseWaypoints(content) {
     let match;
     const waypoints = [];
     while ((match = regex.exec(content)) !== null) {
-        const lat = parseFloat(match[1]);
-        const lon = parseFloat(match[2]);
-        const inner = match[3];
-        
-        const nameMatch = /<name>([^<]+)<\/name>/.exec(inner);
+        const lat = parseFloat(match[1]), lon = parseFloat(match[2]);
+        const nameMatch = /<name>([^<]+)<\/name>/.exec(match[3]);
         const name = nameMatch ? nameMatch[1].trim() : `Waypoint (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
-
         waypoints.push({ x: lon, y: lat, name });
     }
-
     return waypoints;
-}
-
-function parseSVG(content) {
-    const points = [];
-    const polyRegex = /points="([^"]+)"/g;
-    let polyMatch;
-    while ((polyMatch = polyRegex.exec(content)) !== null) {
-        const rawPairs = polyMatch[1].trim().split(/[\s,]+/);
-        for (let i = 0; i < rawPairs.length; i += 2) {
-            if (rawPairs[i] && rawPairs[i + 1]) {
-                points.push({ x: parseFloat(rawPairs[i]), y: parseFloat(rawPairs[i + 1]) });
-            }
-        }
-    }
-    if (points.length === 0) {
-        const pathRegex = /d="([^"]+)"/g;
-        let pathMatch;
-        while ((pathMatch = pathRegex.exec(content)) !== null) {
-            const numbers = pathMatch[1].match(/[-+]?[0-9]*\.?[0-9]+/g);
-            if (numbers) {
-                for (let i = 0; i < numbers.length; i += 2) {
-                    if (numbers[i] && numbers[i + 1]) {
-                        points.push({ x: parseFloat(numbers[i]), y: parseFloat(numbers[i + 1]) });
-                    }
-                }
-            }
-        }
-    }
-    return points;
 }
 
 function downloadMapImage(minLon, minLat, maxLon, maxLat, destPath) {
     return new Promise((resolve) => {
         if (!MAPBOX_TOKEN) {
-            console.log('Предупреждение: Токен MAPBOX_TOKEN не найден в файле .env. Скачивание карты пропущено.');
+            console.log('Токен MAPBOX_TOKEN не найден. Скачивание карты пропущено.');
             return resolve();
         }
-
         const url = `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/[${minLon},${minLat},${maxLon},${maxLat}]/800x600?access_token=${MAPBOX_TOKEN}`;
-        
-        console.log('Скачивание карты-подложки с учетом отступов из Mapbox...');
+        console.log('Скачивание карты из Mapbox...');
         https.get(url, (res) => {
             if (res.statusCode !== 200) {
-                console.error(`Ошибка скачивания карты: HTTP статус ${res.statusCode}`);
+                console.error(`Ошибка скачивания карты: HTTP status ${res.statusCode}`);
                 res.resume();
                 return resolve();
             }
@@ -100,11 +61,11 @@ function downloadMapImage(minLon, minLat, maxLon, maxLat, destPath) {
             res.pipe(fileStream);
             fileStream.on('finish', () => {
                 fileStream.close();
-                console.log('Карта-подложка успешно сохранена как map.png!');
+                console.log('Карта успешно сохранена как map.png');
                 resolve();
             });
         }).on('error', (err) => {
-            console.error('Ошибка соединения при скачивании карты:', err.message);
+            console.error('Ошибка соединения Mapbox:', err.message);
             resolve();
         });
     });
@@ -112,10 +73,7 @@ function downloadMapImage(minLon, minLat, maxLon, maxLat, destPath) {
 
 function simplifyPoints(points, epsilon) {
     if (points.length <= 2) return points;
-
-    let maxDist = 0;
-    let index = 0;
-
+    let maxDist = 0, index = 0;
     for (let i = 1; i < points.length - 1; i++) {
         const dist = perpendicularDistance(points[i], points[0], points[points.length - 1]);
         if (dist > maxDist) {
@@ -123,24 +81,19 @@ function simplifyPoints(points, epsilon) {
             index = i;
         }
     }
-
     if (maxDist > epsilon) {
         const left = simplifyPoints(points.slice(0, index + 1), epsilon);
         const right = simplifyPoints(points.slice(index, points.length), epsilon);
         return [...left.slice(0, -1), ...right];
-    } else {
-        return [points[0], points[points.length - 1]];
     }
+    return [points[0], points[points.length - 1]];
 }
 
 function perpendicularDistance(point, start, end) {
-    const dx = end.x - start.x;
-    const dy = end.y - start.y;
+    const dx = end.x - start.x, dy = end.y - start.y;
     const length = Math.sqrt(dx * dx + dy * dy);
     const u = ((point.x - start.x) * dx + (point.y - start.y) * dy) / (length * length);
-    const closestX = start.x + u * dx;
-    const closestY = start.y + u * dy;
-    return Math.sqrt((point.x - closestX) ** 2 + (point.y - closestY) ** 2);
+    return Math.sqrt((point.x - (start.x + u * dx)) ** 2 + (point.y - (start.y + u * dy)) ** 2);
 }
 
 function filterGPSNoise(points, epsilon) {
@@ -150,8 +103,7 @@ function filterGPSNoise(points, epsilon) {
         const nextPoint = points[i + 1];
         const angle = Math.atan2(nextPoint.y - prevPoint.y, nextPoint.x - prevPoint.x);
         const prevAngle = Math.atan2(prevPoint.y - points[i].y, prevPoint.x - points[i].x);
-        const angleDiff = Math.abs(angle - prevAngle);
-        if (angleDiff > epsilon) {
+        if (Math.abs(angle - prevAngle) > epsilon) {
             filteredPoints.push(points[i]);
         }
     }
@@ -160,52 +112,27 @@ function filterGPSNoise(points, epsilon) {
 }
 
 async function run() {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
     try {
-        const fileName = await rl.question('Введите имя файла (например, Banya Luka 10k.gpx): ');
+        const fileName = await rl.question('Введите имя GPX файла (например, Banya Luka 10k.gpx): ');
         if (!fs.existsSync(fileName)) {
             console.log(`Ошибка: файл "${fileName}" не найден.`);
-            rl.close();
             return;
         }
 
         const fileContent = fs.readFileSync(fileName, 'utf8');
-        const ext = path.extname(fileName).toLowerCase();
-        let rawPoints = [];
-        let rawWaypoints = [];
-
-        if (ext === '.gpx') {
-            rawPoints = parseGPX(fileContent);
-            rawWaypoints = parseWaypoints(fileContent);
-        } else if (ext === '.svg') {
-            rawPoints = parseSVG(fileContent);
-        } else {
-            console.log('Неподдерживаемый формат. Используйте .gpx или .svg');
-            rl.close();
-            return;
-        }
+        let rawPoints = parseGPX(fileContent);
+        let rawWaypoints = parseWaypoints(fileContent);
 
         if (rawPoints.length === 0) {
-            console.log('Координаты маршрута не найдены.');
-            rl.close();
+            console.log('Маршрут не найден.');
             return;
         }
 
         const epsilon = 0.001;
-        rawPoints = simplifyPoints(rawPoints, epsilon);
-        rawPoints = filterGPSNoise(rawPoints, epsilon);
+        rawPoints = filterGPSNoise(simplifyPoints(rawPoints, epsilon), epsilon);
 
-        const selectedWaypoints = rawWaypoints;
-        if (rawWaypoints.length > 0) {
-            console.log(`\nАвтоматически добавлено точек из файла: ${rawWaypoints.length}`);
-        }
-
-       const lons = rawPoints.map(p => p.x);
-        const lats = rawPoints.map(p => p.y);
+        const lons = rawPoints.map(p => p.x), lats = rawPoints.map(p => p.y);
         const minLon = Math.min(...lons), maxLon = Math.max(...lons);
         const minLat = Math.min(...lats), maxLat = Math.max(...lats);
 
@@ -215,76 +142,48 @@ async function run() {
             pointsToUse = rawPoints.filter((_, index) => index % step === 0);
         }
 
-        const xs = pointsToUse.map(p => p.x);
-        const ys = pointsToUse.map(p => p.y);
+        const xs = pointsToUse.map(p => p.x), ys = pointsToUse.map(p => p.y);
         const minX = Math.min(...xs), maxX = Math.max(...xs);
         const minY = Math.min(...ys), maxY = Math.max(...ys);
 
-        // Расчет средней широты трека для коррекции проекции
         const avgLat = lats.reduce((sum, lat) => sum + lat, 0) / lats.length;
         const latCorrection = Math.cos(avgLat * (Math.PI / 180));
 
-        // Реальные географические размеры с учетом поправки по широте
         const spanX = (maxX - minX) * latCorrection;
         const spanY = maxY - minY;
 
-        // Единый масштаб для сохранения пропорций подложки Mapbox (800x600, рабочая зона 700x500)
         const scaleX = 700 / (spanX || 1);
         const scaleY = 500 / (spanY || 1);
         const scale = Math.min(scaleX, scaleY);
 
-        // Центрирование трека внутри зоны 700x500
         const offsetX = 50 + (700 - spanX * scale) / 2;
         const offsetY = 50 + (500 - spanY * scale) / 2;
 
-        const rmlVertices = [];
-        pointsToUse.forEach((p, idx) => {
+        const rmlVertices = pointsToUse.map((p, idx) => {
             const normX = Math.round(offsetX + (p.x - minX) * latCorrection * scale);
-            const normY = ext === '.gpx'
-                ? Math.round(550 - ( offsetY - 50 + (p.y - minY) * scale )) // Инверсия для GPX
-                : Math.round(offsetY + (p.y - minY) * scale);
-
-            rmlVertices.push(`                <StraightVertex radius="10" x="${normX}" y="${normY}" id="0:${884 + idx}"/>`);
+            const normY = Math.round(550 - (offsetY - 50 + (p.y - minY) * scale));
+            return `                <StraightVertex radius="10" x="${normX}" y="${normY}" id="0:${884 + idx}"/>`;
         });
 
-        const rmlWaypoints = [];
-        selectedWaypoints.forEach((wpt, index) => {
+        const rmlWaypoints = rawWaypoints.map((wpt, index) => {
             const wptX = Math.round(offsetX + (wpt.x - minX) * latCorrection * scale);
-            const wptY = ext === '.gpx'
-                ? Math.round(550 - ( offsetY - 50 + (wpt.y - minY) * scale ))
-                : Math.round(offsetY + (wpt.y - minY) * scale);
-
-            rmlWaypoints.push(`        <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="0:${500 + index}"/>`);
+            const wptY = Math.round(550 - (offsetY - 50 + (wpt.y - minY) * scale));
+            return `        <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="0:${500 + index}"/>`;
         });
 
-        // Единая переменная отступа (padding) в пикселях для карты и трека
         const padding = 50;
-        const targetWidth = 800 - padding * 2;   // 700
-        const targetHeight = 600 - padding * 2;  // 500
+        const targetWidth = 700, targetHeight = 500;
+        const lonPadding = (maxLon - minLon) * (padding / targetWidth);
+        const latPadding = (maxLat - minLat) * (padding / targetHeight);
 
-        // Расчет географического отступа (в градусах) на основе пиксельного отступа
-        const lonSpan = maxLon - minLon;
-        const latSpan = maxLat - minLat;
-        const lonPadding = lonSpan * (padding / targetWidth);
-        const latPadding = latSpan * (padding / targetHeight);
-
-        const paddedMinLon = minLon - lonPadding;
-        const paddedMinLat = minLat - latPadding;
-        const paddedMaxLon = maxLon + lonPadding;
-        const paddedMaxLat = maxLat + latPadding;
-
-        const baseName = path.basename(fileName, ext).trim();
+        const baseName = path.basename(fileName, path.extname(fileName)).trim();
         const projectFolder = baseName;
-
         fs.mkdirSync(projectFolder, { recursive: true });
-        
-        // Передаем расширенный bbox с отступом в функцию скачивания
-        await downloadMapImage(paddedMinLon, paddedMinLat, paddedMaxLon, paddedMaxLat, path.join(projectFolder, 'map.png'));
+
+        await downloadMapImage(minLon - lonPadding, minLat - latPadding, maxLon + lonPadding, maxLat + latPadding, path.join(projectFolder, 'map.png'));
 
         const yamlPath = path.join(projectFolder, 'rive.yaml');
-        if (!fs.existsSync(yamlPath)) {
-            fs.writeFileSync(yamlPath, `name: ${baseName}\n`);
-        }
+        if (!fs.existsSync(yamlPath)) fs.writeFileSync(yamlPath, `name: ${baseName}\n`);
 
         const rmlTemplate = `<?xml version="1.0" encoding="UTF-8"?>
 <Rive version="1" kind="fragment">
@@ -641,20 +540,17 @@ ${rmlWaypoints.join('\n')}
 </Rive>`;
 
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
-        console.log(`Структура проекта обновлена в папке ${projectFolder}/`);
+        console.log(`Проект обновлен в ${projectFolder}/`);
 
-        console.log('Сборка .riv файла...');
         try {
             execSync('xvfb-run rive . --once', { cwd: projectFolder, stdio: 'inherit' });
-            console.log('Сборка прошла успешно!');
+            console.log('Сборка Rive прошла успешно!');
         } catch (buildErr) {
-            console.error('Ошибка сборки Rive. Проверьте синтаксис RML.');
+            console.error('Ошибка сборки Rive.');
         }
 
-        console.log('Создание коммита в Git...');
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Generate RML, download map background and parse waypoints: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-
+        execSync(`git commit -m "Generate RML, download map background: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
         console.log('Готово!');
 
     } catch (err) {
