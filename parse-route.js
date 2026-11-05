@@ -96,15 +96,39 @@ function perpendicularDistance(point, start, end) {
     return Math.sqrt((point.x - (start.x + u * dx)) ** 2 + (point.y - (start.y + u * dy)) ** 2);
 }
 
-function filterGPSNoise(points, epsilon) {
+function filterGPSNoise(points, minAngleThreshold = 0.15) {
+    if (points.length <= 2) return points;
     const filteredPoints = [points[0]];
+
     for (let i = 1; i < points.length - 1; i++) {
-        const prevPoint = filteredPoints[filteredPoints.length - 1];
-        const nextPoint = points[i + 1];
-        const angle = Math.atan2(nextPoint.y - prevPoint.y, nextPoint.x - prevPoint.x);
-        const prevAngle = Math.atan2(prevPoint.y - points[i].y, prevPoint.x - points[i].x);
-        if (Math.abs(angle - prevAngle) > epsilon) {
-            filteredPoints.push(points[i]);
+        const pPrev = filteredPoints[filteredPoints.length - 1];
+        const pCurr = points[i];
+        const pNext = points[i + 1];
+
+        // Вектор от предыдущей сохраненной точки к текущей
+        const dx1 = pCurr.x - pPrev.x;
+        const dy1 = pCurr.y - pPrev.y;
+        
+        // Вектор от текущей точки к следующей
+        const dx2 = pNext.x - pCurr.x;
+        const dy2 = pNext.y - pCurr.y;
+
+        const len1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+        const len2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+
+        // Если точки практически совпадают (шум на месте), пропускаем текущую
+        if (len1 < 0.00001) continue;
+
+        if (len2 > 0.00001) {
+            // Скалярное произведение для нахождения косинуса угла между векторами
+            const dot = dx1 * dx2 + dy1 * dy2;
+            const cosTheta = Math.max(-1, Math.min(1, dot / (len1 * len2)));
+            const angle = Math.acos(cosTheta); // Угол поворота в радианах
+
+            // Если угол отклонения больше порога ИЛИ точка находится на значимом расстоянии, сохраняем её
+            if (angle > minAngleThreshold || len1 > 0.0005) {
+                filteredPoints.push(pCurr);
+            }
         }
     }
     filteredPoints.push(points[points.length - 1]);
