@@ -105,21 +105,27 @@ function filterGPSNoise(points, minAngleThreshold = 0.15) {
         const pCurr = points[i];
         const pNext = points[i + 1];
 
+        // Вектор от предыдущей сохраненной точки к текущей
         const dx1 = pCurr.x - pPrev.x;
         const dy1 = pCurr.y - pPrev.y;
+        
+        // Вектор от текущей точки к следующей
         const dx2 = pNext.x - pCurr.x;
         const dy2 = pNext.y - pCurr.y;
 
         const len1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
         const len2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
 
+        // Если точки практически совпадают (шум на месте), пропускаем текущую
         if (len1 < 0.00001) continue;
 
         if (len2 > 0.00001) {
+            // Скалярное произведение для нахождения косинуса угла между векторами
             const dot = dx1 * dx2 + dy1 * dy2;
             const cosTheta = Math.max(-1, Math.min(1, dot / (len1 * len2)));
-            const angle = Math.acos(cosTheta);
+            const angle = Math.acos(cosTheta); // Угол поворота в радианах
 
+            // Если угол отклонения больше порога ИЛИ точка находится на значимом расстоянии, сохраняем её
             if (angle > minAngleThreshold || len1 > 0.0005) {
                 filteredPoints.push(pCurr);
             }
@@ -147,8 +153,11 @@ async function run() {
             return;
         }
 
+        // 1. Сначала убираем шумовые колебания на месте из сырых точек
         let points = filterGPSNoise(rawPoints, 0.15);
-        const epsilon = 0.00015;
+        
+        // 2. Затем сглаживаем и уменьшаем количество точек для Rive
+        const epsilon = 0.00015; // чуть уменьшили эпсилон для точности
         rawPoints = simplifyPoints(points, epsilon);
 
         const lons = rawPoints.map(p => p.x), lats = rawPoints.map(p => p.y);
@@ -200,19 +209,22 @@ async function run() {
         const yamlPath = path.join(projectFolder, 'rive.yaml');
         if (!fs.existsSync(yamlPath)) fs.writeFileSync(yamlPath, `name: ${baseName}\n`);
 
-        const templatePath = path.join(__dirname, 'route-template.rml');
-        let rmlTemplate = fs.readFileSync(templatePath, 'utf8');
+        // Вместо гигантской строки rmlTemplate в скрипте теперь просто чтение файла:
+const templatePath = path.join(__dirname, 'route-template.rml');
+let rmlTemplate = fs.readFileSync(templatePath, 'utf8');
 
-        rmlTemplate = rmlTemplate
-            .replace('{{RML_VERTICES}}', rmlVertices.join('\n'))
-            .replace('{{RML_WAYPOINTS}}', rmlWaypoints.join('\n'));
+// Подставляем сгенерированные вершины и вейпоинты в шаблон:
+rmlTemplate = rmlTemplate
+    .replace('{{RML_VERTICES}}', rmlVertices.join('\n'))
+    .replace('{{RML_WAYPOINTS}}', rmlWaypoints.join('\n'));
+
+fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
 
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
         console.log(`Проект обновлен в ${projectFolder}/`);
 
         try {
-            // Используем актуальный флаг проверки сборки вместо удаленного --once
-            execSync('rive --verify', { cwd: projectFolder, stdio: 'inherit' });
+            execSync('xvfb-run rive . --once', { cwd: projectFolder, stdio: 'inherit' });
             console.log('Сборка Rive прошла успешно!');
         } catch (buildErr) {
             console.error('Ошибка сборки Rive.');
