@@ -154,7 +154,7 @@ async function run() {
         }
 
         // 1. Сначала убираем шумовые колебания на месте из сырых точек
-        let points = filterGPSNoise(rawPoints, 0.1);
+        let points = filterGPSNoise(rawPoints, 0.15);
         
         // 2. Затем сглаживаем и уменьшаем количество точек для Rive
         const epsilon = 0.00015; // чуть уменьшили эпсилон для точности

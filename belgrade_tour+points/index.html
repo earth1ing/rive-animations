@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rive Viewer</title>
+    <!-- Используем стабильную версию пакета -->
+    <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
+    <style>
+        body { background: #1a1a1a; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        canvas { width: 800px; height: 600px; background: #2a2a2a; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        // Проверяем, загрузилась ли библиотека Rive
+        window.addEventListener('load', () => {
+            if (typeof rive === 'undefined') {
+                console.error('Библиотека Rive не загрузилась с CDN!');
+                return;
+            }
+
+            const r = new rive.Rive({
+               src: "/build/belgrade_tour+points.riv",
+                canvas: document.getElementById("canvas"),
+                autoplay: true,
+                
+                onLoad: () => {
+                    r.resizeDrawingSurfaceToCanvas();
+                    console.log('Rive успешно загружен и запущен!');
+                },
+            });
+        });
+    </script>
+</body>
+</html>
