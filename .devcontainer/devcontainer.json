@@ -1,4 +1,11 @@
 {
   "name": "Rive Environment",
-  "postStartCommand": "mkdir -p ~/.config/rive/app.rive.cli && cp -r .devcontainer/rive-auth/* ~/.config/rive/ 2>/dev/null || true"
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Rive Viewer"
+    }
+  },
+  "updateContentCommand": "sudo apt-get update && sudo apt-get install -y xvfb && curl -fsSL https://releases.rive.app/cli/install.sh | sh && echo 'export PATH=\"/home/codespace/.rive/bin:$PATH\"' >> ~/.bashrc",
+  "postStartCommand": "mkdir -p ~/.config/rive/app.rive.cli && cp -r .devcontainer/rive-auth/* ~/.config/rive/ 2>/dev/null || true; npx http-server -p 8080 &"
 }

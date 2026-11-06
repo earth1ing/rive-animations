@@ -7,43 +7,7 @@
         </NestedArtboard>
         <Shape name="RoutePath" id="0:239">
             <PointsPath id="0:240">
-                <StraightVertex radius="10" x="615" y="439" id="0:884"/>
-                <StraightVertex radius="10" x="538" y="499" id="0:885"/>
-                <StraightVertex radius="10" x="540" y="506" id="0:886"/>
-                <StraightVertex radius="10" x="504" y="518" id="0:887"/>
-                <StraightVertex radius="10" x="508" y="529" id="0:888"/>
-                <StraightVertex radius="10" x="500" y="540" id="0:889"/>
-                <StraightVertex radius="10" x="465" y="550" id="0:890"/>
-                <StraightVertex radius="10" x="353" y="460" id="0:891"/>
-                <StraightVertex radius="10" x="337" y="455" id="0:892"/>
-                <StraightVertex radius="10" x="317" y="477" id="0:893"/>
-                <StraightVertex radius="10" x="217" y="398" id="0:894"/>
-                <StraightVertex radius="10" x="193" y="407" id="0:895"/>
-                <StraightVertex radius="10" x="170" y="440" id="0:896"/>
-                <StraightVertex radius="10" x="225" y="346" id="0:897"/>
-                <StraightVertex radius="10" x="242" y="279" id="0:898"/>
-                <StraightVertex radius="10" x="246" y="231" id="0:899"/>
-                <StraightVertex radius="10" x="241" y="186" id="0:900"/>
-                <StraightVertex radius="10" x="229" y="137" id="0:901"/>
-                <StraightVertex radius="10" x="206" y="91" id="0:902"/>
-                <StraightVertex radius="10" x="218" y="87" id="0:903"/>
-                <StraightVertex radius="10" x="228" y="69" id="0:904"/>
-                <StraightVertex radius="10" x="218" y="63" id="0:905"/>
-                <StraightVertex radius="10" x="221" y="54" id="0:906"/>
-                <StraightVertex radius="10" x="254" y="50" id="0:907"/>
-                <StraightVertex radius="10" x="268" y="70" id="0:908"/>
-                <StraightVertex radius="10" x="262" y="86" id="0:909"/>
-                <StraightVertex radius="10" x="375" y="195" id="0:910"/>
-                <StraightVertex radius="10" x="389" y="227" id="0:911"/>
-                <StraightVertex radius="10" x="390" y="244" id="0:912"/>
-                <StraightVertex radius="10" x="402" y="263" id="0:913"/>
-                <StraightVertex radius="10" x="404" y="253" id="0:914"/>
-                <StraightVertex radius="10" x="440" y="264" id="0:915"/>
-                <StraightVertex radius="10" x="468" y="293" id="0:916"/>
-                <StraightVertex radius="10" x="465" y="299" id="0:917"/>
-                <StraightVertex radius="10" x="542" y="366" id="0:918"/>
-                <StraightVertex radius="10" x="630" y="419" id="0:919"/>
-                <StraightVertex radius="10" x="615" y="439" id="0:920"/>
+{{RML_VERTICES}}
             </PointsPath>
             <Stroke thickness="9" cap="round" id="0:3">
                 <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>
@@ -55,7 +19,7 @@
             </Stroke>
         </Shape>
         
-
+{{RML_WAYPOINTS}}
 
         <StateMachine name="State Machine 1" id="0:7">
             <StateMachineLayer name="Layer 1" id="0:8">
