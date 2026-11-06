@@ -70,11 +70,11 @@
                 <StraightVertex radius="10" x="630" y="419" id="0:944"/>
                 <StraightVertex radius="10" x="615" y="439" id="0:945"/>
             </PointsPath>
-            <Stroke thickness="9" cap="round" id="0:3">
+            <Stroke thickness="9" cap="round" join="round" id="0:3">
                 <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>
                 <TrimPath end="1" modeValue="sequential" name="TrimWhite" id="0:4"/>
             </Stroke>
-            <Stroke thickness="3" cap="round" id="0:5">
+            <Stroke thickness="3" cap="round" join="round" id="0:5">
                 <SolidColor colorValue="FF00A8D6" name="BlueLine" id="0:237"/>
                 <TrimPath end="1" modeValue="sequential" name="TrimBlue" id="0:6"/>
             </Stroke>
