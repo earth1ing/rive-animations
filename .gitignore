@@ -11,3 +11,4 @@ node_modules/
 .venv/
 rive-docs/
 Inter.ttf
+.devcontainer/rive-auth/
