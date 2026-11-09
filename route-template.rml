@@ -6,7 +6,10 @@
             <NestedStateMachine animationId="3:453" id="3:460"/>
             <FollowPathConstraint targetId="0:239" id="3:877"/>
         </NestedArtboard>
-        <Shape name="RoutePath" id="0:239">
+        
+        {{RML_WAYPOINTS}}
+
+<Shape name="RoutePath" id="0:239">
             <PointsPath id="0:240">
 {{RML_VERTICES}}
             </PointsPath>
@@ -20,8 +23,6 @@
             </Stroke>
         </Shape>
         
-{{RML_WAYPOINTS}}
-
         <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
         
         <StateMachine name="State Machine 1" id="0:7">
@@ -374,7 +375,7 @@
         <Text originY="0.5" x="13" id="91:2">
             <TextStylePaint fontSize="16" fontAssetId="91:1" familyName="Inter" styleName="SemiBold" id="91:3">
                 <Fill fillRule="clockwise" id="91:4">
-                    <SolidColor colorValue="FF00A7D6" id="91:5"/>
+                    <SolidColor colorValue="000000" id="91:5"/>
                 </Fill>
                 <TextStyleAxis tag="1869640570" axisValue="14" id="91:28"/>
                 <TextStyleAxis tag="2003265652" axisValue="600" id="91:29"/>
