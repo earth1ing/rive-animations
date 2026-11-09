@@ -477,7 +477,7 @@
         <Text originY="0.5" x="13" id="91:2">
             <TextStylePaint fontSize="16" fontAssetId="91:1" familyName="Inter" styleName="SemiBold" id="91:3">
                 <Fill fillRule="clockwise" id="91:4">
-                    <SolidColor colorValue="FF00A7D6" id="91:5"/>
+                    <SolidColor colorValue="000000" id="91:5"/>
                 </Fill>
                 <TextStyleAxis tag="1869640570" axisValue="14" id="91:28"/>
                 <TextStyleAxis tag="2003265652" axisValue="600" id="91:29"/>
