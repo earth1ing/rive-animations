@@ -180,14 +180,14 @@ async function run() {
             return `                <StraightVertex radius="10" x="${normX}" y="${normY}" id="0:${884 + idx}"/>`;
         });
 
-        // Генерация stateful-инстансов точек Point с пробросом имени через ViewModelInstance
+        // Генерация инстансов точек без дублирующихся ID внутренних элементов (Rive назначит их автоматически)
         const rmlWaypoints = rawWaypoints.map((wpt, index) => {
             const wptX = Math.round(offsetX + (wpt.x - minX) * latCorrection * scale);
             const wptY = Math.round(550 - (offsetY - 50 + (wpt.y - minY) * scale));
             return `        <NestedArtboard artboardId="86:1" isStateful="true" x="${wptX}" y="${wptY}" name="${wpt.name}" id="90:${index + 1}">
-            <NestedStateMachine animationId="86:26" id="91:${18 + index}"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance" id="99:${10 + index}">
-                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1" id="99:${20 + index}"/>
+            <NestedStateMachine animationId="86:26"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance">
+                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1"/>
             </ViewModelInstance>
         </NestedArtboard>`;
         });
@@ -224,7 +224,7 @@ async function run() {
         }
 
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Generate RML with stateful point instances: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+        execSync(`git commit -m "Generate RML with clean point instances: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
         console.log('Готово!');
 
     } catch (err) {
