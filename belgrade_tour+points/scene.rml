@@ -6,10 +6,8 @@
             <NestedStateMachine animationId="3:453" id="3:460"/>
             <FollowPathConstraint targetId="0:239" id="3:877"/>
         </NestedArtboard>
-        <Shape name="RoutePath" id="0:239">
-            <PointsPath id="0:240">
-
-        <NestedArtboard artboardId="86:1" isStateful="true" x="611" y="441" name="Home" id="90:1">
+        
+                <NestedArtboard artboardId="86:1" isStateful="true" x="611" y="441" name="Home" id="90:1">
             <NestedStateMachine animationId="86:26"/>
             <ViewModelInstance viewModelId="86:11" exports="true" name="Home Instance">
                 <ViewModelInstanceString propertyValue="Home" viewModelPropertyId="99:1"/>
@@ -52,6 +50,8 @@
             </ViewModelInstance>
         </NestedArtboard>
 
+<Shape name="RoutePath" id="0:239">
+            <PointsPath id="0:240">
                 <StraightVertex radius="10" x="615" y="439" id="0:884"/>
                 <StraightVertex radius="10" x="597" y="458" id="0:885"/>
                 <StraightVertex radius="10" x="538" y="499" id="0:886"/>
@@ -125,7 +125,6 @@
             </Stroke>
         </Shape>
         
-
         <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
         
         <StateMachine name="State Machine 1" id="0:7">
