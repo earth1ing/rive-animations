@@ -1,76 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Rive version="1" kind="fragment">
+    <!-- Главный артборд сцены -->
     <Artboard defaultStateMachineId="0:7" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
-        <NestedArtboard artboardId="86:1" x="665" y="496" name="Point" id="90:1">
-            <NestedStateMachine animationId="86:26" id="91:18"/>
-        </NestedArtboard>
         <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" scaleX="0.40000001" scaleY="0.40000001" name="Car" complexDependency="true" id="3:459">
             <NestedStateMachine animationId="3:453" id="3:460"/>
             <FollowPathConstraint targetId="0:239" id="3:877"/>
         </NestedArtboard>
         <Shape name="RoutePath" id="0:239">
             <PointsPath id="0:240">
-                <StraightVertex radius="10" x="615" y="439" id="0:884"/>
-                <StraightVertex radius="10" x="597" y="458" id="0:885"/>
-                <StraightVertex radius="10" x="538" y="499" id="0:886"/>
-                <StraightVertex radius="10" x="542" y="504" id="0:887"/>
-                <StraightVertex radius="10" x="540" y="506" id="0:888"/>
-                <StraightVertex radius="10" x="504" y="518" id="0:889"/>
-                <StraightVertex radius="10" x="508" y="529" id="0:890"/>
-                <StraightVertex radius="10" x="500" y="540" id="0:891"/>
-                <StraightVertex radius="10" x="469" y="545" id="0:892"/>
-                <StraightVertex radius="10" x="469" y="548" id="0:893"/>
-                <StraightVertex radius="10" x="465" y="550" id="0:894"/>
-                <StraightVertex radius="10" x="462" y="544" id="0:895"/>
-                <StraightVertex radius="10" x="452" y="542" id="0:896"/>
-                <StraightVertex radius="10" x="436" y="531" id="0:897"/>
-                <StraightVertex radius="10" x="353" y="460" id="0:898"/>
-                <StraightVertex radius="10" x="347" y="464" id="0:899"/>
-                <StraightVertex radius="10" x="337" y="455" id="0:900"/>
-                <StraightVertex radius="10" x="317" y="477" id="0:901"/>
-                <StraightVertex radius="10" x="273" y="439" id="0:902"/>
-                <StraightVertex radius="10" x="217" y="398" id="0:903"/>
-                <StraightVertex radius="10" x="205" y="407" id="0:904"/>
-                <StraightVertex radius="10" x="193" y="407" id="0:905"/>
-                <StraightVertex radius="10" x="170" y="440" id="0:906"/>
-                <StraightVertex radius="10" x="193" y="407" id="0:907"/>
-                <StraightVertex radius="10" x="225" y="346" id="0:908"/>
-                <StraightVertex radius="10" x="236" y="314" id="0:909"/>
-                <StraightVertex radius="10" x="242" y="279" id="0:910"/>
-                <StraightVertex radius="10" x="246" y="231" id="0:911"/>
-                <StraightVertex radius="10" x="241" y="186" id="0:912"/>
-                <StraightVertex radius="10" x="229" y="137" id="0:913"/>
-                <StraightVertex radius="10" x="206" y="91" id="0:914"/>
-                <StraightVertex radius="10" x="218" y="87" id="0:915"/>
-                <StraightVertex radius="10" x="222" y="81" id="0:916"/>
-                <StraightVertex radius="10" x="220" y="74" id="0:917"/>
-                <StraightVertex radius="10" x="228" y="69" id="0:918"/>
-                <StraightVertex radius="10" x="225" y="63" id="0:919"/>
-                <StraightVertex radius="10" x="218" y="63" id="0:920"/>
-                <StraightVertex radius="10" x="221" y="54" id="0:921"/>
-                <StraightVertex radius="10" x="239" y="51" id="0:922"/>
-                <StraightVertex radius="10" x="247" y="55" id="0:923"/>
-                <StraightVertex radius="10" x="254" y="50" id="0:924"/>
-                <StraightVertex radius="10" x="268" y="70" id="0:925"/>
-                <StraightVertex radius="10" x="262" y="86" id="0:926"/>
-                <StraightVertex radius="10" x="337" y="151" id="0:927"/>
-                <StraightVertex radius="10" x="375" y="195" id="0:928"/>
-                <StraightVertex radius="10" x="389" y="227" id="0:929"/>
-                <StraightVertex radius="10" x="392" y="239" id="0:930"/>
-                <StraightVertex radius="10" x="389" y="241" id="0:931"/>
-                <StraightVertex radius="10" x="390" y="244" id="0:932"/>
-                <StraightVertex radius="10" x="393" y="243" id="0:933"/>
-                <StraightVertex radius="10" x="402" y="263" id="0:934"/>
-                <StraightVertex radius="10" x="406" y="261" id="0:935"/>
-                <StraightVertex radius="10" x="404" y="253" id="0:936"/>
-                <StraightVertex radius="10" x="407" y="258" id="0:937"/>
-                <StraightVertex radius="10" x="428" y="261" id="0:938"/>
-                <StraightVertex radius="10" x="434" y="267" id="0:939"/>
-                <StraightVertex radius="10" x="440" y="264" id="0:940"/>
-                <StraightVertex radius="10" x="468" y="293" id="0:941"/>
-                <StraightVertex radius="10" x="465" y="299" id="0:942"/>
-                <StraightVertex radius="10" x="542" y="366" id="0:943"/>
-                <StraightVertex radius="10" x="630" y="419" id="0:944"/>
-                <StraightVertex radius="10" x="615" y="439" id="0:945"/>
+                <StraightVertex radius="10" x="622" y="439" id="0:884"/>
+                <StraightVertex radius="10" x="604" y="458" id="0:885"/>
+                <StraightVertex radius="10" x="545" y="499" id="0:886"/>
+                <StraightVertex radius="10" x="549" y="504" id="0:887"/>
+                <StraightVertex radius="10" x="547" y="507" id="0:888"/>
+                <StraightVertex radius="10" x="511" y="518" id="0:889"/>
+                <StraightVertex radius="10" x="515" y="529" id="0:890"/>
+                <StraightVertex radius="10" x="508" y="540" id="0:891"/>
+                <StraightVertex radius="10" x="476" y="545" id="0:892"/>
+                <StraightVertex radius="10" x="476" y="548" id="0:893"/>
+                <StraightVertex radius="10" x="472" y="550" id="0:894"/>
+                <StraightVertex radius="10" x="470" y="544" id="0:895"/>
+                <StraightVertex radius="10" x="459" y="542" id="0:896"/>
+                <StraightVertex radius="10" x="444" y="531" id="0:897"/>
+                <StraightVertex radius="10" x="361" y="460" id="0:898"/>
+                <StraightVertex radius="10" x="355" y="464" id="0:899"/>
+                <StraightVertex radius="10" x="344" y="455" id="0:900"/>
+                <StraightVertex radius="10" x="325" y="477" id="0:901"/>
+                <StraightVertex radius="10" x="280" y="439" id="0:902"/>
+                <StraightVertex radius="10" x="225" y="398" id="0:903"/>
+                <StraightVertex radius="10" x="213" y="407" id="0:904"/>
+                <StraightVertex radius="10" x="200" y="407" id="0:905"/>
+                <StraightVertex radius="10" x="178" y="440" id="0:906"/>
+                <StraightVertex radius="10" x="200" y="407" id="0:907"/>
+                <StraightVertex radius="10" x="233" y="346" id="0:908"/>
+                <StraightVertex radius="10" x="243" y="314" id="0:909"/>
+                <StraightVertex radius="10" x="249" y="280" id="0:910"/>
+                <StraightVertex radius="10" x="253" y="231" id="0:911"/>
+                <StraightVertex radius="10" x="249" y="187" id="0:912"/>
+                <StraightVertex radius="10" x="236" y="137" id="0:913"/>
+                <StraightVertex radius="10" x="214" y="91" id="0:914"/>
+                <StraightVertex radius="10" x="225" y="87" id="0:915"/>
+                <StraightVertex radius="10" x="230" y="82" id="0:916"/>
+                <StraightVertex radius="10" x="228" y="75" id="0:917"/>
+                <StraightVertex radius="10" x="236" y="69" id="0:918"/>
+                <StraightVertex radius="10" x="232" y="64" id="0:919"/>
+                <StraightVertex radius="10" x="226" y="64" id="0:920"/>
+                <StraightVertex radius="10" x="231" y="54" id="0:921"/>
+                <StraightVertex radius="10" x="247" y="52" id="0:922"/>
+                <StraightVertex radius="10" x="254" y="56" id="0:923"/>
+                <StraightVertex radius="10" x="260" y="50" id="0:924"/>
+                <StraightVertex radius="10" x="266" y="56" id="0:925"/>
+                <StraightVertex radius="10" x="276" y="71" id="0:926"/>
+                <StraightVertex radius="10" x="269" y="86" id="0:927"/>
+                <StraightVertex radius="10" x="344" y="152" id="0:928"/>
+                <StraightVertex radius="10" x="383" y="196" id="0:929"/>
+                <StraightVertex radius="10" x="397" y="227" id="0:930"/>
+                <StraightVertex radius="10" x="399" y="240" id="0:931"/>
+                <StraightVertex radius="10" x="396" y="241" id="0:932"/>
+                <StraightVertex radius="10" x="397" y="244" id="0:933"/>
+                <StraightVertex radius="10" x="400" y="243" id="0:934"/>
+                <StraightVertex radius="10" x="409" y="263" id="0:935"/>
+                <StraightVertex radius="10" x="413" y="261" id="0:936"/>
+                <StraightVertex radius="10" x="411" y="254" id="0:937"/>
+                <StraightVertex radius="10" x="414" y="259" id="0:938"/>
+                <StraightVertex radius="10" x="435" y="262" id="0:939"/>
+                <StraightVertex radius="10" x="441" y="267" id="0:940"/>
+                <StraightVertex radius="10" x="448" y="264" id="0:941"/>
+                <StraightVertex radius="10" x="475" y="293" id="0:942"/>
+                <StraightVertex radius="10" x="472" y="299" id="0:943"/>
+                <StraightVertex radius="10" x="560" y="373" id="0:944"/>
             </PointsPath>
             <Stroke thickness="9" cap="round" join="round" id="0:3">
                 <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>
@@ -81,7 +79,52 @@
                 <TrimPath end="1" modeValue="sequential" name="TrimBlue" id="0:6"/>
             </Stroke>
         </Shape>
-        <Image assetId="0:199" x="400" y="300" name="MapBackground" id="0:200"/>
+        
+        <NestedArtboard artboardId="86:1" isStateful="true" x="618" y="441" name="Home" id="90:1">
+            <NestedStateMachine animationId="86:26" id="91:18"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Home Instance" id="99:10">
+                <ViewModelInstanceString propertyValue="Home" viewModelPropertyId="99:1" id="99:20"/>
+            </ViewModelInstance>
+        </NestedArtboard>
+        <NestedArtboard artboardId="86:1" isStateful="true" x="515" y="528" name="Sveti Sava temple" id="90:2">
+            <NestedStateMachine animationId="86:26" id="91:19"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Sveti Sava temple Instance" id="99:11">
+                <ViewModelInstanceString propertyValue="Sveti Sava temple" viewModelPropertyId="99:1" id="99:21"/>
+            </ViewModelInstance>
+        </NestedArtboard>
+        <NestedArtboard artboardId="86:1" isStateful="true" x="198" y="410" name="Promenad" id="90:3">
+            <NestedStateMachine animationId="86:26" id="91:20"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Promenad Instance" id="99:12">
+                <ViewModelInstanceString propertyValue="Promenad" viewModelPropertyId="99:1" id="99:22"/>
+            </ViewModelInstance>
+        </NestedArtboard>
+        <NestedArtboard artboardId="86:1" isStateful="true" x="248" y="279" name="Old bridge" id="90:4">
+            <NestedStateMachine animationId="86:26" id="91:21"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Old bridge Instance" id="99:13">
+                <ViewModelInstanceString propertyValue="Old bridge" viewModelPropertyId="99:1" id="99:23"/>
+            </ViewModelInstance>
+        </NestedArtboard>
+        <NestedArtboard artboardId="86:1" isStateful="true" x="239" y="55" name="Kalemegdan" id="90:5">
+            <NestedStateMachine animationId="86:26" id="91:22"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Kalemegdan Instance" id="99:14">
+                <ViewModelInstanceString propertyValue="Kalemegdan" viewModelPropertyId="99:1" id="99:24"/>
+            </ViewModelInstance>
+        </NestedArtboard>
+        <NestedArtboard artboardId="86:1" isStateful="true" x="215" y="92" name="Bridge to Kalemegdan" id="90:6">
+            <NestedStateMachine animationId="86:26" id="91:23"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Bridge to Kalemegdan Instance" id="99:15">
+                <ViewModelInstanceString propertyValue="Bridge to Kalemegdan" viewModelPropertyId="99:1" id="99:25"/>
+            </ViewModelInstance>
+        </NestedArtboard>
+        <NestedArtboard artboardId="86:1" isStateful="true" x="466" y="284" name="Skupstina" id="90:7">
+            <NestedStateMachine animationId="86:26" id="91:24"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Skupstina Instance" id="99:16">
+                <ViewModelInstanceString propertyValue="Skupstina" viewModelPropertyId="99:1" id="99:26"/>
+            </ViewModelInstance>
+        </NestedArtboard>
+
+        <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
+        
         <StateMachine name="State Machine 1" id="0:7">
             <StateMachineLayer name="Layer 1" id="0:8">
                 <AnyState x="200" y="-120" id="0:85"/>
@@ -123,6 +166,8 @@
             </KeyedObject>
         </LinearAnimation>
     </Artboard>
+    
+    <!-- Артборд-компонент машинки -->
     <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" viewModelId="0:0" viewModelInstanceId="0:0" isComponent="true" spaceId="17:1" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
         <Node x="-0.12497568" y="-0.25060511" rotation="1.110223e-16" scaleX="0.25" scaleY="0.25" id="3:874">
             <Shape x="22.611509" y="0.0013960004" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Glass↑" id="3:95">
@@ -409,6 +454,21 @@
         </StateMachine>
         <LinearAnimation name="Timeline 1" id="3:450"/>
     </Artboard>
+
+    <!-- Корневые ассеты и пространство проекта на верхнем уровне -->
+    <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
+    <ComponentAsset artboardId="86:1" name="Point" id="86:35"/>
+    <FontAsset file="Inter.ttf" isCustom="false" assetId="4228759" name="Inter" id="91:1"/>
+    <ImageAsset file="map.png" height="600" width="800" assetId="7332893" name="map" id="0:199"/>
+    <Space name="Space 1" id="17:1"/>
+    <ViewModel defaultInstanceId="86:12" name="PointVM" id="86:11">
+        <ViewModelPropertyString input="true" name="name" id="99:1"/>
+        <ViewModelInstance exports="true" id="86:12">
+            <ViewModelInstanceString propertyValue="Initial value" viewModelPropertyId="99:1" id="99:2"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <!-- Артборд-компонент Point -->
     <Artboard originX="0.5" originY="0.5" defaultStateMachineId="86:26" viewModelId="86:11" viewModelInstanceId="86:12" isComponent="true" spaceId="17:1" width="18" height="18" styleId="86:10" x="898" y="42" name="Point" id="86:1">
         <Text originY="0.5" x="13" id="91:2">
             <TextStylePaint fontSize="16" fontAssetId="91:1" familyName="Inter" styleName="SemiBold" id="91:3">
@@ -418,7 +478,9 @@
                 <TextStyleAxis tag="1869640570" axisValue="14" id="91:28"/>
                 <TextStyleAxis tag="2003265652" axisValue="600" id="91:29"/>
             </TextStylePaint>
-            <TextValueRun styleId="91:3" text="Point name" id="91:8"/>
+            <TextValueRun styleId="91:3" text="Point name" id="91:8">
+                <DataBindContext sourcePathIds="86:11-99:1" propertyKey="268" id="99:3"/>
+            </TextValueRun>
         </Text>
         <Shape id="86:2">
             <Ellipse width="15" height="15" id="86:3"/>
@@ -442,12 +504,6 @@
         </StateMachine>
         <LinearAnimation name="Timeline 1" id="86:13">
             <KeyedObject objectId="86:2" id="86:14">
-                <KeyedProperty property="opacity" id="86:15">
-                    <KeyFrameDouble interpolationType="cubic" id="86:17">
-                        <CubicEaseInterpolator x1="0" y1="0.58489174" id="86:34"/>
-                    </KeyFrameDouble>
-                    <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="86:16"/>
-                </KeyedProperty>
                 <KeyedProperty property="scaleY" id="86:18">
                     <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:20">
                         <ElasticInterpolator amplitude="4" period="0.69999999" id="86:33"/>
@@ -461,14 +517,19 @@
                     <KeyFrameDouble value="1" interpolationType="linear" frame="30" id="86:22"/>
                 </KeyedProperty>
             </KeyedObject>
+            <KeyedObject objectId="86:1" id="99:7">
+                <KeyedProperty property="opacity" id="99:8">
+                    <KeyFrameDouble interpolationType="cubic" id="99:12">
+                        <CubicEaseInterpolator x1="0" y1="0.58489174" id="99:10"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="99:11"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="91:3" id="99:13">
+                <KeyedProperty property="fontSize" id="99:14">
+                    <KeyFrameDouble value="14" interpolationType="linear" frame="60" id="99:15"/>
+                </KeyedProperty>
+            </KeyedObject>
         </LinearAnimation>
     </Artboard>
-    <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
-    <ComponentAsset artboardId="86:1" name="Point" id="86:35"/>
-    <FontAsset file="Inter.ttf" isCustom="false" assetId="4228759" name="Inter" id="91:1"/>
-    <ImageAsset file="map.png" height="600" width="800" assetId="7344836" name="map" id="0:199"/>
-    <Space name="Space 1" id="17:1"/>
-    <ViewModel defaultInstanceId="86:12" name="PointVM" id="86:11">
-        <ViewModelInstance exports="true" id="86:12"/>
-    </ViewModel>
 </Rive>

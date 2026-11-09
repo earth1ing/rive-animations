@@ -180,10 +180,16 @@ async function run() {
             return `                <StraightVertex radius="10" x="${normX}" y="${normY}" id="0:${884 + idx}"/>`;
         });
 
+        // Генерация stateful-инстансов точек Point с пробросом имени через ViewModelInstance
         const rmlWaypoints = rawWaypoints.map((wpt, index) => {
             const wptX = Math.round(offsetX + (wpt.x - minX) * latCorrection * scale);
             const wptY = Math.round(550 - (offsetY - 50 + (wpt.y - minY) * scale));
-            return `        <Node x="${wptX}" y="${wptY}" name="${wpt.name}" id="0:${500 + index}"/>`;
+            return `        <NestedArtboard artboardId="86:1" isStateful="true" x="${wptX}" y="${wptY}" name="${wpt.name}" id="90:${index + 1}">
+            <NestedStateMachine animationId="86:26" id="91:${18 + index}"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance" id="99:${10 + index}">
+                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1" id="99:${20 + index}"/>
+            </ViewModelInstance>
+        </NestedArtboard>`;
         });
 
         const padding = 50;
@@ -211,7 +217,6 @@ async function run() {
         console.log(`Проект обновлен в ${projectFolder}/`);
 
         try {
-            // Используем актуальный флаг проверки сборки вместо удаленного --once
             execSync('rive --verify', { cwd: projectFolder, stdio: 'inherit' });
             console.log('Сборка Rive прошла успешно!');
         } catch (buildErr) {
@@ -219,7 +224,7 @@ async function run() {
         }
 
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Generate RML, download map background: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+        execSync(`git commit -m "Generate RML with stateful point instances: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
         console.log('Готово!');
 
     } catch (err) {
