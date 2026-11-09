@@ -7,5 +7,5 @@
     }
   },
   "updateContentCommand": "sudo apt-get update && sudo apt-get install -y xvfb libegl1 libopengl0 libx11-6 libgles2 libwayland-egl1 libxkbcommon0 && curl -fsSL https://releases.rive.app/cli/install.sh | sh && echo 'export PATH=\"/home/codespace/.rive/bin:$PATH\"' >> ~/.bashrc",
-  "postStartCommand": "mkdir -p ~/.config/rive/app.rive.cli && cp -r /workspaces/rive-animations/.devcontainer/rive-auth/app.rive.cli/. ~/.config/rive/app.rive.cli/ && npx http-server -p 8080 &"
+  "postStartCommand": "mkdir -p ~/.rive && cp -r /workspaces/rive-animations/.devcontainer/rive-auth/.rive/. ~/.rive/ && npx http-server -p 8080 &"
 }
