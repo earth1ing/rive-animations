@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <Rive version="1" kind="fragment">
-    <!-- Главный артборд сцены -->
     <Artboard defaultStateMachineId="0:7" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
+        <NestedArtboard artboardId="86:1" x="665" y="496" name="Point" id="90:1">
+            <NestedStateMachine animationId="86:26" id="91:18"/>
+        </NestedArtboard>
         <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" scaleX="0.40000001" scaleY="0.40000001" name="Car" complexDependency="true" id="3:459">
             <NestedStateMachine animationId="3:453" id="3:460"/>
             <FollowPathConstraint targetId="0:239" id="3:877"/>
@@ -80,11 +81,7 @@
                 <TrimPath end="1" modeValue="sequential" name="TrimBlue" id="0:6"/>
             </Stroke>
         </Shape>
-        
-        
-
-        <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
-        
+        <Image assetId="0:199" x="400" y="300" name="MapBackground" id="0:200"/>
         <StateMachine name="State Machine 1" id="0:7">
             <StateMachineLayer name="Layer 1" id="0:8">
                 <AnyState x="200" y="-120" id="0:85"/>
@@ -126,8 +123,6 @@
             </KeyedObject>
         </LinearAnimation>
     </Artboard>
-    
-    <!-- Артборд-компонент машинки -->
     <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" viewModelId="0:0" viewModelInstanceId="0:0" isComponent="true" spaceId="17:1" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
         <Node x="-0.12497568" y="-0.25060511" rotation="1.110223e-16" scaleX="0.25" scaleY="0.25" id="3:874">
             <Shape x="22.611509" y="0.0013960004" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Glass↑" id="3:95">
@@ -414,9 +409,66 @@
         </StateMachine>
         <LinearAnimation name="Timeline 1" id="3:450"/>
     </Artboard>
-    
-    <!-- Корневые ассеты и пространство проекта на верхнем уровне -->
+    <Artboard originX="0.5" originY="0.5" defaultStateMachineId="86:26" viewModelId="86:11" viewModelInstanceId="86:12" isComponent="true" spaceId="17:1" width="18" height="18" styleId="86:10" x="898" y="42" name="Point" id="86:1">
+        <Text originY="0.5" x="13" id="91:2">
+            <TextStylePaint fontSize="16" fontAssetId="91:1" familyName="Inter" styleName="SemiBold" id="91:3">
+                <Fill fillRule="clockwise" id="91:4">
+                    <SolidColor colorValue="FF00A7D6" id="91:5"/>
+                </Fill>
+                <TextStyleAxis tag="1869640570" axisValue="14" id="91:28"/>
+                <TextStyleAxis tag="2003265652" axisValue="600" id="91:29"/>
+            </TextStylePaint>
+            <TextValueRun styleId="91:3" text="Point name" id="91:8"/>
+        </Text>
+        <Shape id="86:2">
+            <Ellipse width="15" height="15" id="86:3"/>
+            <Fill fillRule="clockwise" id="86:4">
+                <SolidColor colorValue="FF00A7D6" id="86:5"/>
+            </Fill>
+            <Stroke thickness="3" id="86:6">
+                <SolidColor colorValue="FFFFFFFF" id="86:7"/>
+            </Stroke>
+        </Shape>
+        <LayoutComponentStyle id="86:10"/>
+        <StateMachine name="State Machine 1" id="86:26">
+            <StateMachineLayer name="Layer 1" id="86:28">
+                <AnimationState animationId="86:13" x="160" id="86:24"/>
+                <EntryState id="86:29">
+                    <StateTransition stateToId="86:24" id="86:25"/>
+                </EntryState>
+                <ExitState x="480" id="86:30"/>
+                <AnyState x="400" id="86:31"/>
+            </StateMachineLayer>
+        </StateMachine>
+        <LinearAnimation name="Timeline 1" id="86:13">
+            <KeyedObject objectId="86:2" id="86:14">
+                <KeyedProperty property="opacity" id="86:15">
+                    <KeyFrameDouble interpolationType="cubic" id="86:17">
+                        <CubicEaseInterpolator x1="0" y1="0.58489174" id="86:34"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="86:16"/>
+                </KeyedProperty>
+                <KeyedProperty property="scaleY" id="86:18">
+                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:20">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="86:33"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="30" id="86:19"/>
+                </KeyedProperty>
+                <KeyedProperty property="scaleX" id="86:21">
+                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:23">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="86:32"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="30" id="86:22"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
     <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
-    <ImageAsset file="map.png" height="600" width="800" assetId="7332893" name="map" id="0:199"/>
+    <ComponentAsset artboardId="86:1" name="Point" id="86:35"/>
+    <FontAsset file="Inter.ttf" isCustom="false" assetId="4228759" name="Inter" id="91:1"/>
+    <ImageAsset file="map.png" height="600" width="800" assetId="7344836" name="map" id="0:199"/>
     <Space name="Space 1" id="17:1"/>
+    <ViewModel defaultInstanceId="86:12" name="PointVM" id="86:11">
+        <ViewModelInstance exports="true" id="86:12"/>
+    </ViewModel>
 </Rive>

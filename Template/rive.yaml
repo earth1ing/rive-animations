@@ -1,8 +1,0 @@
-name: Template
-logs:
-  file: build/rive.log
-  problems: build/problems.log
-main: "RouteArtboard"
-push:
-  projectId: 191076
-  fileId: 2699937

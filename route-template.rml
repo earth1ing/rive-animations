@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Rive version="1" kind="fragment">
+    <!-- Главный артборд сцены -->
     <Artboard defaultStateMachineId="0:7" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
-        <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" name="Car" complexDependency="true" id="3:459">
+        <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" scaleX="0.40000001" scaleY="0.40000001" name="Car" complexDependency="true" id="3:459">
             <NestedStateMachine animationId="3:453" id="3:460"/>
             <FollowPathConstraint targetId="0:239" id="3:877"/>
         </NestedArtboard>
@@ -9,18 +10,20 @@
             <PointsPath id="0:240">
 {{RML_VERTICES}}
             </PointsPath>
-            <Stroke thickness="9" cap="round" id="0:3">
+            <Stroke thickness="9" cap="round" join="round" id="0:3">
                 <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>
                 <TrimPath end="1" modeValue="sequential" name="TrimWhite" id="0:4"/>
             </Stroke>
-            <Stroke thickness="3" cap="round" id="0:5">
+            <Stroke thickness="3" cap="round" join="round" id="0:5">
                 <SolidColor colorValue="FF00A8D6" name="BlueLine" id="0:237"/>
                 <TrimPath end="1" modeValue="sequential" name="TrimBlue" id="0:6"/>
             </Stroke>
         </Shape>
         
-{{RML_WAYPOINTS}}
+        {{RML_WAYPOINTS}}
 
+        <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
+        
         <StateMachine name="State Machine 1" id="0:7">
             <StateMachineLayer name="Layer 1" id="0:8">
                 <AnyState x="200" y="-120" id="0:85"/>
@@ -62,7 +65,9 @@
             </KeyedObject>
         </LinearAnimation>
     </Artboard>
-    <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" isComponent="true" spaceId="17:1" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
+    
+    <!-- Артборд-компонент машинки -->
+    <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" viewModelId="0:0" viewModelInstanceId="0:0" isComponent="true" spaceId="17:1" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
         <Node x="-0.12497568" y="-0.25060511" rotation="1.110223e-16" scaleX="0.25" scaleY="0.25" id="3:874">
             <Shape x="22.611509" y="0.0013960004" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Glass↑" id="3:95">
                 <PointsPath isClosed="true" name="Path" id="3:96">
@@ -191,7 +196,7 @@
                         <StraightVertex x="36.997501" y="6.5" name="Component" id="3:198"/>
                         <StraightVertex radius="4" x="36.997555" y="5.4999886" name="Component" id="3:199"/>
                         <StraightVertex radius="4" x="-36.997448" y="5.4999886" name="Component" id="3:200"/>
-                        <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:201"/>
+                        <StraightVertex x="36.997501" y="6.5" name="Component" id="3:201"/>
                     </PointsPath>
                     <Fill name="Fill 1" id="3:202">
                         <SolidColor colorValue="FFA1A1A1" name="Component" id="3:203"/>
@@ -205,7 +210,7 @@
                         <StraightVertex x="36.997501" y="6.5" name="Component" id="3:209"/>
                         <StraightVertex radius="4" x="36.997555" y="-2.5" name="Component" id="3:210"/>
                         <StraightVertex radius="4" x="-36.997448" y="-2.5" name="Component" id="3:211"/>
-                        <StraightVertex x="-36.997501" y="6.5" name="Component" id="3:212"/>
+                        <StraightVertex x="36.997501" y="6.5" name="Component" id="3:212"/>
                     </PointsPath>
                     <Fill name="Fill 1" id="3:213">
                         <SolidColor colorValue="FFA1A1A1" name="Component" id="3:214"/>
@@ -348,6 +353,9 @@
         </StateMachine>
         <LinearAnimation name="Timeline 1" id="3:450"/>
     </Artboard>
+    
+    <!-- Корневые ассеты и пространство проекта на верхнем уровне -->
     <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
+    <ImageAsset file="map.png" height="600" width="800" assetId="7332893" name="map" id="0:199"/>
     <Space name="Space 1" id="17:1"/>
 </Rive>
