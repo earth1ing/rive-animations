@@ -20,7 +20,7 @@
             </Stroke>
         </Shape>
         
-        {{RML_WAYPOINTS}}
+{{RML_WAYPOINTS}}
 
         <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
         
@@ -353,9 +353,84 @@
         </StateMachine>
         <LinearAnimation name="Timeline 1" id="3:450"/>
     </Artboard>
-    
+
     <!-- Корневые ассеты и пространство проекта на верхнем уровне -->
     <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
-    <ImageAsset file="map.png" height="600" width="800" assetId="7332893" name="map" id="0:199"/>
+    <ComponentAsset artboardId="86:1" name="Point" id="86:35"/>
+    <FontAsset file="Inter.ttf" isCustom="false" assetId="4228759" name="Inter" id="91:1"/>
+    <ImageAsset file="map.png" height="600" width="800" assetId="7332893" name="MapBackground" id="0:199"/>
     <Space name="Space 1" id="17:1"/>
+    
+    <!-- Вьюмодель компонента Point -->
+    <ViewModel defaultInstanceId="86:12" name="PointVM" id="86:11">
+        <ViewModelPropertyString input="true" name="name" id="99:1"/>
+        <ViewModelInstance exports="true" id="86:12">
+            <ViewModelInstanceString propertyValue="Initial value" viewModelPropertyId="99:1" id="99:2"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <!-- Артборд-компонент Point -->
+    <Artboard originX="0.5" originY="0.5" defaultStateMachineId="86:26" viewModelId="86:11" viewModelInstanceId="86:12" isComponent="true" spaceId="17:1" width="18" height="18" styleId="86:10" x="898" y="42" name="Point" id="86:1">
+        <Text originY="0.5" x="13" id="91:2">
+            <TextStylePaint fontSize="16" fontAssetId="91:1" familyName="Inter" styleName="SemiBold" id="91:3">
+                <Fill fillRule="clockwise" id="91:4">
+                    <SolidColor colorValue="FF00A7D6" id="91:5"/>
+                </Fill>
+                <TextStyleAxis tag="1869640570" axisValue="14" id="91:28"/>
+                <TextStyleAxis tag="2003265652" axisValue="600" id="91:29"/>
+            </TextStylePaint>
+            <TextValueRun styleId="91:3" text="Point name" id="91:8">
+                <DataBindContext sourcePathIds="86:11-99:1" propertyKey="268" id="99:3"/>
+            </TextValueRun>
+        </Text>
+        <Shape id="86:2">
+            <Ellipse width="15" height="15" id="86:3"/>
+            <Fill fillRule="clockwise" id="86:4">
+                <SolidColor colorValue="FF00A7D6" id="86:5"/>
+            </Fill>
+            <Stroke thickness="3" id="86:6">
+                <SolidColor colorValue="FFFFFFFF" id="86:7"/>
+            </Stroke>
+        </Shape>
+        <LayoutComponentStyle id="86:10"/>
+        <StateMachine name="State Machine 1" id="86:26">
+            <StateMachineLayer name="Layer 1" id="86:28">
+                <AnimationState animationId="86:13" x="160" id="86:24"/>
+                <EntryState id="86:29">
+                    <StateTransition stateToId="86:24" id="86:25"/>
+                </EntryState>
+                <ExitState x="480" id="86:30"/>
+                <AnyState x="400" id="86:31"/>
+            </StateMachineLayer>
+        </StateMachine>
+        <LinearAnimation name="Timeline 1" id="86:13">
+            <KeyedObject objectId="86:2" id="86:14">
+                <KeyedProperty property="scaleY" id="86:18">
+                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:20">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="86:33"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="30" id="86:19"/>
+                </KeyedProperty>
+                <KeyedProperty property="scaleX" id="86:21">
+                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:23">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="86:32"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="30" id="86:22"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="86:1" id="99:7">
+                <KeyedProperty property="opacity" id="99:8">
+                    <KeyFrameDouble interpolationType="cubic" id="99:12">
+                        <CubicEaseInterpolator x1="0" y1="0.58489174" id="99:10"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="99:11"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="91:3" id="99:13">
+                <KeyedProperty property="fontSize" id="99:14">
+                    <KeyFrameDouble value="14" interpolationType="linear" frame="60" id="99:15"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
 </Rive>

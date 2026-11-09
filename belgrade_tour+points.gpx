@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="https://mapy.com/">
+<gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="https://mapy.cz/">
+	<wpt lat="44.803130" lon="20.476496">
+		<ele>145.600021</ele>
+		<name>Home</name>
+	</wpt>
+	<wpt lat="44.798595" lon="20.468948">
+		<ele>135.937271</ele>
+		<name>Sveti Sava temple</name>
+	</wpt>
+	<wpt lat="44.804726" lon="20.445826">
+		<ele>73.747543</ele>
+		<name>Promenade</name>
+	</wpt>
+	<wpt lat="44.811512" lon="20.449493">
+		<ele>72.480148</ele>
+		<name>Old bridge</name>
+	</wpt>
+	<wpt lat="44.823093" lon="20.448810">
+		<ele>119.783989</ele>
+		<name>Kalemegdan</name>
+	</wpt>
+	<wpt lat="44.821175" lon="20.447070">
+		<ele>72.800751</ele>
+		<name>Bridge to Kalemegdan</name>
+	</wpt>
+	<wpt lat="44.811237" lon="20.465347">
+		<ele>123.859505</ele>
+		<name>Skupstina</name>
+	</wpt>
 	<trk>
 		<name>Belgrade tour</name>
 		<trkseg>
@@ -129,10 +157,7 @@
 			<trkpt lat="44.798570" lon="20.468967">
 				<ele>137.000000</ele>
 			</trkpt>
-			<trkpt lat="44.798570" lon="20.468958">
-				<ele>137.000000</ele>
-			</trkpt>
-			<trkpt lat="44.798570" lon="20.468958">
+			<trkpt lat="44.798570" lon="20.468967">
 				<ele>137.000000</ele>
 			</trkpt>
 			<trkpt lat="44.798538" lon="20.468850">
@@ -1377,13 +1402,19 @@
 			<trkpt lat="44.812496" lon="20.462113">
 				<ele>120.000000</ele>
 			</trkpt>
-			<trkpt lat="44.812420" lon="20.462877">
+			<trkpt lat="44.812522" lon="20.462185">
 				<ele>120.000000</ele>
 			</trkpt>
-			<trkpt lat="44.812414" lon="20.463120">
+			<trkpt lat="44.812592" lon="20.462472">
 				<ele>120.000000</ele>
 			</trkpt>
-			<trkpt lat="44.812120" lon="20.463560">
+			<trkpt lat="44.812534" lon="20.462940">
+				<ele>120.000000</ele>
+			</trkpt>
+			<trkpt lat="44.812592" lon="20.463065">
+				<ele>120.000000</ele>
+			</trkpt>
+			<trkpt lat="44.812477" lon="20.463227">
 				<ele>120.000000</ele>
 			</trkpt>
 			<trkpt lat="44.812209" lon="20.463649">
@@ -1683,4 +1714,3 @@
 		</trkseg>
 	</trk>
 </gpx>
-
