@@ -5,59 +5,59 @@
         
         <!-- Точки маршрута рендерятся первыми (Front-to-back), чтобы быть поверх линии -->
                 <NestedArtboard artboardId="86:1" isStateful="true" x="611" y="441" name="Home" id="90:1">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Home Instance">
-                <ViewModelInstanceString propertyValue="Home" viewModelPropertyId="99:1"/>
-                <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="104:1"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+            <NestedStateMachine animationId="86:26" id="0:946"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Home Instance" id="0:947">
+                <ViewModelInstanceString propertyValue="Home" viewModelPropertyId="99:1" id="0:948"/>
+                <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="104:1" id="0:949"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="0:950"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="508" y="528" name="Sveti Sava temple" id="90:2">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Sveti Sava temple Instance">
-                <ViewModelInstanceString propertyValue="Sveti Sava temple" viewModelPropertyId="99:1"/>
-                <ViewModelInstanceNumber propertyValue="9" viewModelPropertyId="104:1"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+            <NestedStateMachine animationId="86:26" id="0:951"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Sveti Sava temple Instance" id="0:952">
+                <ViewModelInstanceString propertyValue="Sveti Sava temple" viewModelPropertyId="99:1" id="0:953"/>
+                <ViewModelInstanceNumber propertyValue="9" viewModelPropertyId="104:1" id="0:954"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="0:955"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="191" y="410" name="Promenade" id="90:3">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Promenade Instance">
-                <ViewModelInstanceString propertyValue="Promenade" viewModelPropertyId="99:1"/>
-                <ViewModelInstanceNumber propertyValue="34" viewModelPropertyId="104:1"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+            <NestedStateMachine animationId="86:26" id="0:956"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Promenade Instance" id="0:957">
+                <ViewModelInstanceString propertyValue="Promenade" viewModelPropertyId="99:1" id="0:958"/>
+                <ViewModelInstanceNumber propertyValue="34" viewModelPropertyId="104:1" id="0:959"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="0:960"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="241" y="279" name="Old bridge" id="90:4">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Old bridge Instance">
-                <ViewModelInstanceString propertyValue="Old bridge" viewModelPropertyId="99:1"/>
-                <ViewModelInstanceNumber propertyValue="46" viewModelPropertyId="104:1"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+            <NestedStateMachine animationId="86:26" id="0:961"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Old bridge Instance" id="0:962">
+                <ViewModelInstanceString propertyValue="Old bridge" viewModelPropertyId="99:1" id="0:963"/>
+                <ViewModelInstanceNumber propertyValue="46" viewModelPropertyId="104:1" id="0:964"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="0:965"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="231" y="55" name="Kalemegdan" id="90:5">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Kalemegdan Instance">
-                <ViewModelInstanceString propertyValue="Kalemegdan" viewModelPropertyId="99:1"/>
-                <ViewModelInstanceNumber propertyValue="62" viewModelPropertyId="104:1"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+            <NestedStateMachine animationId="86:26" id="0:966"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Kalemegdan Instance" id="0:967">
+                <ViewModelInstanceString propertyValue="Kalemegdan" viewModelPropertyId="99:1" id="0:968"/>
+                <ViewModelInstanceNumber propertyValue="62" viewModelPropertyId="104:1" id="0:969"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="0:970"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="208" y="92" name="Bridge to Kalemegdan" id="90:6">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Bridge to Kalemegdan Instance">
-                <ViewModelInstanceString propertyValue="Bridge to Kalemegdan" viewModelPropertyId="99:1"/>
-                <ViewModelInstanceNumber propertyValue="58" viewModelPropertyId="104:1"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+            <NestedStateMachine animationId="86:26" id="0:971"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Bridge to Kalemegdan Instance" id="0:972">
+                <ViewModelInstanceString propertyValue="Bridge to Kalemegdan" viewModelPropertyId="99:1" id="0:973"/>
+                <ViewModelInstanceNumber propertyValue="58" viewModelPropertyId="104:1" id="0:974"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="0:975"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="458" y="284" name="Skupstina" id="90:7">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Skupstina Instance">
-                <ViewModelInstanceString propertyValue="Skupstina" viewModelPropertyId="99:1"/>
-                <ViewModelInstanceNumber propertyValue="85" viewModelPropertyId="104:1"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+            <NestedStateMachine animationId="86:26" id="0:976"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Skupstina Instance" id="0:977">
+                <ViewModelInstanceString propertyValue="Skupstina" viewModelPropertyId="99:1" id="0:978"/>
+                <ViewModelInstanceNumber propertyValue="85" viewModelPropertyId="104:1" id="0:979"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="0:980"/>
             </ViewModelInstance>
         </NestedArtboard>
 

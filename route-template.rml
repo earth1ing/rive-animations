@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Rive version="1" kind="fragment">
-    <!-- Главный артборд сцены -->
-    <Artboard defaultStateMachineId="0:7" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
-        <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" scaleX="0.40000001" scaleY="0.40000001" name="Car" complexDependency="true" id="3:459">
+    <!-- Главный артборд сцены со стейдж-моделью -->
+    <Artboard defaultStateMachineId="0:7" viewModelId="107:1" viewModelInstanceId="107:2" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
+        
+        <!-- Точки маршрута рендерятся первыми (Front-to-back), чтобы быть поверх линии -->
+        {{RML_WAYPOINTS}}
+
+        <!-- Машинка, привязанная к пути -->
+        <NestedArtboard artboardId="3:38" isStateful="true" x="524.5" y="167.5" rotation="0.90279633" scaleX="0.40000001" scaleY="0.40000001" name="Car" complexDependency="true" id="3:459">
             <NestedStateMachine animationId="3:453" id="3:460"/>
             <FollowPathConstraint targetId="0:239" id="3:877"/>
         </NestedArtboard>
         
-        {{RML_WAYPOINTS}}
-
-<Shape name="RoutePath" id="0:239">
+        <!-- Геометрия маршрута -->
+        <Shape name="RoutePath" id="0:239">
             <PointsPath id="0:240">
 {{RML_VERTICES}}
             </PointsPath>
             <Stroke thickness="9" cap="round" join="round" id="0:3">
                 <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>
-                <TrimPath end="1" modeValue="sequential" name="TrimWhite" id="0:4"/>
+                <TrimPath end="1" modeValue="sequential" name="TrimWhite" id="0:4">
+                    <DataBindContext sourcePathIds="107:1-112:2" propertyKey="115" direction="true" converterId="107:6" id="112:4"/>
+                </TrimPath>
             </Stroke>
             <Stroke thickness="3" cap="round" join="round" id="0:5">
                 <SolidColor colorValue="FF00A8D6" name="BlueLine" id="0:237"/>
@@ -23,8 +29,10 @@
             </Stroke>
         </Shape>
         
+        <!-- Фоновая карта -->
         <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
         
+        <!-- Главная стейт-машина сцены -->
         <StateMachine name="State Machine 1" id="0:7">
             <StateMachineLayer name="Layer 1" id="0:8">
                 <AnyState x="200" y="-120" id="0:85"/>
@@ -35,13 +43,15 @@
                 <AnimationState animationId="3:1" x="300" id="0:88"/>
             </StateMachineLayer>
         </StateMachine>
-        <LinearAnimation duration="360" loopValue="loop" name="route" id="3:1">
+
+        <!-- Анимация движения маршрута (0–100%) -->
+        <LinearAnimation duration="660" loopValue="loop" name="route" id="3:1">
             <KeyedObject objectId="0:6" id="3:16">
                 <KeyedProperty property="end" id="3:17">
                     <KeyFrameDouble interpolationType="cubic" id="3:18">
-                        <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:26"/>
+                        <CubicEaseInterpolator x1="0.30000001" x2="0.69999999" id="109:26"/>
                     </KeyFrameDouble>
-                    <KeyFrameDouble value="1" interpolationType="cubic" frame="300" id="3:23">
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="600" id="3:23">
                         <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:24"/>
                     </KeyFrameDouble>
                 </KeyedProperty>
@@ -49,9 +59,9 @@
             <KeyedObject objectId="0:4" id="3:19">
                 <KeyedProperty property="end" id="3:20">
                     <KeyFrameDouble interpolationType="cubic" id="3:21">
-                        <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:29"/>
+                        <CubicEaseInterpolator x1="0.30000001" x2="0.69999999" id="109:28"/>
                     </KeyFrameDouble>
-                    <KeyFrameDouble value="1" interpolationType="cubic" frame="300" id="3:22">
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="600" id="3:22">
                         <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:25"/>
                     </KeyFrameDouble>
                 </KeyedProperty>
@@ -59,9 +69,9 @@
             <KeyedObject objectId="3:877" id="3:878">
                 <KeyedProperty property="distance" id="3:879">
                     <KeyFrameDouble interpolationType="cubic" id="3:880">
-                        <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:883"/>
+                        <CubicEaseInterpolator x1="0.30000001" x2="0.69999999" id="109:27"/>
                     </KeyFrameDouble>
-                    <KeyFrameDouble value="1" interpolationType="linear" frame="300" id="3:881"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="600" id="3:881"/>
                 </KeyedProperty>
             </KeyedObject>
         </LinearAnimation>
@@ -355,18 +365,32 @@
         <LinearAnimation name="Timeline 1" id="3:450"/>
     </Artboard>
 
-    <!-- Корневые ассеты и пространство проекта на верхнем уровне -->
+    <!-- Корневые ассеты и описание компонента Point -->
     <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
     <ComponentAsset artboardId="86:1" name="Point" id="86:35"/>
+    <DataConverterOperationValue operationValue="3" operationType="subtract" name="timeToAppear" id="121:115"/>
+    <DataConverterSystemNormalizer operationValue="0.0099999998" operationType="multiply" name="Normalize" id="107:6"/>
     <FontAsset file="Inter.ttf" isCustom="false" assetId="4228759" name="Inter" id="91:1"/>
     <ImageAsset file="map.png" height="600" width="800" assetId="7332893" name="MapBackground" id="0:199"/>
     <Space name="Space 1" id="17:1"/>
     
-    <!-- Вьюмодель компонента Point -->
+    <!-- Вьюмодель PointVM -->
     <ViewModel defaultInstanceId="86:12" name="PointVM" id="86:11">
+        <ViewModelPropertyViewModel viewModelReferenceId="107:1" name="propertyOfStageVM" id="117:49"/>
+        <ViewModelPropertyNumber input="true" name="pointPosition" id="104:1"/>
         <ViewModelPropertyString input="true" name="name" id="99:1"/>
         <ViewModelInstance exports="true" id="86:12">
             <ViewModelInstanceString propertyValue="Initial value" viewModelPropertyId="99:1" id="99:2"/>
+            <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:9"/>
+            <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:57"/>
+        </ViewModelInstance>
+    </ViewModel>
+
+    <!-- Вьюмодель StageVM -->
+    <ViewModel defaultInstanceId="107:2" name="StageVM" id="107:1">
+        <ViewModelPropertyNumber name="carPosition" id="112:2"/>
+        <ViewModelInstance exports="true" id="107:2">
+            <ViewModelInstanceNumber propertyValue="100" viewModelPropertyId="112:2" id="112:3"/>
         </ViewModelInstance>
     </ViewModel>
 
@@ -396,15 +420,66 @@
         <LayoutComponentStyle id="86:10"/>
         <StateMachine name="State Machine 1" id="86:26">
             <StateMachineLayer name="Layer 1" id="86:28">
-                <AnimationState animationId="86:13" x="160" id="86:24"/>
-                <EntryState id="86:29">
-                    <StateTransition stateToId="86:24" id="86:25"/>
+                <AnimationState animationId="86:13" x="270" y="-72" id="86:24"/>
+                <EntryState x="-30" y="-72" id="86:29">
+                    <StateTransition stateToId="117:99" id="117:100"/>
                 </EntryState>
                 <ExitState x="480" id="86:30"/>
                 <AnyState x="400" id="86:31"/>
+                <AnimationState animationId="117:79" x="114" y="-72" id="117:99">
+                    <StateTransition stateToId="86:24" id="117:101">
+                        <TransitionViewModelCondition opValue="greaterThanOrEqual" id="121:103">
+                            <TransitionPropertyViewModelComparator id="121:104">
+                                <BindablePropertyNumber id="121:105">
+                                    <DataBindContext sourcePathIds="107:1-112:2" propertyKey="636" id="121:106"/>
+                                </BindablePropertyNumber>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionPropertyViewModelComparator id="121:112">
+                                <BindablePropertyNumber id="121:113">
+                                    <DataBindContext sourcePathIds="86:11-104:1" propertyKey="636" converterId="121:115" id="121:114"/>
+                                </BindablePropertyNumber>
+                            </TransitionPropertyViewModelComparator>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
             </StateMachineLayer>
         </StateMachine>
-        <LinearAnimation name="Timeline 1" id="86:13">
+        <LinearAnimation duration="30" name="Idle" id="117:79">
+            <KeyedObject objectId="86:1" id="117:80">
+                <KeyedProperty property="opacity" id="117:81">
+                    <KeyFrameDouble interpolationType="cubic" id="117:82">
+                        <CubicEaseInterpolator x1="0" y1="0.58489174" id="117:74"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="86:2" id="117:84">
+                <KeyedProperty property="scaleX" id="117:85">
+                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="117:86">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:75"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+                <KeyedProperty property="scaleY" id="117:88">
+                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="117:89">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:76"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="91:2" id="117:91">
+                <KeyedProperty property="x" id="117:92">
+                    <KeyFrameDouble value="8" interpolationType="elastic" id="117:93">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:77"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="91:3" id="117:95">
+                <KeyedProperty property="letterSpacing" id="117:96">
+                    <KeyFrameDouble value="-2" interpolationType="elastic" id="117:97">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:78"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="30" name=" Active" id="86:13">
             <KeyedObject objectId="86:2" id="86:14">
                 <KeyedProperty property="scaleY" id="86:18">
                     <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:20">
@@ -427,9 +502,20 @@
                     <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="99:11"/>
                 </KeyedProperty>
             </KeyedObject>
-            <KeyedObject objectId="91:3" id="99:13">
-                <KeyedProperty property="fontSize" id="99:14">
-                    <KeyFrameDouble value="14" interpolationType="linear" frame="60" id="99:15"/>
+            <KeyedObject objectId="91:3" id="117:61">
+                <KeyedProperty property="letterSpacing" id="117:62">
+                    <KeyFrameDouble value="-2" interpolationType="elastic" id="117:63">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:73"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble interpolationType="linear" frame="30" id="117:64"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="91:2" id="117:68">
+                <KeyedProperty property="x" id="117:69">
+                    <KeyFrameDouble value="8" interpolationType="elastic" id="117:71">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:72"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="13" interpolationType="linear" frame="30" id="117:70"/>
                 </KeyedProperty>
             </KeyedObject>
         </LinearAnimation>
