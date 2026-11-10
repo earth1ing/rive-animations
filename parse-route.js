@@ -223,18 +223,18 @@ async function run() {
             return Math.max(0, Math.min(100, Math.round(bestProgress * 100)));
         }
 
-        // 3. Генерация инстансов точек с динамическим pointPosition и связкой с StageVM
+        // 3. Генерация инстансов точек без дублирующихся внутренних ID (Rive CLI назначит их автоматически)
         const rmlWaypoints = rawWaypoints.map((wpt, index) => {
             const wptX = Math.round(offsetX + (wpt.x - minX) * latCorrection * scale);
             const wptY = Math.round(550 - (offsetY - 50 + (wpt.y - minY) * scale));
             const pointPos = calculatePointPosition(wpt, rawPoints, segmentLengths, totalPathLength);
 
             return `        <NestedArtboard artboardId="86:1" isStateful="true" x="${wptX}" y="${wptY}" name="${wpt.name}" id="90:${index + 1}">
-            <NestedStateMachine animationId="86:26" id="0:${946 + index}"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance" id="0:${947 + index}">
-                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1" id="0:${948 + index}"/>
-                <ViewModelInstanceNumber propertyValue="${pointPos}" viewModelPropertyId="104:1" id="104:${2 + index}"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:${50 + index}"/>
+            <NestedStateMachine animationId="86:26"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance">
+                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1"/>
+                <ViewModelInstanceNumber propertyValue="${pointPos}" viewModelPropertyId="104:1"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
             </ViewModelInstance>
         </NestedArtboard>`;
         });
@@ -271,7 +271,7 @@ async function run() {
         }
 
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Generate RML with dynamic pointPosition and ViewModel bindings: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+        execSync(`git commit -m "Generate RML with clean waypoints and dynamic pointPosition: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
         console.log('Готово!');
 
     } catch (err) {
