@@ -180,14 +180,61 @@ async function run() {
             return `                <StraightVertex radius="10" x="${normX}" y="${normY}" id="0:${884 + idx}"/>`;
         });
 
-        // Генерация инстансов точек без дублирующихся ID внутренних элементов (Rive назначит их автоматически)
+        // 1. Считаем общую длину упрощенного пути для точного вычисления пропорций
+        let totalPathLength = 0;
+        const segmentLengths = [];
+        for (let i = 0; i < rawPoints.length - 1; i++) {
+            const p1 = rawPoints[i];
+            const p2 = rawPoints[i + 1];
+            const dx = (p2.x - p1.x) * latCorrection;
+            const dy = p2.y - p1.y;
+            const len = Math.sqrt(dx * dx + dy * dy);
+            segmentLengths.push(len);
+            totalPathLength += len;
+        }
+
+        // 2. Функция расчета позиции точки в процентах (0-100) на ломаной линии
+        function calculatePointPosition(wpt, points, segLengths, totalLen) {
+            if (totalLen === 0) return 0;
+            let minDistance = Infinity;
+            let currentDistSum = 0;
+            let bestProgress = 0;
+
+            for (let i = 0; i < points.length - 1; i++) {
+                const p1 = points[i];
+                const p2 = points[i + 1];
+                const segLen = segLengths[i];
+
+                const dx = (p2.x - p1.x) * latCorrection;
+                const dy = p2.y - p1.y;
+                if (segLen > 0) {
+                    const u = Math.max(0, Math.min(1, ((wpt.x - p1.x) * latCorrection * dx + (wpt.y - p1.y) * dy) / (segLen * segLen)));
+                    const projX = p1.x + u * (p2.x - p1.x);
+                    const projY = p1.y + u * (p2.y - p1.y);
+                    
+                    const distToProj = Math.sqrt(((wpt.x - projX) * latCorrection) ** 2 + (wpt.y - projY) ** 2);
+                    if (distToProj < minDistance) {
+                        minDistance = distToProj;
+                        bestProgress = (currentDistSum + u * segLen) / totalLen;
+                    }
+                }
+                currentDistSum += segLen;
+            }
+            return Math.max(0, Math.min(100, Math.round(bestProgress * 100)));
+        }
+
+        // 3. Генерация инстансов точек с динамическим pointPosition и связкой с StageVM
         const rmlWaypoints = rawWaypoints.map((wpt, index) => {
             const wptX = Math.round(offsetX + (wpt.x - minX) * latCorrection * scale);
             const wptY = Math.round(550 - (offsetY - 50 + (wpt.y - minY) * scale));
+            const pointPos = calculatePointPosition(wpt, rawPoints, segmentLengths, totalPathLength);
+
             return `        <NestedArtboard artboardId="86:1" isStateful="true" x="${wptX}" y="${wptY}" name="${wpt.name}" id="90:${index + 1}">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance">
-                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1"/>
+            <NestedStateMachine animationId="86:26" id="0:${946 + index}"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance" id="0:${947 + index}">
+                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1" id="0:${948 + index}"/>
+                <ViewModelInstanceNumber propertyValue="${pointPos}" viewModelPropertyId="104:1" id="104:${2 + index}"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:${50 + index}"/>
             </ViewModelInstance>
         </NestedArtboard>`;
         });
@@ -224,7 +271,7 @@ async function run() {
         }
 
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Generate RML with clean point instances: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+        execSync(`git commit -m "Generate RML with dynamic pointPosition and ViewModel bindings: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
         console.log('Готово!');
 
     } catch (err) {
