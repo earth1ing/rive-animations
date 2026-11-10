@@ -1,56 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <Rive version="1" kind="fragment">
-    <!-- Главный артборд сцены -->
-    <Artboard defaultStateMachineId="0:7" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
-        <NestedArtboard artboardId="3:38" x="524.5" y="167.5" rotation="0.90279633" scaleX="0.40000001" scaleY="0.40000001" name="Car" complexDependency="true" id="3:459">
+    <Artboard defaultStateMachineId="0:7" viewModelId="107:1" viewModelInstanceId="107:2" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
+        <NestedArtboard artboardId="3:38" isStateful="true" x="524.5" y="167.5" rotation="0.90279633" scaleX="0.40000001" scaleY="0.40000001" name="Car" complexDependency="true" id="3:459">
             <NestedStateMachine animationId="3:453" id="3:460"/>
             <FollowPathConstraint targetId="0:239" id="3:877"/>
         </NestedArtboard>
-        
-                <NestedArtboard artboardId="86:1" isStateful="true" x="611" y="441" name="Home" id="90:1">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Home Instance">
-                <ViewModelInstanceString propertyValue="Home" viewModelPropertyId="99:1"/>
+        <NestedArtboard artboardId="86:1" isStateful="true" x="611" y="441" name="Home" id="90:1">
+            <NestedStateMachine animationId="86:26" id="0:946"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Home Instance" id="0:947">
+                <ViewModelInstanceString propertyValue="Home" viewModelPropertyId="99:1" id="0:948"/>
+                <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:2"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:50"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="508" y="528" name="Sveti Sava temple" id="90:2">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Sveti Sava temple Instance">
-                <ViewModelInstanceString propertyValue="Sveti Sava temple" viewModelPropertyId="99:1"/>
+            <NestedStateMachine animationId="86:26" id="0:949"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Sveti Sava temple Instance" id="0:950">
+                <ViewModelInstanceString propertyValue="Sveti Sava temple" viewModelPropertyId="99:1" id="0:951"/>
+                <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:3"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:51"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="191" y="410" name="Promenade" id="90:3">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Promenade Instance">
-                <ViewModelInstanceString propertyValue="Promenade" viewModelPropertyId="99:1"/>
+            <NestedStateMachine animationId="86:26" id="0:952"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Promenade Instance" id="0:953">
+                <ViewModelInstanceString propertyValue="Promenade" viewModelPropertyId="99:1" id="0:954"/>
+                <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:4"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:52"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="241" y="279" name="Old bridge" id="90:4">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Old bridge Instance">
-                <ViewModelInstanceString propertyValue="Old bridge" viewModelPropertyId="99:1"/>
+            <NestedStateMachine animationId="86:26" id="0:955"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Old bridge Instance" id="0:956">
+                <ViewModelInstanceString propertyValue="Old bridge" viewModelPropertyId="99:1" id="0:957"/>
+                <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:5"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:53"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="231" y="55" name="Kalemegdan" id="90:5">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Kalemegdan Instance">
-                <ViewModelInstanceString propertyValue="Kalemegdan" viewModelPropertyId="99:1"/>
+            <NestedStateMachine animationId="86:26" id="0:958"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Kalemegdan Instance" id="0:959">
+                <ViewModelInstanceString propertyValue="Kalemegdan" viewModelPropertyId="99:1" id="0:960"/>
+                <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:6"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:54"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="208" y="92" name="Bridge to Kalemegdan" id="90:6">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Bridge to Kalemegdan Instance">
-                <ViewModelInstanceString propertyValue="Bridge to Kalemegdan" viewModelPropertyId="99:1"/>
+            <NestedStateMachine animationId="86:26" id="0:961"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Bridge to Kalemegdan Instance" id="0:962">
+                <ViewModelInstanceString propertyValue="Bridge to Kalemegdan" viewModelPropertyId="99:1" id="0:963"/>
+                <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:7"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:55"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="458" y="284" name="Skupstina" id="90:7">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="Skupstina Instance">
-                <ViewModelInstanceString propertyValue="Skupstina" viewModelPropertyId="99:1"/>
+            <NestedStateMachine animationId="86:26" id="0:964"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="Skupstina Instance" id="0:965">
+                <ViewModelInstanceString propertyValue="Skupstina" viewModelPropertyId="99:1" id="0:966"/>
+                <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:8"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:56"/>
             </ViewModelInstance>
         </NestedArtboard>
-
-<Shape name="RoutePath" id="0:239">
+        <Shape name="RoutePath" id="0:239">
             <PointsPath id="0:240">
                 <StraightVertex radius="10" x="615" y="439" id="0:884"/>
                 <StraightVertex radius="10" x="597" y="458" id="0:885"/>
@@ -117,16 +127,16 @@
             </PointsPath>
             <Stroke thickness="9" cap="round" join="round" id="0:3">
                 <SolidColor colorValue="FFFFFFFF" name="WhiteCasing" id="0:236"/>
-                <TrimPath end="1" modeValue="sequential" name="TrimWhite" id="0:4"/>
+                <TrimPath end="1" modeValue="sequential" name="TrimWhite" id="0:4">
+                    <DataBindContext sourcePathIds="107:1-112:2" propertyKey="115" direction="true" converterId="107:6" id="112:4"/>
+                </TrimPath>
             </Stroke>
             <Stroke thickness="3" cap="round" join="round" id="0:5">
                 <SolidColor colorValue="FF00A8D6" name="BlueLine" id="0:237"/>
-                <TrimPath end="1" modeValue="sequential" name="TrimBlue" id="0:6"/>
+                <TrimPath end="1" modeValue="synchronized" name="TrimBlue" id="0:6"/>
             </Stroke>
         </Shape>
-        
-        <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
-        
+        <Image assetId="0:199" x="400" y="300" name="MapBackground" id="0:200"/>
         <StateMachine name="State Machine 1" id="0:7">
             <StateMachineLayer name="Layer 1" id="0:8">
                 <AnyState x="200" y="-120" id="0:85"/>
@@ -134,16 +144,16 @@
                 <EntryState id="0:87">
                     <StateTransition stateToId="0:88" id="3:30"/>
                 </EntryState>
-                <AnimationState animationId="3:1" x="300" id="0:88"/>
+                <AnimationState animationId="3:1" x="203" y="-6" id="0:88"/>
             </StateMachineLayer>
         </StateMachine>
-        <LinearAnimation duration="360" loopValue="loop" name="route" id="3:1">
+        <LinearAnimation duration="660" name="route" id="3:1">
             <KeyedObject objectId="0:6" id="3:16">
                 <KeyedProperty property="end" id="3:17">
                     <KeyFrameDouble interpolationType="cubic" id="3:18">
-                        <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:26"/>
+                        <CubicEaseInterpolator x1="0.30000001" x2="0.69999999" id="109:26"/>
                     </KeyFrameDouble>
-                    <KeyFrameDouble value="1" interpolationType="cubic" frame="300" id="3:23">
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="600" id="3:23">
                         <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:24"/>
                     </KeyFrameDouble>
                 </KeyedProperty>
@@ -151,9 +161,9 @@
             <KeyedObject objectId="0:4" id="3:19">
                 <KeyedProperty property="end" id="3:20">
                     <KeyFrameDouble interpolationType="cubic" id="3:21">
-                        <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:29"/>
+                        <CubicEaseInterpolator x1="0.30000001" x2="0.69999999" id="109:28"/>
                     </KeyFrameDouble>
-                    <KeyFrameDouble value="1" interpolationType="cubic" frame="300" id="3:22">
+                    <KeyFrameDouble value="1" interpolationType="cubic" frame="600" id="3:22">
                         <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:25"/>
                     </KeyFrameDouble>
                 </KeyedProperty>
@@ -161,15 +171,13 @@
             <KeyedObject objectId="3:877" id="3:878">
                 <KeyedProperty property="distance" id="3:879">
                     <KeyFrameDouble interpolationType="cubic" id="3:880">
-                        <CubicEaseInterpolator x1="0.5" x2="0" y2="0.5" id="3:883"/>
+                        <CubicEaseInterpolator x1="0.30000001" x2="0.69999999" id="109:27"/>
                     </KeyFrameDouble>
-                    <KeyFrameDouble value="1" interpolationType="linear" frame="300" id="3:881"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="600" id="3:881"/>
                 </KeyedProperty>
             </KeyedObject>
         </LinearAnimation>
     </Artboard>
-    
-    <!-- Артборд-компонент машинки -->
     <Artboard originX="0.5" originY="0.5" defaultStateMachineId="3:453" viewModelId="0:0" viewModelInstanceId="0:0" isComponent="true" spaceId="17:1" width="34" height="19" styleId="3:39" x="900" name="Car" id="3:38">
         <Node x="-0.12497568" y="-0.25060511" rotation="1.110223e-16" scaleX="0.25" scaleY="0.25" id="3:874">
             <Shape x="22.611509" y="0.0013960004" rotation="1.570796" scaleX="0.99999994" scaleY="0.99999994" name="Glass↑" id="3:95">
@@ -456,28 +464,11 @@
         </StateMachine>
         <LinearAnimation name="Timeline 1" id="3:450"/>
     </Artboard>
-
-    <!-- Корневые ассеты и пространство проекта на верхнем уровне -->
-    <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
-    <ComponentAsset artboardId="86:1" name="Point" id="86:35"/>
-    <FontAsset file="Inter.ttf" isCustom="false" assetId="4228759" name="Inter" id="91:1"/>
-    <ImageAsset file="map.png" height="600" width="800" assetId="7332893" name="MapBackground" id="0:199"/>
-    <Space name="Space 1" id="17:1"/>
-    
-    <!-- Вьюмодель компонента Point -->
-    <ViewModel defaultInstanceId="86:12" name="PointVM" id="86:11">
-        <ViewModelPropertyString input="true" name="name" id="99:1"/>
-        <ViewModelInstance exports="true" id="86:12">
-            <ViewModelInstanceString propertyValue="Initial value" viewModelPropertyId="99:1" id="99:2"/>
-        </ViewModelInstance>
-    </ViewModel>
-
-    <!-- Артборд-компонент Point -->
     <Artboard originX="0.5" originY="0.5" defaultStateMachineId="86:26" viewModelId="86:11" viewModelInstanceId="86:12" isComponent="true" spaceId="17:1" width="18" height="18" styleId="86:10" x="898" y="42" name="Point" id="86:1">
         <Text originY="0.5" x="13" id="91:2">
-            <TextStylePaint fontSize="16" fontAssetId="91:1" familyName="Inter" styleName="SemiBold" id="91:3">
+            <TextStylePaint fontSize="14" fontAssetId="91:1" familyName="Inter" styleName="SemiBold" id="91:3">
                 <Fill fillRule="clockwise" id="91:4">
-                    <SolidColor colorValue="000000" id="91:5"/>
+                    <SolidColor colorValue="FF000000" id="91:5"/>
                 </Fill>
                 <TextStyleAxis tag="1869640570" axisValue="14" id="91:28"/>
                 <TextStyleAxis tag="2003265652" axisValue="600" id="91:29"/>
@@ -498,15 +489,66 @@
         <LayoutComponentStyle id="86:10"/>
         <StateMachine name="State Machine 1" id="86:26">
             <StateMachineLayer name="Layer 1" id="86:28">
-                <AnimationState animationId="86:13" x="160" id="86:24"/>
-                <EntryState id="86:29">
-                    <StateTransition stateToId="86:24" id="86:25"/>
+                <AnimationState animationId="86:13" x="270" y="-72" id="86:24"/>
+                <EntryState x="-30" y="-72" id="86:29">
+                    <StateTransition stateToId="117:99" id="117:100"/>
                 </EntryState>
                 <ExitState x="480" id="86:30"/>
                 <AnyState x="400" id="86:31"/>
+                <AnimationState animationId="117:79" x="114" y="-72" id="117:99">
+                    <StateTransition stateToId="86:24" id="117:101">
+                        <TransitionViewModelCondition opValue="greaterThanOrEqual" id="121:103">
+                            <TransitionPropertyViewModelComparator id="121:104">
+                                <BindablePropertyNumber id="121:105">
+                                    <DataBindContext sourcePathIds="107:1-112:2" propertyKey="636" id="121:106"/>
+                                </BindablePropertyNumber>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionPropertyViewModelComparator id="121:112">
+                                <BindablePropertyNumber id="121:113">
+                                    <DataBindContext sourcePathIds="86:11-104:1" propertyKey="636" converterId="121:115" id="121:114"/>
+                                </BindablePropertyNumber>
+                            </TransitionPropertyViewModelComparator>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
             </StateMachineLayer>
         </StateMachine>
-        <LinearAnimation name="Timeline 1" id="86:13">
+        <LinearAnimation duration="30" name="Idle" id="117:79">
+            <KeyedObject objectId="86:1" id="117:80">
+                <KeyedProperty property="opacity" id="117:81">
+                    <KeyFrameDouble interpolationType="cubic" id="117:82">
+                        <CubicEaseInterpolator x1="0" y1="0.58489174" id="117:74"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="86:2" id="117:84">
+                <KeyedProperty property="scaleX" id="117:85">
+                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="117:86">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:75"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+                <KeyedProperty property="scaleY" id="117:88">
+                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="117:89">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:76"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="91:2" id="117:91">
+                <KeyedProperty property="x" id="117:92">
+                    <KeyFrameDouble value="8" interpolationType="elastic" id="117:93">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:77"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="91:3" id="117:95">
+                <KeyedProperty property="letterSpacing" id="117:96">
+                    <KeyFrameDouble value="-2" interpolationType="elastic" id="117:97">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:78"/>
+                    </KeyFrameDouble>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+        <LinearAnimation duration="30" name=" Active" id="86:13">
             <KeyedObject objectId="86:2" id="86:14">
                 <KeyedProperty property="scaleY" id="86:18">
                     <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:20">
@@ -529,11 +571,45 @@
                     <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="99:11"/>
                 </KeyedProperty>
             </KeyedObject>
-            <KeyedObject objectId="91:3" id="99:13">
-                <KeyedProperty property="fontSize" id="99:14">
-                    <KeyFrameDouble value="14" interpolationType="linear" frame="60" id="99:15"/>
+            <KeyedObject objectId="91:3" id="117:61">
+                <KeyedProperty property="letterSpacing" id="117:62">
+                    <KeyFrameDouble value="-2" interpolationType="elastic" id="117:63">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:73"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble interpolationType="linear" frame="30" id="117:64"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="91:2" id="117:68">
+                <KeyedProperty property="x" id="117:69">
+                    <KeyFrameDouble value="8" interpolationType="elastic" id="117:71">
+                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:72"/>
+                    </KeyFrameDouble>
+                    <KeyFrameDouble value="13" interpolationType="linear" frame="30" id="117:70"/>
                 </KeyedProperty>
             </KeyedObject>
         </LinearAnimation>
     </Artboard>
+    <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
+    <ComponentAsset artboardId="86:1" name="Point" id="86:35"/>
+    <DataConverterOperationValue operationValue="3" operationType="subtract" name="timeToAppear" id="121:115"/>
+    <DataConverterSystemNormalizer operationValue="0.0099999998" operationType="multiply" name="Normalize" id="107:6"/>
+    <FontAsset file="Inter.ttf" isCustom="false" assetId="4228759" name="Inter" id="91:1"/>
+    <ImageAsset file="MapBackground.png" height="600" width="800" assetId="7359571" name="MapBackground" id="0:199"/>
+    <Space name="Space 1" id="17:1"/>
+    <ViewModel defaultInstanceId="86:12" name="PointVM" id="86:11">
+        <ViewModelPropertyViewModel viewModelReferenceId="107:1" name="propertyOfStageVM" id="117:49"/>
+        <ViewModelPropertyNumber input="true" name="pointPosition" id="104:1"/>
+        <ViewModelPropertyString input="true" name="name" id="99:1"/>
+        <ViewModelInstance exports="true" id="86:12">
+            <ViewModelInstanceString propertyValue="Initial value" viewModelPropertyId="99:1" id="99:2"/>
+            <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:9"/>
+            <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:57"/>
+        </ViewModelInstance>
+    </ViewModel>
+    <ViewModel defaultInstanceId="107:2" name="StageVM" id="107:1">
+        <ViewModelPropertyNumber name="carPosition" id="112:2"/>
+        <ViewModelInstance exports="true" id="107:2">
+            <ViewModelInstanceNumber propertyValue="100" viewModelPropertyId="112:2" id="112:3"/>
+        </ViewModelInstance>
+    </ViewModel>
 </Rive>
