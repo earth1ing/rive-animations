@@ -3,6 +3,7 @@ const path = require('path');
 const https = require('https');
 const { execSync } = require('child_process');
 const readline = require('readline/promises');
+const sharp = require('sharp');
 
 function loadEnv() {
     const envPath = path.join(__dirname, '.env');
@@ -69,6 +70,54 @@ function downloadMapImage(minLon, minLat, maxLon, maxLat, destPath) {
             resolve();
         });
     });
+}
+
+// Функция обработки и масштабирования изображений (меньшая сторона = 400px)
+async function processWaypointImage(waypointName, projectFolder) {
+    const imgDir = path.join(__dirname, 'img');
+    const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
+    let sourceImgPath = null;
+    let extFound = '';
+
+    for (const ext of extensions) {
+        const testPath = path.join(imgDir, `${waypointName}${ext}`);
+        if (fs.existsSync(testPath)) {
+            sourceImgPath = testPath;
+            extFound = ext;
+            break;
+        }
+    }
+
+    if (!sourceImgPath) {
+        console.log(`Предупреждение: картинка для точки "${waypointName}" в папке img/ не найдена.`);
+        return null;
+    }
+
+    const destImgName = `${waypointName}${extFound}`;
+    const destImgPath = path.join(projectFolder, destImgName);
+
+    try {
+        const metadata = await sharp(sourceImgPath).metadata();
+        const width = metadata.width;
+        const height = metadata.height;
+
+        let resizeOptions = {};
+        if (width < height) {
+            resizeOptions = { width: 400 };
+        } else {
+            resizeOptions = { height: 400 };
+        }
+
+        await sharp(sourceImgPath)
+            .resize(resizeOptions)
+            .toFile(destImgPath);
+
+        console.log(`Изображение для "${waypointName}" масштабировано и сохранено.`);
+        return { fileName: destImgName, format: extFound.replace('.', '') };
+    } catch (err) {
+        console.error(`Ошибка обработки изображения для ${waypointName}:`, err.message);
+        return null;
+    }
 }
 
 function simplifyPoints(points, epsilon) {
@@ -180,7 +229,6 @@ async function run() {
             return `                <StraightVertex radius="10" x="${normX}" y="${normY}" id="0:${884 + idx}"/>`;
         });
 
-        // 1. Считаем общую длину упрощенного пути для точного вычисления пропорций
         let totalPathLength = 0;
         const segmentLengths = [];
         for (let i = 0; i < rawPoints.length - 1; i++) {
@@ -193,7 +241,6 @@ async function run() {
             totalPathLength += len;
         }
 
-        // 2. Функция расчета позиции точки в процентах (0-100) на ломаной линии
         function calculatePointPosition(wpt, points, segLengths, totalLen) {
             if (totalLen === 0) return 0;
             let minDistance = Infinity;
@@ -212,7 +259,7 @@ async function run() {
                     const projX = p1.x + u * (p2.x - p1.x);
                     const projY = p1.y + u * (p2.y - p1.y);
                     
-                    const distToProj = Math.sqrt(((wpt.x - projX) * latCorrection) ** 2 + (wpt.y - projY) ** 2);
+                    const distToProj = Math.sqrt(((wpt.x - projX) * latCorrection) ** 2 + ((wpt.y - projY)) ** 2);
                     if (distToProj < minDistance) {
                         minDistance = distToProj;
                         bestProgress = (currentDistSum + u * segLen) / totalLen;
@@ -223,32 +270,48 @@ async function run() {
             return Math.max(0, Math.min(100, Math.round(bestProgress * 100)));
         }
 
-        // 3. Генерация инстансов точек без дублирующихся внутренних ID (Rive CLI назначит их автоматически)
-        const rmlWaypoints = rawWaypoints.map((wpt, index) => {
-            const wptX = Math.round(offsetX + (wpt.x - minX) * latCorrection * scale);
-            const wptY = Math.round(550 - (offsetY - 50 + (wpt.y - minY) * scale));
-            const pointPos = calculatePointPosition(wpt, rawPoints, segmentLengths, totalPathLength);
-
-            return `        <NestedArtboard artboardId="86:1" isStateful="true" x="${wptX}" y="${wptY}" name="${wpt.name}" id="90:${index + 1}">
-            <NestedStateMachine animationId="86:26"/>
-            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance">
-                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1"/>
-                <ViewModelInstanceNumber propertyValue="${pointPos}" viewModelPropertyId="104:1"/>
-                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
-            </ViewModelInstance>
-        </NestedArtboard>`;
-        });
+        const baseName = path.basename(fileName, path.extname(fileName)).trim();
+        const projectFolder = baseName;
+        fs.mkdirSync(projectFolder, { recursive: true });
 
         const padding = 50;
         const targetWidth = 700, targetHeight = 500;
         const lonPadding = (maxLon - minLon) * (padding / targetWidth);
         const latPadding = (maxLat - minLat) * (padding / targetHeight);
 
-        const baseName = path.basename(fileName, path.extname(fileName)).trim();
-        const projectFolder = baseName;
-        fs.mkdirSync(projectFolder, { recursive: true });
-
         await downloadMapImage(minLon - lonPadding, minLat - latPadding, maxLon + lonPadding, maxLat + latPadding, path.join(projectFolder, 'map.png'));
+
+        const rmlWaypoints = [];
+        const rmlAssets = [];
+        let assetIdCounter = 7381110;
+
+        for (let index = 0; index < rawWaypoints.length; index++) {
+            const wpt = rawWaypoints[index];
+            const wptX = Math.round(offsetX + (wpt.x - minX) * latCorrection * scale);
+            const wptY = Math.round(550 - (offsetY - 50 + (wpt.y - minY) * scale));
+            const pointPos = calculatePointPosition(wpt, rawPoints, segmentLengths, totalPathLength);
+
+            // Обрабатываем картинку для текущей точки
+            const imgInfo = await processWaypointImage(wpt.name, projectFolder);
+            let imageAssetReferenceId = '';
+
+            if (imgInfo) {
+                const currentAssetId = assetIdCounter++;
+                imageAssetReferenceId = currentAssetId;
+                rmlAssets.push(`    <ImageAsset file="${imgInfo.fileName}" format="${imgInfo.format}" name="${wpt.name}" id="${currentAssetId}"/>`);
+            }
+
+            rmlWaypoints.push(`        <NestedArtboard artboardId="86:1" isStateful="true" x="${wptX}" y="${wptY}" name="${wpt.name}">
+            <NestedStateMachine animationId="86:26"/>
+            <ViewModelInstance viewModelId="86:11" exports="true" name="${wpt.name} Instance">
+                <ViewModelInstanceString propertyValue="${wpt.name}" viewModelPropertyId="99:1"/>
+                <ViewModelInstanceNumber propertyValue="${pointPos}" viewModelPropertyId="104:1"/>
+                <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+                <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
+                <ViewModelInstanceAssetImage ${imageAssetReferenceId ? `propertyValue="${imageAssetReferenceId}"` : ''} viewModelPropertyId="137:42"/>
+            </ViewModelInstance>
+        </NestedArtboard>`);
+        }
 
         const yamlPath = path.join(projectFolder, 'rive.yaml');
         if (!fs.existsSync(yamlPath)) fs.writeFileSync(yamlPath, `name: ${baseName}\n`);
@@ -258,7 +321,8 @@ async function run() {
 
         rmlTemplate = rmlTemplate
             .replace('{{RML_VERTICES}}', rmlVertices.join('\n'))
-            .replace('{{RML_WAYPOINTS}}', rmlWaypoints.join('\n'));
+            .replace('{{RML_WAYPOINTS}}', rmlWaypoints.join('\n'))
+            .replace('{{RML_ASSETS}}', rmlAssets.join('\n'));
 
         fs.writeFileSync(path.join(projectFolder, 'scene.rml'), rmlTemplate);
         console.log(`Проект обновлен в ${projectFolder}/`);
@@ -271,7 +335,7 @@ async function run() {
         }
 
         execSync('git add "../parse-route.js" "."', { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
-        execSync(`git commit -m "Generate RML with clean waypoints and dynamic pointPosition: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
+        execSync(`git commit -m "Generate RML with hover, scaled images and dynamic pointPosition: ${projectFolder}"`, { cwd: path.join(__dirname, projectFolder), stdio: 'inherit' });
         console.log('Готово!');
 
     } catch (err) {

@@ -4,60 +4,74 @@
     <Artboard defaultStateMachineId="0:7" viewModelId="107:1" viewModelInstanceId="107:2" spaceId="17:1" width="800" height="600" styleId="0:0" name="RouteArtboard" id="0:238">
         
         <!-- Точки маршрута рендерятся первыми (Front-to-back), чтобы быть поверх линии -->
-                <NestedArtboard artboardId="86:1" isStateful="true" x="611" y="441" name="Home" id="90:1">
+                <NestedArtboard artboardId="86:1" isStateful="true" x="611" y="441" name="Home">
             <NestedStateMachine animationId="86:26"/>
             <ViewModelInstance viewModelId="86:11" exports="true" name="Home Instance">
                 <ViewModelInstanceString propertyValue="Home" viewModelPropertyId="99:1"/>
                 <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+                <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
+                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
-        <NestedArtboard artboardId="86:1" isStateful="true" x="508" y="528" name="Sveti Sava temple" id="90:2">
+        <NestedArtboard artboardId="86:1" isStateful="true" x="508" y="528" name="Sveti Sava temple">
             <NestedStateMachine animationId="86:26"/>
             <ViewModelInstance viewModelId="86:11" exports="true" name="Sveti Sava temple Instance">
                 <ViewModelInstanceString propertyValue="Sveti Sava temple" viewModelPropertyId="99:1"/>
                 <ViewModelInstanceNumber propertyValue="9" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+                <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
+                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
-        <NestedArtboard artboardId="86:1" isStateful="true" x="191" y="410" name="Promenade" id="90:3">
+        <NestedArtboard artboardId="86:1" isStateful="true" x="191" y="410" name="Promenade">
             <NestedStateMachine animationId="86:26"/>
             <ViewModelInstance viewModelId="86:11" exports="true" name="Promenade Instance">
                 <ViewModelInstanceString propertyValue="Promenade" viewModelPropertyId="99:1"/>
                 <ViewModelInstanceNumber propertyValue="34" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+                <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
+                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
-        <NestedArtboard artboardId="86:1" isStateful="true" x="241" y="279" name="Old bridge" id="90:4">
+        <NestedArtboard artboardId="86:1" isStateful="true" x="241" y="279" name="Old bridge">
             <NestedStateMachine animationId="86:26"/>
             <ViewModelInstance viewModelId="86:11" exports="true" name="Old bridge Instance">
                 <ViewModelInstanceString propertyValue="Old bridge" viewModelPropertyId="99:1"/>
                 <ViewModelInstanceNumber propertyValue="46" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+                <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
+                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
-        <NestedArtboard artboardId="86:1" isStateful="true" x="231" y="55" name="Kalemegdan" id="90:5">
+        <NestedArtboard artboardId="86:1" isStateful="true" x="231" y="55" name="Kalemegdan">
             <NestedStateMachine animationId="86:26"/>
             <ViewModelInstance viewModelId="86:11" exports="true" name="Kalemegdan Instance">
                 <ViewModelInstanceString propertyValue="Kalemegdan" viewModelPropertyId="99:1"/>
                 <ViewModelInstanceNumber propertyValue="62" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+                <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
+                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
-        <NestedArtboard artboardId="86:1" isStateful="true" x="208" y="92" name="Bridge to Kalemegdan" id="90:6">
+        <NestedArtboard artboardId="86:1" isStateful="true" x="208" y="92" name="Bridge to Kalemegdan">
             <NestedStateMachine animationId="86:26"/>
             <ViewModelInstance viewModelId="86:11" exports="true" name="Bridge to Kalemegdan Instance">
                 <ViewModelInstanceString propertyValue="Bridge to Kalemegdan" viewModelPropertyId="99:1"/>
                 <ViewModelInstanceNumber propertyValue="58" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+                <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
+                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
-        <NestedArtboard artboardId="86:1" isStateful="true" x="458" y="284" name="Skupstina" id="90:7">
+        <NestedArtboard artboardId="86:1" isStateful="true" x="458" y="284" name="Skupstina">
             <NestedStateMachine animationId="86:26"/>
             <ViewModelInstance viewModelId="86:11" exports="true" name="Skupstina Instance">
                 <ViewModelInstanceString propertyValue="Skupstina" viewModelPropertyId="99:1"/>
                 <ViewModelInstanceNumber propertyValue="85" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
+                <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
+                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
 
@@ -149,7 +163,7 @@
         <Image x="400" y="300" assetId="0:199" name="MapBackground" id="0:200"/>
         
         <!-- Главная стейт-машина сцены -->
-        <StateMachine name="State Machine 1" id="0:7">
+        <StateMachine name="StageSM" id="0:7">
             <StateMachineLayer name="Layer 1" id="0:8">
                 <AnyState x="200" y="-120" id="0:85"/>
                 <ExitState x="400" y="-120" id="0:86"/>
@@ -481,17 +495,20 @@
         <LinearAnimation name="Timeline 1" id="3:450"/>
     </Artboard>
 
-    <!-- Корневые ассеты и описание компонента Point -->
+    <!-- Корневые ассеты -->
     <ComponentAsset artboardId="3:38" name="Artboard 1" id="3:458"/>
     <ComponentAsset artboardId="86:1" name="Point" id="86:35"/>
     <DataConverterOperationValue operationValue="3" operationType="subtract" name="timeToAppear" id="121:115"/>
     <DataConverterSystemNormalizer operationValue="0.0099999998" operationType="multiply" name="Normalize" id="107:6"/>
     <FontAsset file="Inter.ttf" isCustom="false" assetId="4228759" name="Inter" id="91:1"/>
     <ImageAsset file="map.png" height="600" width="800" assetId="7332893" name="MapBackground" id="0:199"/>
+    <ImageAsset file="Sveti Sava temple.jpeg" format="jpeg" height="1333" width="1922" assetId="7381109" name="Sveti Sava temple" id="137:53"/>
     <Space name="Space 1" id="17:1"/>
     
-    <!-- Вьюмодель PointVM -->
+    <!-- Расширенная вьюмодель PointVM с полями isHovered и photo -->
     <ViewModel defaultInstanceId="86:12" name="PointVM" id="86:11">
+        <ViewModelPropertyAssetImage input="true" name="photo" id="137:42"/>
+        <ViewModelPropertyBoolean input="true" name="isHovered" id="137:24"/>
         <ViewModelPropertyViewModel viewModelReferenceId="107:1" name="propertyOfStageVM" id="117:49"/>
         <ViewModelPropertyNumber input="true" name="pointPosition" id="104:1"/>
         <ViewModelPropertyString input="true" name="name" id="99:1"/>
@@ -499,6 +516,8 @@
             <ViewModelInstanceString propertyValue="Initial value" viewModelPropertyId="99:1" id="99:2"/>
             <ViewModelInstanceNumber viewModelPropertyId="104:1" id="104:9"/>
             <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49" id="117:57"/>
+            <ViewModelInstanceBoolean viewModelPropertyId="137:24" id="137:32"/>
+            <ViewModelInstanceAssetImage viewModelPropertyId="137:42" id="137:50"/>
         </ViewModelInstance>
     </ViewModel>
 
@@ -510,15 +529,13 @@
         </ViewModelInstance>
     </ViewModel>
 
-    <!-- Артборд-компонент Point -->
+    <!-- Артборд-компонент Point с поддержкой Hover и Превью -->
     <Artboard originX="0.5" originY="0.5" defaultStateMachineId="86:26" viewModelId="86:11" viewModelInstanceId="86:12" isComponent="true" spaceId="17:1" width="18" height="18" styleId="86:10" x="898" y="42" name="Point" id="86:1">
         <Text originY="0.5" x="13" id="91:2">
-            <TextStylePaint fontSize="16" fontAssetId="91:1" familyName="Inter" styleName="SemiBold" id="91:3">
+            <TextStylePaint fontSize="14" fontAssetId="91:1" familyName="Inter" styleName="Medium" id="91:3">
                 <Fill fillRule="clockwise" id="91:4">
-                    <SolidColor colorValue="000000" id="91:5"/>
+                    <SolidColor colorValue="FF000000" id="91:5"/>
                 </Fill>
-                <TextStyleAxis tag="1869640570" axisValue="14" id="91:28"/>
-                <TextStyleAxis tag="2003265652" axisValue="600" id="91:29"/>
             </TextStylePaint>
             <TextValueRun styleId="91:3" text="Point name" id="91:8">
                 <DataBindContext sourcePathIds="86:11-99:1" propertyKey="268" id="99:3"/>
@@ -533,17 +550,59 @@
                 <SolidColor colorValue="FFFFFFFF" id="86:7"/>
             </Stroke>
         </Shape>
+        
+        <!-- Узел превью-картинки с дата-биндингом к photo -->
+        <Node x="-0.00025" scaleX="0.05" scaleY="0.05" opacity="0" name="Photo" id="137:66">
+            <Image assetId="137:53" originY="1" x="0.00019" y="100" scaleX="0.149" scaleY="0.15" name="Photo" id="137:54">
+                <ClippingShape sourceId="137:56" id="137:65"/>
+                <DataBindContext sourcePathIds="86:11-137:42" propertyKey="206" id="138:1442"/>
+            </Image>
+            <Shape x="-0.249" y="-0.19" name="Clip+outline" id="137:56">
+                <Rectangle cornerRadiusTL="16" width="200" height="200" x="0.25" y="0.25" id="137:57"/>
+                <Fill fillRule="clockwise" id="137:58"><SolidColor colorValue="FF838383" id="137:59"/></Fill>
+                <Stroke thickness="6" transformAffectsStroke="false" id="137:61"><SolidColor colorValue="FFFFFFFF" id="137:62"/></Stroke>
+            </Shape>
+        </Node>
+
+        <!-- Хит-бокс для наведения курсора -->
+        <Shape x="45.5" name="Target area" id="138:1068">
+            <Rectangle width="152" height="56" id="138:1069"/>
+            <Fill fillRule="clockwise" id="138:1070"><SolidColor colorValue="00747474" id="138:1071"/></Fill>
+        </Shape>
+
+        <!-- Слушатели указателя мыши (enter / exit) -->
+        <StateMachineListener targetId="138:1068" name="Pointer exit" id="138:1300">
+            <ListenerInputType listenerTypeValue="exit" id="138:1302"/>
+            <ListenerViewModelChange id="138:1301">
+                <BindablePropertyBoolean id="138:1298">
+                    <DataBindContext sourcePathIds="86:11-137:24" propertyKey="634" direction="true" id="138:1299"/>
+                </BindablePropertyBoolean>
+            </ListenerViewModelChange>
+        </StateMachineListener>
+        <StateMachineListener targetId="138:1068" name="Pointer enter" id="138:1293">
+            <ListenerInputType id="138:1294"/>
+            <ListenerViewModelChange id="138:1295">
+                <BindablePropertyBoolean propertyValue="true" id="138:1296">
+                    <DataBindContext sourcePathIds="86:11-137:24" propertyKey="634" direction="true" id="138:1297"/>
+                </BindablePropertyBoolean>
+            </ListenerViewModelChange>
+        </StateMachineListener>
+
         <LayoutComponentStyle id="86:10"/>
-        <StateMachine name="State Machine 1" id="86:26">
-            <StateMachineLayer name="Layer 1" id="86:28">
-                <AnimationState animationId="86:13" x="270" y="-72" id="86:24"/>
+        
+        <!-- Стейт-машина компонента pointSM -->
+        <StateMachine name="pointSM" id="86:26">
+            <StateMachineLayer name="Points appear" id="86:28">
+                <AnimationState animationId="86:13" x="324" y="-73" id="86:24">
+                    <StateTransition stateToId="138:1426" enableExitTime="true" exitTimeIsPercetange="true" exitTime="100" id="138:1427"/>
+                </AnimationState>
                 <EntryState x="-30" y="-72" id="86:29">
                     <StateTransition stateToId="117:99" id="117:100"/>
                 </EntryState>
-                <ExitState x="480" id="86:30"/>
-                <AnyState x="400" id="86:31"/>
+                <ExitState x="578" y="-119" id="86:30"/>
+                <AnyState x="498" y="-119" id="86:31"/>
                 <AnimationState animationId="117:79" x="114" y="-72" id="117:99">
-                    <StateTransition stateToId="86:24" id="117:101">
+                    <StateTransition stateToId="86:24" enableExitTime="true" exitTime="300" id="117:101">
                         <TransitionViewModelCondition opValue="greaterThanOrEqual" id="121:103">
                             <TransitionPropertyViewModelComparator id="121:104">
                                 <BindablePropertyNumber id="121:105">
@@ -558,80 +617,115 @@
                         </TransitionViewModelCondition>
                     </StateTransition>
                 </AnimationState>
+                <AnimationState animationId="138:1316" x="324" y="18" id="138:1426"/>
+            </StateMachineLayer>
+            
+            <StateMachineLayer name="Photo appears" id="138:1045">
+                <AnyState x="642" y="104" id="138:1046"/>
+                <ExitState x="627" y="30" id="138:1047"/>
+                <EntryState x="-51" y="-34" id="138:1048">
+                    <StateTransition stateToId="138:1049" id="138:1052">
+                        <TransitionViewModelCondition opValue="greaterThanOrEqual" id="138:1346">
+                            <TransitionPropertyViewModelComparator id="138:1347">
+                                <BindablePropertyNumber id="138:1348">
+                                    <DataBindContext sourcePathIds="107:1-112:2" propertyKey="636" id="138:1349"/>
+                                </BindablePropertyNumber>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionPropertyViewModelComparator id="138:1358">
+                                <BindablePropertyNumber id="138:1359">
+                                    <DataBindContext sourcePathIds="86:11-104:1" propertyKey="636" id="138:1360"/>
+                                </BindablePropertyNumber>
+                            </TransitionPropertyViewModelComparator>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </EntryState>
+                <AnimationState animationId="138:1316" x="115" y="-32" id="138:1049">
+                    <StateTransition stateToId="138:1050" id="138:1053">
+                        <TransitionViewModelCondition id="138:1056">
+                            <TransitionPropertyViewModelComparator id="138:1057">
+                                <BindablePropertyBoolean id="138:1058">
+                                    <DataBindContext sourcePathIds="86:11-137:24" propertyKey="634" id="138:1059"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator value="true" id="138:1060"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+                <AnimationState animationId="138:1044" x="299" y="-29" id="138:1050">
+                    <StateTransition stateToId="138:1438" enableEarlyExit="true" id="138:1419">
+                        <TransitionViewModelCondition id="138:1421">
+                            <TransitionPropertyViewModelComparator id="138:1422">
+                                <BindablePropertyBoolean id="138:1423">
+                                    <DataBindContext sourcePathIds="86:11-137:24" propertyKey="634" id="138:1424"/>
+                                </BindablePropertyBoolean>
+                            </TransitionPropertyViewModelComparator>
+                            <TransitionValueBooleanComparator id="138:1425"/>
+                        </TransitionViewModelCondition>
+                    </StateTransition>
+                </AnimationState>
+                <AnimationState animationId="138:1044" speed="-1" x="299" y="69" id="138:1438">
+                    <StateTransition stateToId="138:1049" enableExitTime="true" exitTimeIsPercetange="true" exitTime="100" id="138:1441"/>
+                </AnimationState>
             </StateMachineLayer>
         </StateMachine>
+
+        <!-- Анимации точки -->
         <LinearAnimation duration="30" name="Idle" id="117:79">
             <KeyedObject objectId="86:1" id="117:80">
-                <KeyedProperty property="opacity" id="117:81">
-                    <KeyFrameDouble interpolationType="cubic" id="117:82">
-                        <CubicEaseInterpolator x1="0" y1="0.58489174" id="117:74"/>
-                    </KeyFrameDouble>
-                </KeyedProperty>
+                <KeyedProperty property="opacity" id="117:81"/>
             </KeyedObject>
             <KeyedObject objectId="86:2" id="117:84">
                 <KeyedProperty property="scaleX" id="117:85">
-                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="117:86">
-                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:75"/>
-                    </KeyFrameDouble>
+                    <KeyFrameDouble value="0.6" interpolationType="elastic" id="117:86"/>
                 </KeyedProperty>
                 <KeyedProperty property="scaleY" id="117:88">
-                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="117:89">
-                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:76"/>
-                    </KeyFrameDouble>
-                </KeyedProperty>
-            </KeyedObject>
-            <KeyedObject objectId="91:2" id="117:91">
-                <KeyedProperty property="x" id="117:92">
-                    <KeyFrameDouble value="8" interpolationType="elastic" id="117:93">
-                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:77"/>
-                    </KeyFrameDouble>
-                </KeyedProperty>
-            </KeyedObject>
-            <KeyedObject objectId="91:3" id="117:95">
-                <KeyedProperty property="letterSpacing" id="117:96">
-                    <KeyFrameDouble value="-2" interpolationType="elastic" id="117:97">
-                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:78"/>
-                    </KeyFrameDouble>
+                    <KeyFrameDouble value="0.6" interpolationType="elastic" id="117:89"/>
                 </KeyedProperty>
             </KeyedObject>
         </LinearAnimation>
-        <LinearAnimation duration="30" name=" Active" id="86:13">
+        
+        <LinearAnimation duration="1" name="Idle shown" id="138:1316">
+            <KeyedObject objectId="86:1" id="138:1331">
+                <KeyedProperty property="opacity" id="138:1332">
+                    <KeyFrameDouble value="1" interpolationType="linear" id="138:1333"/>
+                </KeyedProperty>
+            </KeyedObject>
+            <KeyedObject objectId="86:2" id="138:1337">
+                <KeyedProperty property="scaleY" id="138:1338"><KeyFrameDouble value="1" interpolationType="linear" id="138:1339"/></KeyedProperty>
+                <KeyedProperty property="scaleX" id="138:1340"><KeyFrameDouble value="1" interpolationType="linear" id="138:1341"/></KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+
+        <LinearAnimation duration="30" name="Points appear" id="86:13">
             <KeyedObject objectId="86:2" id="86:14">
                 <KeyedProperty property="scaleY" id="86:18">
-                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:20">
-                        <ElasticInterpolator amplitude="4" period="0.69999999" id="86:33"/>
-                    </KeyFrameDouble>
+                    <KeyFrameDouble value="0.6" interpolationType="elastic" id="86:20"/>
                     <KeyFrameDouble value="1" interpolationType="linear" frame="30" id="86:19"/>
                 </KeyedProperty>
                 <KeyedProperty property="scaleX" id="86:21">
-                    <KeyFrameDouble value="0.60000002" interpolationType="elastic" id="86:23">
-                        <ElasticInterpolator amplitude="4" period="0.69999999" id="86:32"/>
-                    </KeyFrameDouble>
+                    <KeyFrameDouble value="0.6" interpolationType="elastic" id="86:23"/>
                     <KeyFrameDouble value="1" interpolationType="linear" frame="30" id="86:22"/>
                 </KeyedProperty>
             </KeyedObject>
-            <KeyedObject objectId="86:1" id="99:7">
-                <KeyedProperty property="opacity" id="99:8">
-                    <KeyFrameDouble interpolationType="cubic" id="99:12">
-                        <CubicEaseInterpolator x1="0" y1="0.58489174" id="99:10"/>
-                    </KeyFrameDouble>
-                    <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="99:11"/>
+        </LinearAnimation>
+
+        <LinearAnimation duration="15" name="Hover" id="138:1044">
+            <KeyedObject objectId="137:66" id="138:1383">
+                <KeyedProperty property="y" id="138:1384">
+                    <KeyFrameDouble value="-4" interpolationType="elastic" id="138:1386"/>
+                    <KeyFrameDouble value="-120.5" interpolationType="linear" frame="15" id="138:1385"/>
                 </KeyedProperty>
-            </KeyedObject>
-            <KeyedObject objectId="91:3" id="117:61">
-                <KeyedProperty property="letterSpacing" id="117:62">
-                    <KeyFrameDouble value="-2" interpolationType="elastic" id="117:63">
-                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:73"/>
-                    </KeyFrameDouble>
-                    <KeyFrameDouble interpolationType="linear" frame="30" id="117:64"/>
+                <KeyedProperty property="scaleX" id="138:1387">
+                    <KeyFrameDouble value="0.05" interpolationType="elastic" id="138:1389"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="138:1388"/>
                 </KeyedProperty>
-            </KeyedObject>
-            <KeyedObject objectId="91:2" id="117:68">
-                <KeyedProperty property="x" id="117:69">
-                    <KeyFrameDouble value="8" interpolationType="elastic" id="117:71">
-                        <ElasticInterpolator amplitude="4" period="0.69999999" id="117:72"/>
-                    </KeyFrameDouble>
-                    <KeyFrameDouble value="13" interpolationType="linear" frame="30" id="117:70"/>
+                <KeyedProperty property="scaleY" id="138:1390">
+                    <KeyFrameDouble value="0.05" interpolationType="elastic" id="138:1392"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="138:1391"/>
+                </KeyedProperty>
+                <KeyedProperty property="opacity" id="138:1393">
+                    <KeyFrameDouble interpolationType="cubic" id="138:1395"/>
+                    <KeyFrameDouble value="1" interpolationType="linear" frame="15" id="138:1394"/>
                 </KeyedProperty>
             </KeyedObject>
         </LinearAnimation>
