@@ -41,7 +41,7 @@
                 <ViewModelInstanceNumber propertyValue="46" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
                 <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
-                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
+                <ViewModelInstanceAssetImage propertyValue="7381110" viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="231" y="55" name="Kalemegdan">
@@ -51,7 +51,7 @@
                 <ViewModelInstanceNumber propertyValue="62" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
                 <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
-                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
+                <ViewModelInstanceAssetImage propertyValue="7381111" viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="208" y="92" name="Bridge to Kalemegdan">
@@ -61,7 +61,7 @@
                 <ViewModelInstanceNumber propertyValue="58" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
                 <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
-                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
+                <ViewModelInstanceAssetImage propertyValue="7381112" viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
         <NestedArtboard artboardId="86:1" isStateful="true" x="458" y="284" name="Skupstina">
@@ -71,7 +71,7 @@
                 <ViewModelInstanceNumber propertyValue="85" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
                 <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
-                <ViewModelInstanceAssetImage  viewModelPropertyId="137:42"/>
+                <ViewModelInstanceAssetImage propertyValue="7381113" viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>
 
