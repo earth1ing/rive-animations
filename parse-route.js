@@ -283,7 +283,7 @@ async function run() {
 
         const rmlWaypoints = [];
         const rmlAssets = [];
-        let assetIdCounter = 7381110;
+        let assetIdCounter = 738110; // Базовый префикс ID ассетов
 
         for (let index = 0; index < rawWaypoints.length; index++) {
             const wpt = rawWaypoints[index];
@@ -293,11 +293,12 @@ async function run() {
 
             // Обрабатываем картинку для текущей точки
             const imgInfo = await processWaypointImage(wpt.name, projectFolder);
-            let imageAssetReferenceId = '';
+            let assetAttr = '';
 
             if (imgInfo) {
-                const currentAssetId = assetIdCounter++;
-                imageAssetReferenceId = currentAssetId;
+                // Генерируем валидный ID ассета в формате клиента, например "137:53" или уникальный клиентский ID
+                const currentAssetId = `137:${53 + index}`;
+                assetAttr = ` propertyValue="${currentAssetId}"`;
                 rmlAssets.push(`    <ImageAsset file="${imgInfo.fileName}" format="${imgInfo.format}" name="${wpt.name}" id="${currentAssetId}"/>`);
             }
 
@@ -308,7 +309,7 @@ async function run() {
                 <ViewModelInstanceNumber propertyValue="${pointPos}" viewModelPropertyId="104:1"/>
                 <ViewModelInstanceViewModel propertyValue="107:2" viewModelPropertyId="117:49"/>
                 <ViewModelInstanceBoolean viewModelPropertyId="137:24"/>
-                <ViewModelInstanceAssetImage ${imageAssetReferenceId ? `propertyValue="${imageAssetReferenceId}"` : ''} viewModelPropertyId="137:42"/>
+                <ViewModelInstanceAssetImage${assetAttr} viewModelPropertyId="137:42"/>
             </ViewModelInstance>
         </NestedArtboard>`);
         }
